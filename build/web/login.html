@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Na Régua - Login</title>
+    <link rel="stylesheet" href="dependencia/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Na Régua</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <div class="container">
+
+        <section class="login-box">
+            <h2>Login</h2>
+            <form class="frmLogin" name="formlogin" action="javaJSP/login.jsp" method="POST">
+                <label for="username" class="labelLogin">Usuário:</label>
+                <input type="text" id="username" name="usuario_cliente" class="inpLogin" required>
+            
+                <label for="password" class="labelLogin">Senha:</label>
+                <input type="password" id="password" name="password_cliente" class="inpLogin" required>
+            
+                <button type="submit" class="botao-login" value="Login">Entrar</button>
+            
+                <a href="./cadUser.html" class="create-account">Criar uma conta</a>
+            </form>
+        </section>
+    </div>
+    
+            <footer>
+                <p> 2024 – Todos os Direitos Reservados</p>
+            </footer>
+</body>
+</html>

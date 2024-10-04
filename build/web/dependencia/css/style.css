@@ -1,0 +1,521 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-blend-mode: screen
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #fff5e1;
+  background-color: rgba(165, 99, 0);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #240f03;
+  color: #fff;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.social-icons a {
+  color: #fff;
+  margin-left: 15px;
+  font-size: 1.2em;
+}
+
+.hero {
+  position: relative;
+  max-width: 100%;
+  height: 300px;
+  background-color: rgba(218, 165, 32, 0.7) 100%;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 30%,
+    rgb(165, 99, 0)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10%;
+  color: #fff;
+}
+
+.text {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.phone {
+  font-size: 1.2em;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 30px 10%;
+}
+
+.booking button {
+  background-color: #240f03;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.booking button:hover {
+  background-color: #d5a875;
+  color: #240f03;
+}
+
+.gallery {
+  display: flex;
+  gap: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+.gallery img:hover{
+  transform: scale(1.08);
+  transition: transform 0.3s ease;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background-color: #240f03;
+  color: #fff;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+main{
+  background-color: rgba(165 99 0);
+  position: relative;
+  padding-bottom: 13px;
+
+}
+
+/* Replicando um estilo só à todos os botões */
+.botoesCad {
+  display: block;
+  margin-left: 150px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  background-color: #240f03;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.2);
+  
+}
+
+a{
+  text-decoration: none;
+}
+
+.botoesCad:hover{
+  background-color: #d5a875;
+  color: #240f03;
+  transform: scale(1.08);
+  transition: transform 0.3s ease;
+}
+
+h2.titulo_cadastro{
+  margin: 20px;
+}
+/* Alterando o espaçamento do titulo e botões de cadastro */
+.cadastrar, .listaDe, .agendaCliente{
+  margin: 20px 145px;
+  display: inline-block;
+}
+.cadastrar button{
+
+margin-top: -10px;
+
+}
+.listaDe button{
+
+  margin-top: -10px;
+
+}
+
+select{
+  margin: 20px;
+  font-size: 20px;
+  background-color: rgba(165 99 0);
+  border-color: rgba(0, 0, 0, 0.5);
+  border-width: 2.5px;
+  padding: 5px;
+}
+
+label{
+  margin-left: 30px;
+  font-size: 25px;
+}
+textarea{
+  margin-left: 30px;
+  background-color: rgb(165, 99, 0);
+  border-color: rgba(0, 0, 0, 0.5);
+  border-style: groove;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 15px;
+}
+
+h2.dataEscolha {
+  margin: 30px;
+}
+
+.geral {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  padding: 50px;
+}
+
+.card_select {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  max-width: 400px; 
+}
+
+.card_select_right {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  margin-left: 20px;
+  flex-grow: 1; 
+  max-width: 900px; 
+}
+
+#img-mapa-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%; 
+  padding-top: 20px;
+}
+
+iframe {
+  width: 100%; 
+  height: 450px; 
+  border: 0; 
+}
+
+#img-mapa {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%; /* Define a altura do gradiente */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(165, 99, 0, 1) 100%);
+  pointer-events: none; /* Faz com que o gradiente não bloqueie interações */
+}
+
+p.endereco {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+nav ul {
+  list-style: none;
+  background-color: #240f03;
+  text-align: end;
+  padding: 10px;
+}
+
+nav ul li{
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a{
+  color: #fff5e1;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover{
+  color: #FFD700;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+}
+
+/* Estilizando formulário */
+
+.formularioCad {
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3 ease;
+  background-color: #fff;
+}
+
+input:focus, textarea:focus{
+  border-color: #FFD700;
+}
+
+button.evento-mouse {
+  padding: 15px 30px;
+  background-color: #240f03;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.evento-mouse:hover{
+  background-color: rgb(165, 99, 0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+.forms{
+  padding: 30px;
+  background-color: #b8860b;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.forms:hover{
+  transform: scale(1.03);
+}
+
+/* Estilizando login (Erik) */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.login-box {
+  background-color: #b8860b;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 600px;
+  max-width: 90%;
+  transition: transform 0.3s ease;
+}
+.login-box:hover{
+  transform: scale(1.08);
+}
+
+h2 {
+  font-size: 35px;
+  margin-bottom: 20px;
+  color: #240f03;
+  text-align: center;
+}
+
+.frmLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.labelLogin{
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 10px;
+  text-align: center;
+  padding-right: 20px;
+}
+
+.botao-login{
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  background-color: #240f03;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.botao-login:hover{
+  transform: scale(1.08);
+}
+
+.inpLogin {
+  padding: 10px;
+  width: 200px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+
+button:hover {
+  background-color: #555;
+}
+
+.create-account {
+  display: block;
+  margin-top: 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.create-account:hover {
+  text-decoration: underline;
+}
+
+/* Estilizando o formulário de cadastro de usuário */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+.box-cad {
+  display: flex;
+  justify-content: space-around;
+  background-color: #b8860b;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+  width: 600px;
+  max-width: 90%;
+  transition: transform 0.3s ease;
+}
+.box-cad:hover{
+  transform: scale(1.08);
+}
+
+.box-cad h2 {
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: #240f03;
+  text-align: center;
+}
+
+.frmCadUser {
+  display: flex;
+  flex-direction: column;
+}
+
+.labelCadUsuario{
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-right: 20px;
+}
+
+.botaoCadUser{
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  background-color: #240f03;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.botaoCadUser:hover{
+  transform: scale(1.08);
+}
+
+.inpCadUser {
+  padding: 10px;
+  width: 400px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+
+button:hover {
+  background-color: #555;
+}
+
+.create-account {
+  display: block;
+  margin-top: 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.create-account:hover {
+  text-decoration: underline;
+}
+
