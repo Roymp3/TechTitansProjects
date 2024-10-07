@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Na Régua</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Na Régua</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <a href="./Cadastro.html"><button class="botoesCad">Voltar</button></a>
+    <main class="forms">
+        <form class="formularioCad" id="frmContato">
+            
+            <label for="Nome">Nome:</label>
+            <input type="text" id="txtNome" name="Nome" placeholder="Digite seu nome aqui" required>
+            
+            <label for="Email">E-mail:</label>
+            <input type="email" name="Email" placeholder="Digite seu e-mail aqui" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" name="Telefone" placeholder="Digite seu telefone:" required>
+
+            <label for="dataeHora">Escolha a data e hora:</label>
+            <input type="datetime-local" required>
+            
+            <label for="Mensagem">Mensagem:</label>
+            <textarea name="Mensagem" rows="3"  placeholder="Descreva o tipo de corte desejado: "></textarea>
+            
+            <button type="submit" class="evento-mouse">Enviar</button>
+
+        </form>
+    </main>
+    <footer>© 2024 – Todos os Direitos Reservados</footer>

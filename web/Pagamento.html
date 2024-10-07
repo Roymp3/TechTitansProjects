@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Tela de seleção</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Na Régua</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./login.html">Login</a></li>
+            <li> <a href="./index.html">Home</a></li>
+            <li> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
+            <li> <a href="#">Agendamento</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="geral">
+            <div id="card_select">
+                <h2 class="dataEscolha">Data escolhida - 30/08/2024</h2>
+                <label for="cortes">Selecionar corte:</label>
+                <select id="cortes" name="opcoesCortes">
+                    <option value="" disabled selected></option>
+                    <option value="americano">Americano</option>
+                    <option value="jaca">Corte do Jaca</option>
+                    <option value="buzzcut">Buzz cut</option>
+                    <option value="social">Social</option>
+                </select><br>
+                
+                <label for="pagamento">Forma de pagamento:</label>
+                <select id="pagamento" name="opcoesPagamento">
+                    <option value="" disabled selected></option>
+                    <option value="credito">Cartão de crédito</option>
+                    <option value="pix">Pix</option>
+                    <option value="boleto">Boleto</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select><br>
+                
+                <label for="barbeiro">Barbeiro disponível:</label>
+                <select id="barbeiro" name="barbeiroDisponivel">
+                    <option value="" disabled selected></option>
+                    <option value="jhonny_gama">Jhonny da Gama</option>
+                    <option value="roy_jones">Roy Jones</option>
+                    <option value="bruno_rosa">Bruno Rosa</option>
+                    <option value="diego_cardoso">Diego Cardoso</option>
+                </select><br>
+
+                <label for="observacao">Observação:</label><br>
+                <textarea name="observacao" id="observacao" rows="10" cols="35"></textarea>
+
+                <button type="submit" class="botoesCad">Agendar corte</button>
+            </div>
+            <div class="card_select_right">
+                <div id="img-mapa-container">
+                    <img  id="img-mapa" src="./img/img-maps.png" alt="Teste">
+                    <div class="gradient-overlay"></div>
+                </div>
+                <p class="info_barb">Rua Oscar Freire, Vila Evlyn 207 - São Paulo (SP)</p>
+                <p class="info_barb">Aberto das 13 ás 18</p>
+                <p class="info_barb">Abertura das 14 ás 17 aos Sábados e Domingos</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 – Todos os Direitos Reservados</p>
+    </footer>
+</body>
+</html>

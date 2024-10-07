@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de cadastro</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Na Régua</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <div class="container">
+        <section class="box-cad">
+            <h2>Cadastro de usuário</h2>
+
+            <form class="frmCadUser" id="frmCadastro" action="JavaJSP\Registro.jsp" method="post">
+        
+            <label for="nome" class="labelCadUsuario">Nome:</label>
+            <input type="text" name="nomeCliente" class="inpCadUser" placeholder="insira seu nome completo" required>     
+            
+            <label for="text" class="labelCadUsuario">CPF:</label>
+            <input type="text" name="cpfCliente" class="inpCadUser" maxlength="11" placeholder="insira seu CPF" required>
+            
+            <label for="numero" class="labelCadUsuario">Numero:</label>
+            <input type="text" name="numeroCliente" class="inpCadUser" maxlength="9" placeholder="insira seu número" required>
+            
+            <label for="usuario" class="labelCadUsuario">Usuario:</label>
+            <input type="text" name="userCliente" class="inpCadUser" placeholder="insira seu usuario" required>
+            
+            <label for="senhaUsuario" class="labelCadUsuario">Senha:</label>
+            <input type="password" name="senhaCliente" class="inpCadUser" placeholder="insira sua senha" required>
+            
+            <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/Registro.jsp')">Enviar</button>
+        </form>
+    </div>
+        </section>
+    </div>
+    <footer>
+        <p> 2024 – Todos os Direitos Reservados</p>
+    </footer>
+</body>
+</html>
