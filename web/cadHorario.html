@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Na Régua</title>
+    <title>Formulário de cadastro</title>
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="./css/style.css" type="text/css">
 </head>
-
 <body>
     <header>
         <div class="logo">Na Régua</div>
@@ -19,27 +17,26 @@
             <a href="#"><i class="fas fa-user"></i></a>
         </div>
     </header>
-    <a href="./Cadastro.html"><button class="botoesCad">Voltar</button></a>
-    <main class="forms">
-        <form class="formularioCad" id="frmContato">
-            
-            <label for="Nome">Nome:</label>
-            <input type="text" id="txtNome" name="Nome" placeholder="Digite seu nome aqui" required>
-            
-            <label for="Email">E-mail:</label>
-            <input type="email" name="Email" placeholder="Digite seu e-mail aqui" required>
+    <div class="container">
+        <section class="box-cad">
+            <h2>Cadastro de Cortes</h2>
 
-            <label for="telefone">Telefone:</label>
-            <input type="tel" name="Telefone" placeholder="Digite seu telefone:" required>
-
-            <label for="dataeHora">Escolha a data e hora:</label>
-            <input type="datetime-local" required>
+            <form class="frmCadUser" id="frmCadastro" action="JavaJSP\RegistroHora.jsp" method="post">
+        
+            <label for="nome" class="labelCadUsuario">Funcionario:</label>
+            <input type="text" name="nomeFunc" class="inpCadUser"  readonly>     
             
-            <label for="Mensagem">Mensagem:</label>
-            <textarea name="Mensagem" rows="3"  placeholder="Descreva o tipo de corte desejado: "></textarea>
+            <label for="text" class="labelCadUsuario">Selecione o dia e a data disponivel:</label>
+            <input type="date" name="dataHora" class="inpCadUser" placeholder="insira o valor do corte" required>
             
-            <button type="submit" class="evento-mouse">Enviar</button>
-
+            
+            <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroHora.jsp')">Enviar</button>
         </form>
-    </main>
-    <footer>© 2024 – Todos os Direitos Reservados</footer>
+    </div>
+        </section>
+    </div>
+    <footer>
+        <p> 2024 – Todos os Direitos Reservados</p>
+    </footer>
+</body>
+</html>

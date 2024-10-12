@@ -1,27 +1,31 @@
-<%@page import="javaBeans.Cliente"%>
-<% Cliente user = new Cliente(); // Instancia o objeto Usuario
- if ( !(user.statusSQL == null) ) out.println(user.statusSQL);
+<%@page import="javaBeans.Funcionarios"%>
+<% Funcionarios func = new Funcionarios();
+ if ( !(func.statusSQL == null) ) out.println(func.statusSQL);
  
-  String nomeCliente = request.getParameter("nomeCliente");
-  String cpfCliente = request.getParameter("cpfCliente");
-  String numeroCliente = request.getParameter("numeroCliente");
-   String usuarioCliente = request.getParameter("userCliente");
-   String senhaCliente = request.getParameter("senhaCliente");
+  String nomeFunc = request.getParameter("txtNome");
+  String cargoFunc = request.getParameter("txtCargo");
+  String cpfFunc = request.getParameter("txtCpf");
+   String rgFunc = request.getParameter("txtRg");
+   Double salFunc = Double.parseDouble(request.getParameter("txtSalario"));
+   String userFunc = request.getParameter("txtUserFunc");
+   String senhaFunc = request.getParameter("txtSenhaFunc") ;
+           
+func.setNome_funcionario(nomeFunc);
+func.setCargo_funcionario(cargoFunc);
+func.setCpf_funcionario(cpfFunc);
+func.setRg_funcionario(rgFunc);
+func.setSalario_funcionario(salFunc);
+func.setUsuario_funcionario(userFunc);
+func.setSenha_funcionario(senhaFunc);
 
- 
- // preenche os atributos do objeto usuario
- user.setNome_cliente(nomeCliente);
- user.setCpf_cliente(cpfCliente);
- user.setNumero_cliente(numeroCliente);
- user.setUsuario_cliente(usuarioCliente);
- user.setSenha_cliente(senhaCliente);
- user.incluir(); // chama o método para fazer a inclusão no banco de dados
+ func.incluir();
+ // chama o método para fazer a inclusão no banco de dados
  
  
-if (!(user.statusSQL == null))
-        out.println(user.statusSQL);
+if (!(func.statusSQL == null))
+        out.println(func.statusSQL);
     else {
-        String sHTML = "<center>Usuário criado com Sucesso!<br> <a href = '../index.html'> Voltar </a> </center>";
+        String sHTML = "<center>Funcionario criado com Sucesso!<br> <a href = '../index.html'> Voltar </a> </center>";
         out.println(sHTML);
     }
 %>

@@ -1427,4 +1427,6 @@ exists or setup the property manually. For example like this:
     </target>
     <target depends="init,undeploy-clean,deps-clean,do-clean,check-clean,-post-clean" description="Clean build products." name="clean"/>
     <target depends="clean" description="Clean build products." name="clean-ear"/>
+	<property name="deploy.username" value="tomcat"/>
+	<property name="deploy.password" value="tomcat"/>
 </project>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -7,6 +8,17 @@
     <title>Na Régua</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
+     <script>
+        window.onload = function() {
+            fetch('JavaJSP/conteudo.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('conteudo').innerHTML = data; // Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+        };
+    </script>
+    
 </head>
 
 <body>
@@ -18,12 +30,13 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fas fa-user"></i></a>
         </div>
+        
     </header>
-    <nav>
+    <nav id="conteudo">
         <ul>
             <li><a href="./login.html">Login</a></li>
             <li> <a href="#">Home</a></li>
-            <li> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
+            <li style='display:none;'> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
             <li> <a href="./Pagamento.html">Agendamento</a></li>
         </ul>
     </nav>

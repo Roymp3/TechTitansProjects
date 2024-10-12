@@ -40,7 +40,6 @@ try {
             sql = "create database if not exists " + this.MeuBanco; // armazena sql
             ps = con.prepareStatement(sql); // prepara o comando
             ps.executeUpdate(); // Executa o comando SQL
-
             sql = "use " + this.MeuBanco;
             ps = con.prepareStatement(sql);
             ps.executeUpdate(); // Executa o comando SQL dentro do servidor 
@@ -54,8 +53,47 @@ try {
             ps = con.prepareStatement(sql);
             ps.executeUpdate(); // Executa o comando SQL dentro do servidor
             
+              sql = "create table if not exists tbl_cortes ( id_corte int AUTO_INCREMENT PRIMARY KEY,"
+                    + "nome_corte varchar(70),"
+                    + "preco_corte DECIMAL(50));";
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
             
             
+          sql = "create table if not exists tbl_funcionarios ( id_funcionario int AUTO_INCREMENT PRIMARY KEY,"
+                    + "nome_funcionario varchar(70),"
+                    + "cargo_funcionario varchar(50),"
+                    + "usuario_funcionario varchar(50) not null,"
+                    + "password_funcionario varchar(255) not null,"
+                    + "cpf_funcionario VARCHAR(15),"
+                    + "rg_funcionario VARCHAR(15),"
+                    + "salario_funcionario DECIMAL(10,2));";
+         
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+            sql = "create table if not exists tbl_status ( id_status int AUTO_INCREMENT PRIMARY KEY,"
+                    + "nome_status varchar(30));";
+         
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate(); 
+            
+            
+           sql = "create table if not exists tbl_datas ( id_data int AUTO_INCREMENT PRIMARY KEY,"
+                    + "data_datas datetime"
+                    + "id_cliente int,"
+                    + "id_funcionario int,"
+                    + "id_status int,"
+                    + "id_corte int,"
+                    + "FOREIGN KEY (id_corte) REFERENCES tbl_cortes(id_corte),"
+                    + "FOREIGN KEY(id_cliente) REFERENCES tbl_clientes(id_cliente),"
+                   +  "FOREIGN KEY(id_funcionario) REFERENCES tbl_funcionarios(id_funcionario),"
+                   +  "FOREIGN KEY(id_status) REFERENCES tbl_status(id_status));";
+         
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate(); 
+            
+           
             
 
             statusSQL = null; // Coloca null nas operações bem sucedidas
