@@ -15,13 +15,17 @@
         func.setUsuario_funcionario(usuario_cliente);
         func.setSenha_funcionario(password_cliente);
         
+         
+        
         // Verifica o login
         if (user.getLogin()) { 
         
           response.sendRedirect("../index.html"); // Carrega a página de sistema em caso de sucesso
+           out.println("Usuário: " + user.getUsuario_cliente());
         } else if(func.getLogin()) {
             String nomeClasse = "adm";
             session.setAttribute("nomeClasse", nomeClasse);
+            session.setAttribute("funcionarioLogado", func.getUsuario_funcionario());
              response.sendRedirect("../Cadastro.html"); // Carrega a página de sistema em caso de sucesso
 
         }else{
@@ -36,3 +40,5 @@
     }
     
 %>
+
+
