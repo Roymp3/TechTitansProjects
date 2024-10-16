@@ -80,8 +80,8 @@ try {
             
             
            sql = "create table if not exists tbl_datas ( id_data int AUTO_INCREMENT PRIMARY KEY,"
-                    + "data_datas datetime"
-                    + "id_cliente int,"
+                    + "data_datas datetime,"
+                    + "id_cliente int," 
                     + "id_funcionario int,"
                     + "id_status int,"
                     + "id_corte int,"
@@ -93,8 +93,26 @@ try {
             ps = con.prepareStatement(sql);
             ps.executeUpdate(); 
             
-           
-            
+            sql = "CREATE PROCEDURE InserirDatasProgramadas()"
+                    + "BEGIN"
+                    + "    DECLARE dataAtual DATETIME;"
+                    + "    SET dataAtual = NOW();"
+                    + "    INSERT INTO tbl_datas (data_datas) VALUES"
+                    + "        (DATE_FORMAT(dataAtual, '%Y-%m-%d 09:00:00')),"
+                    + "        (DATE_FORMAT(dataAtual, '%Y-%m-%d 10:00:00')),"
+                    + "        (DATE_FORMAT(dataAtual, '%Y-%m-%d 11:00:00')),"
+                    + "		(DATE_FORMAT(dataAtual, '%Y-%m-%d 14:00:00')),"
+                    + "		(DATE_FORMAT(dataAtual, '%Y-%m-%d 15:00:00')),"
+                    + "		(DATE_FORMAT(dataAtual, '%Y-%m-%d 16:00:00')),"
+                    + "		(DATE_FORMAT(dataAtual, '%Y-%m-%d 17:00:00')),"
+                    + "		(DATE_FORMAT(dataAtual, '%Y-%m-%d 18:00:00')),"
+                    + "		(DATE_FORMAT(dataAtual, '%Y-%m-%d 19:00:00')),"
+                    + "        (DATE_FORMAT(dataAtual, '%Y-%m-%d 20:00:00'));"
+                    + "END";
+         
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate(); 
+
 
             statusSQL = null; // Coloca null nas operações bem sucedidas
 

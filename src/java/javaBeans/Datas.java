@@ -72,7 +72,18 @@ public class Datas extends Conectar{
         }
     }
 
- 
+       public void InserirDatasAuto(){
+           try {
+               sql =  "CALL InserirDatasProgramadas();";
+                      
+            ps = con.prepareStatement(sql); // prepara SQL
+            ps.executeUpdate(); // executa comando SQL
+            this.statusSQL = null; // armazena null se deu tudo certo
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao incluir Datas automaticamente ! <br> " + ex.getMessage();
+        }
+
+      }
     
     
 }

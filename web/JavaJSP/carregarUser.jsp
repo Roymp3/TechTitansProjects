@@ -16,3 +16,5 @@
   <input type="date" name="dataHora" class="inpCadUser" placeholder="insira o valor do corte" required>
 
  <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroHora.jsp')">Enviar</button>
+ <p style="text-align: center;">---------- ou ----------</p>
+  <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroHoraAuto.jsp')">Gerar automatico</button>
