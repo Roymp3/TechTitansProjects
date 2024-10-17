@@ -19,27 +19,40 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fas fa-user"></i></a>
             </div>
+            <script>
+                  window.onload = function() {
+            fetch('JavaJSP/CarregarPerfil.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('frmPerfil').innerHTML = data;
+                    console.log(data)// Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+                    };     
+            </script>
+
         </header>
 
         <div class="content">
-            <aside>
+            <aside id="perfil-conteudo">
                 <div class="container">
                     <div class="profile-icon">
                         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Icone de Usuário">
                     </div>
-                    <form>
+                    <form id="frmPerfil">
                         <div class="form-group">
                             <label for="name">Nome:</label>
-                            <input type="text" id="name" placeholder="Digite seu nome">
+                            <input type="text" id="name" name="nome" placeholder="Digite seu nome">
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" id="email" placeholder="Digite seu email">
+                            <input type="email" id="email" name="email" placeholder="Digite seu email">
                         </div>
                         <div class="form-group">
                             <label for="phone">Telefone:</label>
-                            <input type="tel" id="phone" placeholder="Digite seu telefone">
-                        </div>
+                            <input type="tel" id="phone" name="cell" placeholder="Digite seu telefone">
+                      </div>
+                    </form>
             </aside>
 
             <main>

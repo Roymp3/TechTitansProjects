@@ -25,6 +25,8 @@
         // Verifica o login
         if (user.getLogin()) { 
             session.setAttribute("ClienteLogado", user.getUsuario_cliente());
+            
+            
           response.sendRedirect("../index.html"); // Carrega a página de sistema em caso de sucesso
            out.println("Usuário: " + user.getUsuario_cliente());
         } else if(func.getLogin()) {

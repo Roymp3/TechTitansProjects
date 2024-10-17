@@ -7,8 +7,11 @@ public class Cliente extends Conectar{
     private String nome_cliente;
     private String usuario_cliente;
     private String senha_cliente;
+    private String email_cliente;
     private String numero_cliente;
     private String cpf_cliente;
+    
+    
     
     
      public int getId_cliente() {
@@ -46,7 +49,15 @@ public class Cliente extends Conectar{
     public String getNumero_cliente() {
         return numero_cliente;
     }
+     public String getEmail_cliente() {
+        return email_cliente;
+    }
 
+    public void setEmail_cliente(String email_cliente) {
+        this.email_cliente = email_cliente;
+    }
+    
+    
     public void setNumero_cliente(String numero_cliente) {
         this.numero_cliente = numero_cliente;
     }
@@ -90,14 +101,15 @@ public class Cliente extends Conectar{
     
     public void incluir() {
         try {
-            sql = "insert into tbl_clientes(nome_cliente, usuario_cliente, password_cliente, numero_cliente, cpf_cliente ) "
-                    + "values (?,?,?,?,?);";
+            sql = "insert into tbl_clientes(nome_cliente, usuario_cliente, password_cliente, numero_cliente, cpf_cliente,email_cliente ) "
+                    + "values (?,?,?,?,?,?);";
             ps = con.prepareStatement(sql); // prepara SQL
             ps.setString(1, nome_cliente); // Configura Parametros
             ps.setString(2, usuario_cliente); // Configura Parametros
             ps.setString(3, senha_cliente); // Configura Parametros
             ps.setString(4, numero_cliente); // Configura Parametros
-            ps.setString(5, cpf_cliente); // Configura Parametros
+            ps.setString(5, cpf_cliente); 
+            ps.setString(6, email_cliente);// Configura Parametros
             ps.executeUpdate(); // executa comando SQL
             this.statusSQL = null; // armazena null se deu tudo certo
         } catch (SQLException ex) {
@@ -105,11 +117,37 @@ public class Cliente extends Conectar{
         }
     }
     
+        public boolean buscarClientePorUser() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT nome_cliente, numero_cliente, email_cliente FROM tbl_clientes WHERE usuario_cliente = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, usuario_cliente); 
+           tab = ps.executeQuery(); 
 
+          
+            if (tab.next()) {
+               
+               nome_cliente = tab.getString("nome_cliente");
+               numero_cliente= tab.getString("numero_cliente");
+                email_cliente  = tab.getString("email_cliente");
+                
+           
+                
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Cliente não encontrado!";
+              
+            }
 
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
    
-    
-    
-    
 }
 

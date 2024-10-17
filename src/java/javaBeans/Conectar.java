@@ -47,6 +47,7 @@ try {
             sql = "create table if not exists tbl_clientes ( id_cliente int AUTO_INCREMENT PRIMARY KEY,"
                     + "nome_cliente varchar(50) not null,"
                     + "usuario_cliente varchar(50) not null,"
+                    + "email_cliente varchar(255) not null,"
                     + "password_cliente varchar(255) not null,"
                     + "numero_cliente varchar(10) not null,"
                     + "cpf_cliente varchar(20) not null); ";
