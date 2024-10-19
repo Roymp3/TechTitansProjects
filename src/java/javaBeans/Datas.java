@@ -1,10 +1,10 @@
 
 package javaBeans;
 import java.sql.SQLException;
-import java.sql.Date;
+import java.sql.Timestamp;
 public class Datas extends Conectar{
     private int id_data;
-    private Date data_datas;
+    private Timestamp data_datas;
     private int id_cliente;
     private int id_funcionario;
     private int id_status;
@@ -18,11 +18,11 @@ public class Datas extends Conectar{
         this.id_data = id_data;
     }
 
-    public Date getData_datas() {
+    public Timestamp getData_datas() {
         return data_datas;
     }
 
-    public void setData_datas(Date data_datas) {
+    public void setData_datas(Timestamp data_datas) {
         this.data_datas = data_datas;
     }
 
@@ -60,11 +60,11 @@ public class Datas extends Conectar{
     
         public void incluir() {
         try {
-            sql = "insert into tbl_datas(data_datas,id_funcionario) "
-                    + "values (?,?);";
+            sql = "insert into tbl_datas(data_datas, id_funcionario) values (?,?);";
             ps = con.prepareStatement(sql); // prepara SQL
-            ps.setDate(1, data_datas);
+            ps.setTimestamp(1, data_datas);
             ps.setInt(2, id_funcionario);// Configura Parametros
+            
             ps.executeUpdate(); // executa comando SQL
             this.statusSQL = null; // armazena null se deu tudo certo
         } catch (SQLException ex) {

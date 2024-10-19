@@ -31,18 +31,18 @@
         <section class="box-cad">
             <h2>Cadastro de Horario</h2>
 
-            <form class="frmCadUser" id="frmCadastro" action="JavaJSP\RegistroHora.jsp" method="post">
+            <form class="frmCadUser" id="frmCadastro" action="JavaJSP/RegistroData.jsp" method="post">
         
             <label for="nome" class="labelCadUsuario">Funcionario:</label>
                 <input type="text" name="nomeFunc" id="Funcname" class="inpCadUser" readonly>     
             
             <label for="text" class="labelCadUsuario">Selecione o dia e a data disponivel:</label>
-            <input type="date" name="dataHora" class="inpCadUser" placeholder="insira o valor do corte" required>
+            <input type="datetime-local" name="dataHora" class="inpCadUser" placeholder="insira o valor do corte" required>
             
             
-            <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroHora.jsp')">Enviar</button>
+            <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroData.jsp')">Enviar</button>
             <p>---------- ou ----------</p>
-             <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroHora.jsp')">Gerar automatico</button>
+             <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroHoraAuto.jsp')">Gerar automatico</button>
         </form>
     </div>
         </section>
