@@ -153,6 +153,81 @@ public class Funcionarios extends Conectar{
         
         return false;
     }
+    
+     public boolean VerificarRG() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "select rg_funcionario from tbl_funcionarios where rg_funcionario = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, rg_funcionario); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Funcionario não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Funcionario! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+      public boolean VerificarCPF() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "select cpf_funcionario from tbl_funcionarios where cpf_funcionario = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, cpf_funcionario); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Funcionario não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Funcionario! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+      
+      public boolean VerificarUser() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "select usuario_funcionario from tbl_funcionarios where usuario_funcionario = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, usuario_funcionario); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Funcionario não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Funcionario! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+   
    
   
 }

@@ -148,6 +148,106 @@ public class Cliente extends Conectar{
         
         return false;
     }
+        
+            
+     public boolean VerificarEmail() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "select email_cliente from tbl_clientes where email_cliente = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, email_cliente); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Cliente não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Cliente! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+      public boolean VerificarCPF() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "select cpf_cliente from tbl_clientes where cpf_cliente = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, cpf_cliente); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Cliente não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Cliente! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+      
+      public boolean VerificarUser() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "select usuario_cliente from tbl_clientes where usuario_cliente = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, usuario_cliente); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Cliente não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Cliente! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+      
+      public boolean VerificarNumero() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "select numero_cliente from tbl_clientes where numero_cliente = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, numero_cliente); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Cliente não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Cliente! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
    
 }
 
