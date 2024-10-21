@@ -26,18 +26,24 @@ String FuncLogado = (String) session.getAttribute("funcionarioLogado");
  dt.setId_funcionario(idFuncData);
  
  }
- 
- dt.incluir();
+ if(dt.VerificarData()){
     
-
-if (!(dt.statusSQL == null)){
+    String sHTML = "<center>Este horario ja foi cadastrado anteriomente! tente outro!<br> <a href = '../index.html'> Voltar </a> </center>";
+        out.println(sHTML);
+    
+   }else{
+   
+    dt.incluir();
+    if (!(dt.statusSQL == null)){
     out.println(dt.statusSQL);
     }      
     else {
         String sHTML = "<center>Horario salvo  com Sucesso!<br> <a href = '../index.html'> Voltar </a> </center>";
-        out.print(dt.getData_datas());
-        out.println(dt.getId_funcionario());
         out.println(sHTML);
    }
+    
+  }
+
+
 
 %>

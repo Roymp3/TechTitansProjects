@@ -57,14 +57,13 @@ public class Datas extends Conectar{
         this.id_corte = id_corte;
     }
     
-    
-        public void incluir() {
+    public void incluir() {
         try {
             sql = "insert into tbl_datas(data_datas, id_funcionario) values (?,?);";
             ps = con.prepareStatement(sql); // prepara SQL
             ps.setTimestamp(1, data_datas);
             ps.setInt(2, id_funcionario);// Configura Parametros
-            
+
             ps.executeUpdate(); // executa comando SQL
             this.statusSQL = null; // armazena null se deu tudo certo
         } catch (SQLException ex) {
@@ -84,6 +83,27 @@ public class Datas extends Conectar{
         }
 
       }
+       public boolean VerificarData() {
+        try {
+            sql = "select data_datas, id_funcionario from tbl_datas where data_datas = ? and id_funcionario = ?;";
+            ps = con.prepareStatement(sql); // prepara SQL
+            ps.setTimestamp(1, data_datas);
+            ps.setInt(2, id_funcionario);// Configura Parametros
+            tab = ps.executeQuery();
+
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+                return true;
+            } else {
+                this.statusSQL = "Data não encontrada!";
+
+            }
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar data! <br> " + ex.getMessage();
+        }
+        return false;
+    }
+       
     
     
 }
