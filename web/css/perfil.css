@@ -167,3 +167,21 @@ body {
     background-color: rgba(165 99 0);
   }
   
+  .botperf {
+  display: block;
+  margin-left: 150px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  background-color: #240f03;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 160px;
+  left: -140px;
+}
+  
