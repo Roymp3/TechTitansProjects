@@ -73,9 +73,10 @@ public class Datas extends Conectar{
 
        public void InserirDatasAuto(){
            try {
-               sql =  "CALL InserirDatasProgramadas();";
+               sql =  "CALL InserirDatasProgramadas(?);";
                       
-            ps = con.prepareStatement(sql); // prepara SQL
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id_funcionario);// prepara SQL
             ps.executeUpdate(); // executa comando SQL
             this.statusSQL = null; // armazena null se deu tudo certo
         } catch (SQLException ex) {
