@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-blend-mode: screen;
+  }
+
+  .form_consulta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    text-align: center;
+    padding: 50px;
+    border-radius: 10px;
+    border-color: black;
+    border-style: outset;
+  }
+
+  input:hover{
+    transition: transform 0.3s ease-out;
+    transform: scale(1.05);
+  }
