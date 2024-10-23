@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-blend-mode: screen
+  background-blend-mode: screen;
 }
 
 body {
@@ -114,17 +114,19 @@ header {
 
 footer {
   text-align: center;
-  padding: 30px;
   background-color: #240f03;
+  padding: 15px;
   color: #fff;
   width: 100%;
   bottom: 0;
   left: 0;
+  position: fixed;
 }
 main{
   background-color: rgba(165 99 0);
   position: relative;
   padding-bottom: 13px;
+  margin-bottom: 40px;
 
 }
 
