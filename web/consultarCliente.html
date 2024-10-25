@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="stylesheet" href="./css/consulta.css">
+     <!-- <link rel="stylesheet" href="./css/perfil.css"> -->
 </head>
 <body>
     <header>
@@ -27,22 +28,23 @@
             <li> <a href="./Pagamento.html">Agendamento</a></li>
         </ul>
     </nav>
-    <div class="container">
-        <form id="frmConsult">
-            <h2>Consultar Cliente</h2>
-            <div class="form_consulta">
-                <label for="nomeCliente">Nome do Cliente:</label>
-                <input type="text" id="" name="nomeCliente" placeholder="Nome do cliente">
-    
-                <label for="usuario">Usuário do Cliente:</label>
-                <input type="text" id="" name="usuario" placeholder="Usuário do Cliente">
+            <main>
+                <h2>Consultar cliente</h2>
+                <div class="appointment">
+                    <!-- <img src="img/imagem 1 - teste.jpg" alt="Foto do Barbeiro"> -->
+                    <div class="appointment-info">
+                        <p>Nome do cliente: </p>
+                        <p>Usuário do cliente: </p>
+                        <p>Número do cliente: </p>
+                        <p>CPF do cliente: </p>
+                    </div>
+                        <button class="delete-button">&times;</button>
+                        <button class="edit-button"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
+                </div>
+        
+        </div>
+        </main>
 
-            
-                <label for="phone">Número do cliente:</label>
-                <input type="tel" id="phone" name="cell" placeholder="Número do Cliente">
-            </div>    
-        </form>
-    </div>
     <footer>
         <p>© 2024 – Todos os Direitos Reservados</p>
     </footer>

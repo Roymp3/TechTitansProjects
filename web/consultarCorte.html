@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultar Cortes</title>
+    <title>Consultar Cliente</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="./css/consulta.css">
+     <!-- <link rel="stylesheet" href="./css/perfil.css"> -->
 </head>
 <body>
     <header>
@@ -26,21 +28,26 @@
             <li> <a href="./Pagamento.html">Agendamento</a></li>
         </ul>
     </nav>
-    <div class="container">
-        <form id="frmPerfil">
-            <div class="form-group">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="nome" placeholder="Digite seu nome">
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Digite seu email">
-            </div>
-            <div class="form-group">
-                <label for="phone">Telefone:</label>
-                <input type="tel" id="phone" name="cell" placeholder="Digite seu telefone">
-          </div>
-        </form>
-    </div>   
+            <main>
+                <h2>Consultar corte</h2>
+                <div class="appointment">
+                    
+                    <div class="appointment-info">
+                        <p>Nome do cliente: </p>
+                        <p>Usuário do cliente: </p>
+                        <p>Senha do cliente: </p>
+                        <p>Sobrenome do Cliente: </p>
+                        <p>Número do cliente: </p>
+                        <p>CPF do cliente: </p>
+                    </div>
+                    <button class="delete-button">&times;</button>
+                </div>
+        
+        </div>
+        </main>
+
+    <footer>
+        <p>© 2024 – Todos os Direitos Reservados</p>
+    </footer>
 </body>
 </html>
