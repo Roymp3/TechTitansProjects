@@ -280,6 +280,7 @@ nav ul li a:hover{
   flex-direction: column;
 }
 
+
 input, textarea {
   padding: 10px;
   margin: 10px 0;
@@ -517,5 +518,19 @@ button:hover {
 p{
   text-align: center;
 }
- 
-  
+
+/* Estilização ao botão voltar */
+
+.botaoVoltar {
+  display: block;
+  margin: 10px;
+  justify-content: flex-start;
+  background-color: #240f03;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.2);
+}

@@ -68,6 +68,7 @@ input {
   border-radius: 5px;
   background-color: #d19749;
   color: #000;
+  text-align: center;
 }
 
 input::placeholder {
@@ -167,4 +168,55 @@ main h2 {
 input{
   border: none;
   background-color: rgba(165 99 0);
+}
+
+/* Replicando um estilo só à todos os botões */
+.botaoVoltar {
+  display: block;
+  margin: 10px;
+  justify-content: flex-start;
+  background-color: #240f03;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.2);
+  
+}
+
+a{
+  text-decoration: none;
+}
+
+.botoesCad:hover{
+  background-color: #d5a875;
+  color: #240f03;
+  transform: scale(1.08);
+  transition: transform 0.3s ease;
+}
+
+/* Replicando estilização da nav ao perfil.html */
+nav ul {
+  list-style: none;
+  background-color: #240f03;
+  text-align: end;
+  padding: 10px;
+}
+
+nav ul li{
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a{
+  color: #fff5e1;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover{
+  color: #FFD700;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
 }
