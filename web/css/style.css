@@ -278,8 +278,24 @@ nav ul li a:hover{
 .formularioCad {
   display: flex;
   flex-direction: column;
+  gap: 5px; /* Espaçamento entre as linhas */
 }
 
+.campo-par {
+  display: flex;
+}
+
+.campo-par label,
+.campo-par input {
+  flex: 1;
+  margin-top: 0;
+}
+
+
+.empty-label {
+  visibility: hidden; /* Esconde a label vazia sem afetar o layout */
+  margin-right: 210px;
+}
 
 input, textarea {
   padding: 10px;
