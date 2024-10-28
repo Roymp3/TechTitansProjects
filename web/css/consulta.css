@@ -136,15 +136,13 @@ main h2 {
   margin-bottom: 10px;
   padding: 21px;
   border-radius: 10px;
-  height: 160px;
-  width: 417px;
+  width: 100%;
   text-align: start;
 }
 
-
 .appointment-info {
   flex-grow: 1;
-  padding: 15px;
+  padding: 5px;
 }
 
 .appointment-info p {

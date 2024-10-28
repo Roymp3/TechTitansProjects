@@ -1,6 +1,8 @@
 package javaBeans;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cortes extends Conectar {
     private int id_corte;
@@ -45,9 +47,30 @@ public class Cortes extends Conectar {
             this.statusSQL = "Erro ao incluir usuario ! <br> " + ex.getMessage();
         }
     }
-    
-    
-    
-    
-    
+      public List<Cortes> buscarCortes() {
+          List<Cortes> listaCorte = new ArrayList<>();
+          
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT nome_corte, preco_corte from tbl_cortes";
+            ps = con.prepareStatement(sql); 
+           tab = ps.executeQuery(); 
+
+          
+            while (tab.next()) {
+               Cortes corte = new Cortes();
+               corte.setNome_corte( tab.getString("nome_corte"));
+                corte.setPreco_corte( tab.getDouble("preco_corte"));
+               listaCorte.add(corte);
+               
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+  
+            } 
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+            
+        } 
+        return listaCorte;
+     }
 }

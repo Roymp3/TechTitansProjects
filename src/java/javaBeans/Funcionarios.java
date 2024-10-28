@@ -1,6 +1,7 @@
 package javaBeans;
-
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Funcionarios extends Conectar{
     private int id_funcionario;
@@ -99,7 +100,37 @@ public class Funcionarios extends Conectar{
             this.statusSQL = "Erro ao incluir Funcionario ! <br> " + ex.getMessage();
         }
     }
+     
+      public List<Funcionarios> buscarFuncionarios() {
+          List<Funcionarios> listaFunc = new ArrayList<>();
+          
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT nome_funcionario, cpf_funcionario, rg_funcionario, cargo_funcionario, salario_funcionario  from tbl_funcionarios";
+            ps = con.prepareStatement(sql); 
+           tab = ps.executeQuery(); 
 
+          
+            while (tab.next()) {
+               Funcionarios func = new Funcionarios();
+               func.setNome_funcionario(tab.getString("nome_funcionario"));
+                func.setCpf_funcionario(tab.getString("cpf_funcionario"));
+                 func.setRg_funcionario(tab.getString("rg_funcionario"));
+                  func.setCargo_funcionario(tab.getString("cargo_funcionario"));
+                  func.setSalario_funcionario(tab.getDouble("salario_funcionario"));
+                
+               listaFunc.add(func);
+               
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+  
+            } 
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+            
+        } 
+        return listaFunc;
+     }
      
        public boolean getLogin() {
         if (usuario_funcionario == null || senha_funcionario == null || usuario_funcionario.isEmpty() || senha_funcionario.isEmpty()) {
@@ -227,6 +258,8 @@ public class Funcionarios extends Conectar{
         
         return false;
     }
+      
+       
    
    
   

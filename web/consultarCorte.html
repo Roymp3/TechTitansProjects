@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="stylesheet" href="./css/consulta.css">
      <!-- <link rel="stylesheet" href="./css/perfil.css"> -->
+     
+     <script> 
+         window.onload = function() {
+            fetch('JavaJSP/ConsultarCorte.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('consulta-corte').innerHTML = data;
+                    console.log(data)// Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+                    };     
+     </script>
 </head>
 <body>
     <header>
@@ -29,10 +41,9 @@
         </ul>
     </nav>
     <a href="./Cadastro.html"><button class="botaoVoltar">Voltar</button></a>
-            <main>
+            <main id="consulta-corte">
                 <h2>Consultar corte</h2>
                 <div class="appointment">
-                    
                     <div class="appointment-info">
                         <p>Nome do corte: </p>
                         <p>Preço do corte: </p>
@@ -40,10 +51,7 @@
                     <button class="delete-button">&times;</button>
                     <button class="edit-button"><i class="fas fa-pencil-alt"></i></button>
                 </div>
-        
-        </div>
-        </main>
-
+            </main>
     <footer>
         <p>© 2024 – Todos os Direitos Reservados</p>
     </footer>
