@@ -8,18 +8,6 @@
     <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="stylesheet" href="./css/consulta.css">
      <!-- <link rel="stylesheet" href="./css/perfil.css"> -->
-     
-     <script> 
-         window.onload = function() {
-            fetch('JavaJSP/ConsultarCorte.jsp')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('consulta-corte').innerHTML = data;
-                    console.log(data)// Atualiza o conteúdo da div
-                })
-                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-                    };     
-     </script>
 </head>
 <body>
     <header>
@@ -40,18 +28,26 @@
             <li> <a href="./Pagamento.html">Agendamento</a></li>
         </ul>
     </nav>
-    <a href="./Cadastro.html"><button class="botaoVoltar">Voltar</button></a>
-            <main id="consulta-corte">
-                <h2>Consultar corte</h2>
+    <a href=""><button class="botaoVoltar">Voltar</button></a>
+            <main>
+                <h2>Consultar cortes</h2>
                 <div class="appointment">
                     <div class="appointment-info">
-                        <p>Nome do corte: </p>
-                        <p>Preço do corte: </p>
+                        <div class="frmConsulta">
+                            <label for="nomeCorte">Nome do corte:</label>
+                            <input type="text" id="nomeCorte" name="corteNome" placeholder="nome_corte" readonly>
+
+                            <label for="precoCorte">Preço do corte:</label>
+                            <input type="text" id="precoCorte" name="cortePreco" placeholder="preco_corte" readonly>
+                        </div>
                     </div>
-                    <button class="delete-button">&times;</button>
-                    <button class="edit-button"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="delete-button">&times;</button>
+                        <button class="edit-button"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
                 </div>
-            </main>
+        
+        </div>
+        </main>
+
     <footer>
         <p>© 2024 – Todos os Direitos Reservados</p>
     </footer>

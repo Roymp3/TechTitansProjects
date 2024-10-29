@@ -33,10 +33,19 @@
                 <h2>Consultar cliente</h2>
                 <div class="appointment">
                     <div class="appointment-info">
-                        <p>Nome do cliente: </p>
-                        <p>Usuário do cliente: </p>
-                        <p>Número do cliente: </p>
-                        <p>CPF do cliente: </p>
+                        <div class="frmConsulta">
+                            <label for="clientName">Nome do cliente:</label>
+                            <input type="text" id="clientName" name="nomeCliente" placeholder="nome_cliente" readonly>
+
+                            <label for="clientUser">Usuário do Cliente:</label>
+                            <input type="text" id="clientUser" name="nomeUsuario" placeholder="usuario_cliente" readonly>
+        
+                            <label for="clientPhone">Número do cliente:</label>
+                            <input type="tel" id="clientPhone" name="telefoneCliente" placeholder="numero_cliente" readonly>
+    
+                            <label for="clientCPF">CPF do cliente:</label>
+                            <input type="text" id="clientCPF" name="CpfCliente" placeholder="CPF_cliente" readonly>
+                        </div>
                     </div>
                         <button class="delete-button">&times;</button>
                         <button class="edit-button"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
