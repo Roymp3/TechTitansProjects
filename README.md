@@ -1,4 +1,4 @@
-# 🪄 Projeto de Agendamento de Barbearia
+# ✂️ Projeto de Agendamento de Barbearia
 
 Este projeto é um sistema de agendamento de barbearia que permite aos clientes marcar horários de forma fácil e eficiente. Desenvolvido com HTML, CSS, JavaScript e JSP, o aplicativo visa melhorar a experiência do usuário, oferecendo uma interface amigável e responsiva.
 
