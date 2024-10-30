@@ -20,6 +20,17 @@ Este projeto é um sistema de agendamento de barbearia que permite aos clientes 
 - **CRUD Completo de Funcionários**: Cadastro, leitura, atualização e exclusão de informações dos funcionários da barbearia.
 - **CRUD Completo de Horários**: Adição, edição, remoção e visualização de horários disponíveis para agendamentos.
 
+## 🤝Autores
+
+- [Roy Jones](https://github.com/Roymp3)
+- [Felipe Anthonny](https://github.com/fehhmont)
+- [Jhonny da Gama](https://github.com/JhonnyGama)
+- [Diego Cardoso](https://github.com/Dev-DiegoCrds7)
+- [Thiago Amaral](https://github.com/Thiaguera7)
+- [Erik Alexandre](https://github.com/Roymp3)
+- [Bruno Rosa](https://github.com/Roymp3)
+
+
 ## 🛠️ Como Executar o Projeto
 
 1. **Clone o repositório**:
