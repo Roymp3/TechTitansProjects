@@ -26,35 +26,38 @@
         </ul>
     </nav>
     <a href="index.html"><button class="botaoVoltar">Voltar</button></a>
-    <div class="container">
-        <section class="box-cad">
+    <main class="forms">
+        <section>
             <h2>Cadastro de usuário</h2>
 
-            <form class="frmCadUser" id="frmCadastro" action="JavaJSP\Registro.jsp" method="post">
-        
-            <label for="nome" class="labelCadUsuario">Nome:</label>
-            <input type="text" name="nomeCliente" class="inpCadUser" placeholder="insira seu nome completo" required>     
+            <form class="formularioCad" id="frmCadastro" action="JavaJSP\Registro.jsp" method="post">
+             <div class="campo-par">
+                 <label for="nome" class="labelCadUsuario">Nome:</label>
+                 <input type="text" name="nomeCliente" class="inpCadUser" placeholder="insira seu nome completo" required>     
+
+                <label for="text" class="labelCadUsuario">CPF:</label>
+                <input type="text" name="cpfCliente" class="inpCadUser" maxlength="11" placeholder="insira seu CPF" required>
+             </div>
+             <div class="campo-par">
+                     <label for="numero" class="labelCadUsuario">Numero:</label>
+                     <input type="text" name="numeroCliente" class="inpCadUser" maxlength="9" placeholder="insira seu número" required>
+                
+                     <label for="email" class="labelCadUsuario">Email:</label>
+                     <input type="email" name="emailCliente" class="inpCadUser"  placeholder="insira seu E-mail" required>
+             </div>    
+             <div class="campo-par">
+                 <label for="usuario" class="labelCadUsuario">Usuario:</label>
+                 <input type="text" name="userCliente" class="inpCadUser" placeholder="insira seu usuario" required>
             
-            <label for="text" class="labelCadUsuario">CPF:</label>
-            <input type="text" name="cpfCliente" class="inpCadUser" maxlength="11" placeholder="insira seu CPF" required>
-            
-            <label for="numero" class="labelCadUsuario">Numero:</label>
-            <input type="text" name="numeroCliente" class="inpCadUser" maxlength="9" placeholder="insira seu número" required>
-            
-             <label for="email" class="labelCadUsuario">Email:</label>
-            <input type="email" name="emailCliente" class="inpCadUser"  placeholder="insira seu E-mail" required>
-            
-            <label for="usuario" class="labelCadUsuario">Usuario:</label>
-            <input type="text" name="userCliente" class="inpCadUser" placeholder="insira seu usuario" required>
-            
-            <label for="senhaUsuario" class="labelCadUsuario">Senha:</label>
-            <input type="password" name="senhaCliente" class="inpCadUser" placeholder="insira sua senha" required>
+                <label for="senhaUsuario" class="labelCadUsuario">Senha:</label>
+                <input type="password" name="senhaCliente" class="inpCadUser" placeholder="insira sua senha" required>
+             </div>  
             
             <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/Registro.jsp')">Enviar</button>
         </form>
     </div>
         </section>
-    </div>
+    </main>
     <footer>
         <p> 2024 – Todos os Direitos Reservados</p>
     </footer>

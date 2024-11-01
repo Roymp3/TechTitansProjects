@@ -8,8 +8,7 @@
 
 body {
   font-family: "Arial", sans-serif;
-  background-color: #fff5e1;
-  background-color: rgba(165 99 0);
+  background-color: #f7f1e3;
 }
 
 .container {
@@ -23,13 +22,13 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #240f03;
-  color: #fff;
+  background-color: #384c55;
+  color: #f7f1e3;
 }
 
 header h1 {
   font-size: 24px;
-  color: #f0d1a4;
+  color: #f7f1e3;
 }
 
 .logo {
@@ -38,7 +37,7 @@ header h1 {
 }
 
 .social-icons a {
-  color: #fff;
+  color: #f7f1e3;
   margin-left: 15px;
   font-size: 1.2em;
 }
@@ -58,16 +57,17 @@ label {
   font-size: 14px;
   color: #000;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 input {
   width: 100%;
   padding: 10px;
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 5px;
-  background-color: #d19749;
-  color: #000;
+  background-color: #457489;
+  color: #f7f1e3;
   text-align: center;
 }
 
@@ -92,7 +92,7 @@ aside {
 
 .back-button {
   font-size: 24px;
-  color: #f0d1a4;
+  color: #f7f1e3;
   text-decoration: none;
 }
 
@@ -100,7 +100,7 @@ aside {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: #b18356;
+  background-color: #f7f1e3;
 }
 
 .user-info p {
@@ -110,14 +110,14 @@ aside {
 footer {
   text-align: center;
   padding: 15px;
-  background-color: #240f03;
+  background-color: #384c55;
   color: #fff;
   bottom: 0;
   left: 0;
   position: relative;
 }
 main {
-  background-color: rgba(165 99 0);
+  background-color: #f7f1e3;
   position: relative;
   padding-bottom: 13px;
   margin-bottom: 40px;
@@ -130,7 +130,7 @@ main h2 {
 .appointment {
   display: flex;
   align-items: center;
-  background-color: #8d4723;
+  background-color: #457489;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 21px;
@@ -162,12 +162,12 @@ main h2 {
   background-color: transparent;
   border: none;
   font-size: 24px;
-  color: #f0d1a4;
+  color: #f7f1e3;
   cursor: pointer;
 }
 input{
   border: none;
-  background-color: rgba(165 99 0);
+  background-color: #f7f1e3;
 }
 
 /* Replicando um estilo só à todos os botões */
@@ -175,8 +175,8 @@ input{
   display: block;
   margin: 10px;
   justify-content: flex-start;
-  background-color: #240f03;
-  color: #fff;
+  background-color: #895A45;
+  color: #f7f1e3;
   padding: 15px 30px;
   border: none;
   border-radius: 5px;
@@ -200,7 +200,7 @@ a{
 /* Replicando estilização da nav ao perfil.html */
 nav ul {
   list-style: none;
-  background-color: #240f03;
+  background-color: #384c55;
   text-align: end;
   padding: 10px;
 }
@@ -217,6 +217,9 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-  color: #FFD700;
-  text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+  color: #384c55;
+  text-shadow: 0 0 5px #f7f1e3;
+  background-color: #f7f1e3;
+  border-radius: 5px;
+  padding: 5px;
 }
