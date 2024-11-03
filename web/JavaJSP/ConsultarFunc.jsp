@@ -13,16 +13,26 @@
 
 %>
 <div class="appointment">
-
     <div class="appointment-info">
-        <p>Nome do funcionário: <%=funcc.getNome_funcionario() %> </p>
-        <p>CPF do funcionário: <%=funcc.getCpf_funcionario() %> </p>
-        <p>RG do funcionário:  <%=funcc.getRg_funcionario() %></p>
-        <p>Cargo do funcionário:  <%=funcc.getCargo_funcionario() %></p>
-        <p>Salário do funcionário: <%=funcc.getSalario_funcionario() %></p>
+        <div class="frmConsulta">
+            <label for="nameFuncionario">Nome do funcionário:</label>
+            <input type="text" id="nameFuncionario" name="nomeFuncinario" value="<%=funcc.getNome_funcionario()%>" readonly>
+
+            <label for="cpfFuncionario">CPF do funcionário:</label>
+            <input type="text" id="cpfFuncionario" name="funcionarioCPF" value="<%=funcc.getCpf_funcionario()%>" readonly>
+
+            <label for="funcionarioRg">RG do funcionário:</label>
+            <input type="text" id="funcionarioRg" name="RgFuncionario" value="<%=funcc.getRg_funcionario()%>" readonly>
+
+            <label for="cargoFuncionario">Cargo do funcionário:</label>
+            <input type="text" id="cargoFuncionario" name="funcionarioCargo" value="<%=funcc.getCargo_funcionario()%>" readonly>
+
+            <label for="salarioFuncionario">Salário do funcionário:</label>
+            <input type="number" id="salarioFuncionario" name="funcionarioSalario" value="<%=funcc.getSalario_funcionario()%>" readonly>
+        </div>
     </div>
-    <button class="delete-button">&times;</button>
-    <button class="edit-button"><i class="fas fa-pencil-alt"></i></button>
+        <button class="delete-button" onclick="window.location.assign('JavaJSP/DeletarFunc.jsp?funcionarioCPF=<%=funcc.getCpf_funcionario()%>')">&times;</button>
+    <button class="edit-button"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
 </div>
 
 <%

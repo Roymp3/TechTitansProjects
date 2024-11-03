@@ -13,16 +13,20 @@
        
        
     %>
-<div class="appointment">
-   
-    <div class="appointment-info">
-        <p>Nome do corte: <%=cortee.getNome_corte()%></p>
-        <p>Preço do corte:  <%=cortee.getPreco_corte()%> </p>
-    </div>
-    <button class="delete-button">&times;</button>
-    <button class="edit-button"><i class="fas fa-pencil-alt"></i></button>
+    <div class="appointment">
+                    <div class="appointment-info">
+                        <div class="frmConsulta">
+                            <label for="nomeCorte">Nome do corte:</label>
+                            <input type="text" id="nomeCorte" name="corteNome" value="<%=cortee.getNome_corte()%>" readonly>
 
-</div> 
+                            <label for="precoCorte">Preço do corte:</label>
+                            <input type="text" id="precoCorte" name="cortePreco" value="<%=cortee.getPreco_corte()%>" readonly>
+                        </div>
+                    </div>
+                        <button class="delete-button" onclick="window.location.assign('JavaJSP/DeletarCorte.jsp?corteNome=<%=cortee.getNome_corte()%>')">&times;</button>
+                        <button class="edit-button"><i class="fas fa-pencil-alt"></i></button>
+                </div>
+    </div>
  <%
        }
   %>

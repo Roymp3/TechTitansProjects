@@ -73,4 +73,49 @@ public class Cortes extends Conectar {
         } 
         return listaCorte;
      }
+      
+            
+     public boolean DeletarCorte() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "DELETE FROM tbl_cortes WHERE nome_corte=?;";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, nome_corte); 
+            ps.executeUpdate(); 
+            this.statusSQL = null;  // Limpa status em caso de sucesso
+            return true;
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao deletar Corte! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+    
+      
+      public boolean VerificarCorte() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "select nome_corte from tbl_cortes where nome_corte = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, nome_corte); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Corte não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Corte! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+     
 }

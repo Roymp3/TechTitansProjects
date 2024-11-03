@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="stylesheet" href="./css/consulta.css">
      <!-- <link rel="stylesheet" href="./css/perfil.css"> -->
+     <script>
+                  window.onload = function() {
+            fetch('JavaJSP/ConsultarFunc.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('Consulta-func').innerHTML = data;
+                    console.log(data)// Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+                    };     
+     </script>
+     
 </head>
 <body>
     <header>
@@ -29,33 +41,31 @@
         </ul>
     </nav>
     <a href=""><button class="botaoVoltar">Voltar</button></a>
-            <main>
-                <h2>Consultar funcionário</h2>
-                <div class="appointment">
-                    <div class="appointment-info">
-                        <div class="frmConsulta">
-                            <label for="nameFuncionario">Nome do funcionário:</label>
-                            <input type="text" id="nameFuncionario" name="nomeFuncinario" placeholder="nome_funcionario" readonly>
+    <main id="Consulta-func">
+        <h2>Consultar funcionário</h2>
+        <div class="appointment">
+            <div class="appointment-info">
+                <div class="frmConsulta">
+                    <label for="nameFuncionario">Nome do funcionário:</label>
+                    <input type="text" id="nameFuncionario" name="nomeFuncinario" placeholder="nome_funcionario" readonly>
 
-                            <label for="cpfFuncionario">CPF do funcionário:</label>
-                            <input type="text" id="cpfFuncionario" name="funcionarioCPF" placeholder="CPF_funcionario" readonly>
-        
-                            <label for="funcionarioRg">RG do funcionário:</label>
-                            <input type="text" id="funcionarioRg" name="RgFuncionario" placeholder="RG_funcionario" readonly>
-    
-                            <label for="cargoFuncionario">Cargo do funcionário:</label>
-                            <input type="text" id="cargoFuncionario" name="funcionarioCargo" placeholder="cargo_funcionario" readonly>
+                    <label for="cpfFuncionario">CPF do funcionário:</label>
+                    <input type="text" id="cpfFuncionario" name="funcionarioCPF" placeholder="CPF_funcionario" readonly>
 
-                            <label for="salarioFuncionario">Salário do funcionário:</label>
-                            <input type="number" id="salarioFuncionario" name="funcionarioSalario" placeholder="salario_funcionario" readonly>
-                        </div>
-                    </div>
-                        <button class="delete-button">&times;</button>
-                        <button class="edit-button"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
+                    <label for="funcionarioRg">RG do funcionário:</label>
+                    <input type="text" id="funcionarioRg" name="RgFuncionario" placeholder="RG_funcionario" readonly>
+
+                    <label for="cargoFuncionario">Cargo do funcionário:</label>
+                    <input type="text" id="cargoFuncionario" name="funcionarioCargo" placeholder="cargo_funcionario" readonly>
+
+                    <label for="salarioFuncionario">Salário do funcionário:</label>
+                    <input type="number" id="salarioFuncionario" name="funcionarioSalario" placeholder="salario_funcionario" readonly>
                 </div>
-        
+            </div>
+            <button class="delete-button">&times;</button>
+            <button class="edit-button"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
         </div>
-        </main>
+    </main>
 
     <footer>
         <p>© 2024 – Todos os Direitos Reservados</p>

@@ -259,6 +259,22 @@ public class Funcionarios extends Conectar{
         return false;
     }
       
+         public boolean DeletarFunc() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "DELETE FROM tbl_funcionarios WHERE cpf_funcionario=?;";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, cpf_funcionario); 
+            ps.executeUpdate(); 
+            this.statusSQL = null;  // Limpa status em caso de sucesso
+            return true;
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao deletar Funcionario! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
        
    
    
