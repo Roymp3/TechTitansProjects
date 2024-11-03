@@ -32,11 +32,12 @@
         </div>
     </div>
         <button class="delete-button" onclick="window.location.assign('JavaJSP/DeletarFunc.jsp?funcionarioCPF=<%=funcc.getCpf_funcionario()%>')">&times;</button>
-    <button class="edit-button"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
+        <button class="edit-button" onclick="window.location.assign('./AlterarFunc.html?funcionarioCPF=<%=funcc.getCpf_funcionario() %>')" ><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
 </div>
 
 <%
     }
+      
 
 %>
 

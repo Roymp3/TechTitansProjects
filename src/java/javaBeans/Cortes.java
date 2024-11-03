@@ -117,5 +117,80 @@ public class Cortes extends Conectar {
         
         return false;
     }
+      
+      public boolean buscarIdPorNome() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT id_corte FROM tbl_cortes WHERE nome_corte= ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, nome_corte); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+               
+               id_corte = tab.getInt("id_corte");
+      
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Corte não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Corte! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+      
+        public boolean buscarCortePorNome() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT nome_corte, preco_corte FROM tbl_cortes WHERE nome_corte= ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, nome_corte); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+               
+               nome_corte = tab.getString("nome_corte");
+               preco_corte = tab.getDouble("preco_corte");
+      
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Corte não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Corte! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+      
+          public void AlterarCorte(String corte) {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "UPDATE tbl_cortes set nome_corte = ?, preco_corte = ? where nome_corte = ?;";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, nome_corte);
+            ps.setDouble(2, preco_corte);
+            ps.setString(3, corte );
+            ps.executeUpdate(); 
+            this.statusSQL = null;  // Limpa status em caso de sucesso
+       
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao Alterar Corte! <br> " + ex.getMessage();
+            ex.printStackTrace();
+        } 
+      
+    }
      
 }

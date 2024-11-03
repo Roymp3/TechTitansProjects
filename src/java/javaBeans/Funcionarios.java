@@ -127,10 +127,44 @@ public class Funcionarios extends Conectar{
 
         } catch (SQLException ex) {
             this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+             ex.printStackTrace();
             
-        } 
+        }
         return listaFunc;
      }
+      
+         public boolean buscarFuncPorCpf() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT nome_funcionario, cpf_funcionario, rg_funcionario, cargo_funcionario, salario_funcionario,usuario_funcionario,password_funcionario  FROM tbl_funcionarios WHERE cpf_funcionario= ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, cpf_funcionario); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+               nome_funcionario = tab.getString("nome_funcionario");
+               cpf_funcionario= tab.getString("cpf_funcionario");
+                rg_funcionario  = tab.getString("rg_funcionario");
+                cargo_funcionario = tab.getString("cargo_funcionario");
+                salario_funcionario = tab.getDouble("salario_funcionario");
+                usuario_funcionario = tab.getString("usuario_funcionario");
+                senha_funcionario = tab.getString("password_funcionario");
+      
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Funcionario não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Funcionario! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    } 
      
        public boolean getLogin() {
         if (usuario_funcionario == null || senha_funcionario == null || usuario_funcionario.isEmpty() || senha_funcionario.isEmpty()) {
@@ -275,7 +309,30 @@ public class Funcionarios extends Conectar{
         
         return false;
     }
+        public void AlterarFunc(String cpf) {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "UPDATE tbl_funcionarios set nome_funcionario = ?, cpf_funcionario = ?, rg_funcionario =?, cargo_funcionario = ?,salario_funcionario = ?, usuario_funcionario= ?,password_funcionario = ? where cpf_funcionario = ?;";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, nome_funcionario);
+            ps.setString(2, cpf_funcionario);
+            ps.setString(3, rg_funcionario);
+            ps.setString(4, cargo_funcionario);
+            ps.setDouble(5, salario_funcionario);
+            ps.setString(6, usuario_funcionario);
+            ps.setString(7, senha_funcionario);
+            ps.setString(8, cpf);
+
+            ps.executeUpdate(); 
+            this.statusSQL = null;  // Limpa status em caso de sucesso
        
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao Alterar Funcionario! <br> " + ex.getMessage();
+            ex.printStackTrace();
+        } 
+      
+    }
+    
    
    
   

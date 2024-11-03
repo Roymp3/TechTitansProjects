@@ -24,7 +24,7 @@
                         </div>
                     </div>
                         <button class="delete-button" onclick="window.location.assign('JavaJSP/DeletarCorte.jsp?corteNome=<%=cortee.getNome_corte()%>')">&times;</button>
-                        <button class="edit-button"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="edit-button" onclick="window.location.assign('./AlterarCorte.html?corteNome=<%=cortee.getNome_corte()%>')" ><i class="fas fa-pencil-alt"></i></button>
                 </div>
     </div>
  <%

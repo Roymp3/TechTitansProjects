@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de cadastro</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <script>
+               window.onload = function() {
+             const nomeCorte = new URLSearchParams(window.location.search).get("corteNome");
+            fetch(`JavaJSP/CarregarAlterarCorte.jsp?corteNome=${nomeCorte}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('Alterar-corte').innerHTML = data;
+                    console.log(data)// Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+                    };     
+     </script>
+
+</head>
+
+
+<body>
+    <header>
+        <div class="logo">Na Régua</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="perfil.html"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <nav id="conteudo">
+        <ul>
+            <li><a href="./login.html">Login</a></li>
+            <li> <a href="#">Home</a></li>
+            <li style='display:none;'> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
+            <li> <a href="./Pagamento.html">Agendamento</a></li>
+        </ul>
+    </nav>
+    <a href="./Cadastro.html"><button class="botaoVoltar">Voltar</button></a>
+    <div class="container">
+        <h2>Alterar Cortes</h2>
+        <section class="box-cad">
+            
+            <form class="frmCadUser" id="Alterar-corte" action="JavaJSP\AlterarCorte.jsp" method="post">
+        
+            <label for="text" class="labelCadUsuario">Nome:</label>
+            <input type="text" id="funcNome" name="nomeCorte" class="inpCadUser" placeholder="Insira o nome do corte">     
+            
+            <label for="text" class="labelCadUsuario">Valor</label>
+            <input type="text" name="valorCorte" class="inpCadUser" placeholder="Insira o valor do corte" required>
+            
+            
+            <button type="submit" class="botaoCadUser">Alterar</button>
+        </form>
+    </div>
+        </section>
+    </div>
+    <footer>
+        <p> 2024 – Todos os Direitos Reservados</p>
+    </footer>
+</body>
+</html>

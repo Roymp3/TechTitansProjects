@@ -11,7 +11,7 @@ public String sql;           // variável que armazena os comandos SQL
 public PreparedStatement ps; // objeto que prepara o sql
 public ResultSet tab;        // Armazena um conjunto de Registros 
 public String MeuBanco = "naregua";      // Nome do banco a ser criado
-public String servidor = "jdbc:mysql:    //localhost:3306"; // caminho do servidor SQL 
+public String servidor = "jdbc:mysql://localhost:3306"; // caminho do servidor SQL 
 public String usuario = "root";  // Login nome do usuario do banco SQL
 public String senha = "";        // Senha do Banco SQL
 public String statusSQL;
