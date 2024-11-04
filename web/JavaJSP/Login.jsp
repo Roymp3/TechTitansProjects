@@ -25,6 +25,8 @@
         // Verifica o login
         if (user.getLogin()) { 
             session.setAttribute("ClienteLogado", user.getUsuario_cliente());
+            String cliente = "cliente";
+            session.setAttribute("clientelog", cliente);
             
             
           response.sendRedirect("../index.html"); // Carrega a página de sistema em caso de sucesso
