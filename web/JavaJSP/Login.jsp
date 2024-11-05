@@ -6,7 +6,8 @@
     String password_cliente = request.getParameter("password_cliente"); // Captura password_cliente do form (nome correto no HTML)
 
   
-    
+    session.removeAttribute("ClienteLogado");
+
     
     Cliente user = new Cliente(); // Instancia Usuario
     Funcionarios func = new Funcionarios();
