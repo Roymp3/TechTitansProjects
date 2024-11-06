@@ -21,12 +21,16 @@
 </head>
 <body>
     <header>
-        <div class="logo">Na Régua</div>
+        <div class="logo">
+            <i class="fas fa-cut"></i>
+            Na Régua
+        </div>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-whatsapp"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
            <a href="JavaJSP/VerficarLogado.jsp" ><i class="fas fa-user"></i></a>
+           <a href="logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </header>
     <nav id="conteudo-pag">
@@ -42,7 +46,7 @@
         <div class="geral">
             <div id="card_select">
                 <h2 class="dataEscolha">Data escolhida - 30/08/2024</h2>
-                <label for="cortes">Selecionar corte:</label>
+                <label for="cortes" class="alinharLabel">Selecionar corte:</label>
                 <select id="cortes" name="opcoesCortes">
                     <option value="" disabled selected></option>
                     <option value="americano">Americano</option>
@@ -51,7 +55,7 @@
                     <option value="social">Social</option>
                 </select><br>
                 
-                <label for="pagamento">Forma de pagamento:</label>
+                <label for="pagamento" class="alinharLabel">Forma de pagamento:</label>
                 <select id="pagamento" name="opcoesPagamento">
                     <option value="" disabled selected></option>
                     <option value="credito">Cartão de crédito</option>
@@ -60,7 +64,7 @@
                     <option value="dinheiro">Dinheiro</option>
                 </select><br>
                 
-                <label for="barbeiro">Barbeiro disponível:</label>
+                <label for="barbeiro" class="alinharLabel">Barbeiro disponível:</label>
                 <select id="barbeiro" name="barbeiroDisponivel">
                     <option value="" disabled selected></option>
                     <option value="jhonny_gama">Jhonny da Gama</option>

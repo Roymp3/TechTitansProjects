@@ -20,8 +20,18 @@ header {
 }
 
 .logo {
-  font-size: 1.5em;
+  font-size: 24px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre o ícone e o texto */
+  /* font-size: 1.5em;
+  font-weight: bold;
+  color: #f7f1e3; */
+}
+
+.logo i{
+  color: #f7f1e3;
 }
 
 .social-icons a {
@@ -67,31 +77,13 @@ header {
   margin-bottom: 10px;
   color: #384c55;
   font-weight: bold;
-  text-shadow:   
-        -1px -1px 0 #f7f1e3,  
-        1px -1px 0 #f7f1e3,  
-        -1px 1px 0 #f7f1e3,  
-        1px 1px 0 #f7f1e3;
 }
 
-.text:hover {
-  transform: scale(1.01);
-  transition: transform 0.1s ease-out;
-}
 
 .phone {
   font-size: 1.2em;
   color: #384c55;
   font-weight: bold;
-  text-shadow:   
-  -1px -1px 0 #f7f1e3,  
-  1px -1px 0 #f7f1e3,  
-  -1px 1px 0 #f7f1e3,  
-  1px 1px 0 #f7f1e3;
-}
-.phone:hover{
-  transform: scale(1.01);
-  transition: transform 0.1s ease-out;
 }
 
 .content {
@@ -169,6 +161,16 @@ main{
   
 }
 
+.container_cadastro{
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.container_cadastro button{
+  margin-left: 0;
+}
+
 a{
   text-decoration: none;
 }
@@ -182,11 +184,15 @@ a{
 
 h2.titulo_cadastro{
   margin: 20px;
+  margin-bottom: 20px;
 }
 /* Alterando o espaçamento do titulo e botões de cadastro */
-.cadastrar, .listaDe, .agendaCliente{
-  margin: 20px 145px;
-  display: inline-block;
+.cadastrar, .listaDe{
+  display: flex;
+  flex-direction: column; /* Organiza título e botões verticalmente */
+  width: 200px; /* Ajuste conforme necessário */
+  align-items: flex-start; /* Alinha ao topo */
+  padding: 10px;
 }
 .cadastrar button{
 
@@ -199,14 +205,25 @@ margin-top: -10px;
 
 }
 
-select{
-  margin: 20px;
+.alinharLabel {
+  display: inline-block;
+  width: 250px; /* Largura fixa para alinhar as labels */
+  text-align: left; /* Alinha o texto à direita para aproximar do select */
+  margin-right: 5px; /* Espaçamento entre label e select */
   font-size: 20px;
-  background-color: #f7f1e3;
-  border-color: rgba(0, 0, 0, 0.5);
-  border-width: 2.5px;
-  padding: 5px;
 }
+
+select{
+  width: 200px; /* Ajuste o tamanho conforme necessário */
+  padding: 5px;
+  margin-bottom: 10px; /* Espaçamento entre cada linha */
+  background-color: #f7f1e3;
+}
+
+select:focus{
+  outline: none;
+}
+
 
 label{
   margin-left: 30px;

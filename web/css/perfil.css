@@ -67,8 +67,12 @@ input {
   border: none;
   border-radius: 5px;
   background-color: #457489;
-  color: #f7f1e3;
+  color:  #524f4f;;
   text-align: center;
+}
+
+input:focus{
+  outline: none;
 }
 
 input::placeholder {
