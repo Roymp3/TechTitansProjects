@@ -16,13 +16,21 @@
                     document.getElementById('conteudo').innerHTML = data; // Atualiza o conteúdo da div
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+        
+        
+                  fetch('JavaJSP/conteudoHeader.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('conteudo-header').innerHTML = data; // Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
         };
     </script>
     
 </head>
 
 <body>
-    <header>
+    <header id="conteudo-header">
         <div class="logo">
             <i class="fas fa-cut"></i>
             Na Régua
