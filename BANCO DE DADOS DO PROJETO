@@ -1,0 +1,68 @@
+CREATE TABLE tbl_clientes (
+  id_cliente INT(11) NOT NULL AUTO_INCREMENT,
+  nome_cliente VARCHAR(50) NOT NULL,
+  usuario_cliente VARCHAR(50) NOT NULL,
+  email_cliente VARCHAR(255) NOT NULL,
+  password_cliente VARCHAR(255) NOT NULL,
+  numero_cliente VARCHAR(10) NOT NULL,
+  cpf_cliente VARCHAR(20) NOT NULL,
+  PRIMARY KEY (id_cliente)
+);
+ 
+CREATE TABLE tbl_funcionarios (
+  id_funcionario INT(11) NOT NULL AUTO_INCREMENT,
+  nome_funcionario VARCHAR(70) DEFAULT NULL,
+  cargo_funcionario VARCHAR(50) DEFAULT NULL,
+  usuario_funcionario VARCHAR(50) NOT NULL,
+  password_funcionario VARCHAR(255) NOT NULL,
+  cpf_funcionario VARCHAR(15) DEFAULT NULL,
+  rg_funcionario VARCHAR(15) DEFAULT NULL,
+  salario_funcionario DECIMAL(10,2) DEFAULT NULL,
+  PRIMARY KEY (id_funcionario)
+);
+ 
+CREATE TABLE tbl_status (
+  id_status INT(11) NOT NULL AUTO_INCREMENT,
+  nome_status VARCHAR(30) DEFAULT NULL,
+  PRIMARY KEY (id_status)
+);
+create table tbl_pagamento (
+    id_pagamento int not null AUTO_INCREMENT,
+    nome_pagamento VARCHAR(100),
+    PRIMARY KEY (id_pagamento)
+);
+ 
+
+CREATE TABLE tbl_cortes (
+  id_corte INT(11) NOT NULL AUTO_INCREMENT,
+  nome_corte VARCHAR(70) DEFAULT NULL,
+  preco_corte DECIMAL(50,0) DEFAULT NULL,
+  PRIMARY KEY (id_corte)
+);
+ 
+CREATE TABLE tbl_datas (
+  id_data INT(11) NOT NULL AUTO_INCREMENT,
+  data_datas DATETIME DEFAULT NULL,
+  id_cliente INT(11) DEFAULT NULL,
+  id_funcionario INT(11) DEFAULT NULL,
+  id_status INT(11) DEFAULT NULL,
+  id_corte INT(11) DEFAULT NULL,
+  id_pagamento INT(11) DEFAULT NULL,
+  observacao VARCHAR(700),
+  PRIMARY KEY (id_data),
+  KEY id_corte (id_corte),
+  KEY id_cliente (id_cliente),
+  KEY id_funcionario (id_funcionario),
+  KEY id_status (id_status),
+  FOREIGN KEY (id_corte) REFERENCES tbl_cortes(id_corte),
+  FOREIGN KEY (id_cliente) REFERENCES tbl_clientes(id_cliente),
+  FOREIGN KEY (id_funcionario) REFERENCES tbl_funcionarios(id_funcionario),
+  FOREIGN KEY (id_status) REFERENCES tbl_status(id_status),
+  FOREIGN KEY (id_pagamento) REFERENCES tbl_pagamento(id_pagamento)
+);
+ 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InserirDatasProgramadas`(IN nomeFuncionario int)
+BEGIN    DECLARE dataAtual DATETIME;    DECLARE idFuncionario INT;    SET dataAtual = NOW();     SELECT id_funcionario INTO idFuncionario FROM tbl_funcionarios WHERE id_funcionario = nomeFuncionario;    INSERT INTO tbl_datas (data_datas, id_funcionario) VALUES        (DATE_FORMAT(dataAtual, '%Y-%m-%d 09:00:00'),idFuncionario),        (DATE_FORMAT(dataAtual, '%Y-%m-%d 10:00:00'), idFuncionario),        (DATE_FORMAT(dataAtual, '%Y-%m-%d 11:00:00'), idFuncionario),		(DATE_FORMAT(dataAtual, '%Y-%m-%d 14:00:00'), idFuncionario),		(DATE_FORMAT(dataAtual, '%Y-%m-%d 15:00:00'), idFuncionario),		(DATE_FORMAT(dataAtual, '%Y-%m-%d 16:00:00'), idFuncionario),		(DATE_FORMAT(dataAtual, '%Y-%m-%d 17:00:00'), idFuncionario),		(DATE_FORMAT(dataAtual, '%Y-%m-%d 18:00:00'),idFuncionario),		(DATE_FORMAT(dataAtual, '%Y-%m-%d 19:00:00'), idFuncionario),        (DATE_FORMAT(dataAtual, '%Y-%m-%d 20:00:00'), idFuncionario);END$$
+DELIMITER ;
+ 
