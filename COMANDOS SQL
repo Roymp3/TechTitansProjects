@@ -1,0 +1,16 @@
+COMANDOS SQL PARA CONSULTAS
+--------------------------------------------------------------------------------------------------
+1. Comanda para mostrar horarios disponiveis da data atual com os seus respectivos funcionarios
+
+SELECT
+    tbl_datas.data_datas,
+    tbl_datas.id_status,
+    tbl_funcionarios.nome_funcionario
+FROM tbl_datas
+LEFT JOIN tbl_funcionarios ON tbl_datas.id_funcionario = tbl_funcionarios.id_funcionario
+WHERE tbl_datas.id_status IS NULL
+  AND DATE(tbl_datas.data_datas) = CURDATE();
+
+obs: esse comando já tras a data atual eo funcionarios atribuido a data, ou seja, tras horarios
+disponivel parar agendar.
+--------------------------------------------------------------------------------------------------
