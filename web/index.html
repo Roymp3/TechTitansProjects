@@ -10,22 +10,34 @@
     <link rel="stylesheet" href="./css/style.css" type="text/css">
      <script>
         window.onload = function() {
-            fetch('JavaJSP/conteudo.jsp')
+
+                fetch('JavaJSP/conteudo.jsp')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('conteudo').innerHTML = data; // Atualiza o conteúdo da div
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
         
-        
+            fetch('JavaJSP/Logout.jsp')
+                .then(response => response.text())
+                .then(data =>{
+                    document.getElementById('logout').innerHTML = data
+            })
+             .catch(error => console.error('erro pai',error));
+     
+                     
                   fetch('JavaJSP/conteudoHeader.jsp')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('conteudo-header').innerHTML = data; // Atualiza o conteúdo da div
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+        
+        
         };
+        
     </script>
+    
     
 </head>
 
@@ -35,12 +47,12 @@
             <i class="fas fa-cut"></i>
             Na Régua
         </div>
-        <div class="social-icons">
+        <div class="social-icons" id="logout">
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-whatsapp"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="JavaJSP/VerficarLogado.jsp" ><i class="fas fa-user"></i></a>
-            <a href="logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
         </div>
         
     </header>

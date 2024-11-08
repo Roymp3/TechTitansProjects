@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     
-
     
     String nomeClasse = (String) session.getAttribute("nomeClasse");
     String cliente = (String) session.getAttribute("clientelog");
@@ -16,7 +15,10 @@
     if("cliente".equals(cliente)){
          displayStyle = "style='display:inline;'"; 
     }
-  
+    
+   
+    
+            
 %>
 <div class="logo">
     <i class="fas fa-cut"></i>
@@ -27,5 +29,5 @@
     <a href="#"><i class="fab fa-whatsapp"></i></a>
     <a href="#"><i class="fab fa-instagram"></i></a>
     <a href="JavaJSP/VerficarLogado.jsp" ><i class="fas fa-user"></i></a>
-    <a href="logout.jsp" title="Logout"><i class="fas fa-sign-out-alt" <%= displayStyle %>></i></a>
+    <a href="JavaJSP/Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt" <%= displayStyle %>></i></a>
 </div>
