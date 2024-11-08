@@ -13,4 +13,4 @@ WHERE tbl_datas.id_status IS NULL
 
 obs: esse comando já tras a data atual eo funcionarios atribuido a data, ou seja, tras horarios
 disponivel parar agendar.
---------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
