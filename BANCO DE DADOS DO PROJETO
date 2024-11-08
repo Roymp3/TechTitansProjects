@@ -26,11 +26,6 @@ CREATE TABLE tbl_status (
   nome_status VARCHAR(30) DEFAULT NULL,
   PRIMARY KEY (id_status)
 );
-create table tbl_pagamento (
-    id_pagamento int not null AUTO_INCREMENT,
-    nome_pagamento VARCHAR(100),
-    PRIMARY KEY (id_pagamento)
-);
  
 
 CREATE TABLE tbl_cortes (
@@ -47,7 +42,7 @@ CREATE TABLE tbl_datas (
   id_funcionario INT(11) DEFAULT NULL,
   id_status INT(11) DEFAULT NULL,
   id_corte INT(11) DEFAULT NULL,
-  id_pagamento INT(11) DEFAULT NULL,
+  tipo_pagamento varchar(700),
   observacao VARCHAR(700),
   PRIMARY KEY (id_data),
   KEY id_corte (id_corte),
@@ -57,8 +52,7 @@ CREATE TABLE tbl_datas (
   FOREIGN KEY (id_corte) REFERENCES tbl_cortes(id_corte),
   FOREIGN KEY (id_cliente) REFERENCES tbl_clientes(id_cliente),
   FOREIGN KEY (id_funcionario) REFERENCES tbl_funcionarios(id_funcionario),
-  FOREIGN KEY (id_status) REFERENCES tbl_status(id_status),
-  FOREIGN KEY (id_pagamento) REFERENCES tbl_pagamento(id_pagamento)
+  FOREIGN KEY (id_status) REFERENCES tbl_status(id_status)
 );
  
 DELIMITER $$
