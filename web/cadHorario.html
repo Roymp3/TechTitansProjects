@@ -21,22 +21,22 @@
             <a href="logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
         </div>
         <script>
-              window.onload = function() {
-            fetch('JavaJSP/carregarUser.jsp')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('frmCadastro').innerHTML = data; // Atualiza o conteúdo da div
-                })
-                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-        };   
+            window.onload = function() {
+                fetch('JavaJSP/carregarUser.jsp')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('frmCadastro').innerHTML = data;
+                    })
+                    .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+            };
         </script>
     </header>
     <nav id="conteudo">
         <ul>
             <li><a href="./login.html">Login</a></li>
-            <li> <a href="#">Home</a></li>
-            <li style='display:none;'> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
-            <li> <a href="./Pagamento.html">Agendamento</a></li>
+            <li><a href="#">Home</a></li>
+            <li style='display:none;'><a href="./Cadastro.html">Cadastro/Consulta</a></li>
+            <li><a href="./Pagamento.html">Agendamento</a></li>
         </ul>
     </nav>
     <a href="./Cadastro.html"><button class="botaoVoltar">Voltar</button></a>
@@ -44,24 +44,43 @@
         <section class="box-cad">
             <h2>Cadastro de Horario</h2>
 
-            <form class="frmCadUser" id="frmCadastro" action="JavaJSP/RegistroData.jsp" method="post">
-        
-            <label for="nome" class="labelCadUsuario">Funcionario:</label>
+            <form class="frmCadUser" id="frmCadastro" action="JavaJSP/RegistroData.jsp" method="post" onsubmit="event.preventDefault(); showModal();">
+                <label for="nome" class="labelCadUsuario">Funcionario:</label>
                 <input type="text" name="nomeFunc" id="Funcname" class="inpCadUser" readonly>     
             
-            <label for="text" class="labelCadUsuario">Selecione o dia e a data disponivel:</label>
-            <input type="datetime-local" name="dataHora" class="inpCadUser" placeholder="insira o valor do corte" required>
-            
-            
-            <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroData.jsp')">Enviar</button>
-            <p>---------- ou ----------</p>
-             <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroHoraAuto.jsp')">Gerar automatico</button>
-        </form>
-    </div>
+                <label for="text" class="labelCadUsuario">Selecione o dia e a data disponivel:</label>
+                <input type="datetime-local" name="dataHora" class="inpCadUser" placeholder="insira o valor do corte" required>
+                
+                <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroHoraAuto.jsp')" >Enviar</button>
+                <p>---------- ou ----------</p>
+                <button type="button" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroHoraAuto.jsp')">Gerar automatico</button>
+            </form>
         </section>
     </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="location.href='CadHorario.html'" onclick="closeModal()">&times;</span>
+            <p>Formulário enviado com sucesso!</p>
+        </div>
+    </div>
+
     <footer>
         <p> 2024 – Todos os Direitos Reservados</p>
     </footer>
+
+    <script>
+        // Função para exibir o modal
+        function showModal() {
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+    </script>
 </body>
 </html>

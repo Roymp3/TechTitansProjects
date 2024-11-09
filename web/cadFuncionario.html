@@ -9,11 +9,10 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
-<body>
+<<body>
     <header>
         <div class="logo">
-            <i class="fas fa-cut"></i>
-            Na Régua
+            <i class="fas fa-cut"></i> Na Régua
         </div>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -23,53 +22,73 @@
             <a href="logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </header>
+
     <nav id="conteudo">
         <ul>
             <li><a href="./login.html">Login</a></li>
-            <li> <a href="#">Home</a></li>
-            <li style='display:none;'> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
-            <li> <a href="./Pagamento.html">Agendamento</a></li>
+            <li><a href="#">Home</a></li>
+            <li style='display:none;'><a href="./Cadastro.html">Cadastro/Consulta</a></li>
+            <li><a href="./Pagamento.html">Agendamento</a></li>
         </ul>
     </nav>
-    <a href="./Cadastro.html"><button class="botaoVoltar">Voltar</button></a>
+
     <main class="forms">
         <section>
-            <form class="formularioCad" action="JavaJSP/RegistroFunc.jsp" method="post">
-                    <div class="campo-par">
-                        <label for="Nome">Nome:</label>
-                        <input type="text" id="txtNome" name="txtNome" placeholder="Digite seu nome completo" required>
-                        
-                        <label for="Cpf">CPF:</label>
-                        <input type="text" name="txtCpf" placeholder="Digite o CPF" size="11" maxlength="11" required>
-                    </div>
-                    
-                    <div class="campo-par">
-                        <label for="Rg">RG:</label>
-                        <input type="text" name="txtRg" placeholder="Digite o RG" size="12" maxlength="12" required>
-                        
-                        <label for="Cargo">Cargo:</label>
-                        <input type="text" name="txtCargo" placeholder="Digite o Cargo" size="12" required>
-                    </div>
-                    
-                    <div class="campo-par">
-                        <label for="Salario">Salário:</label>
-                        <input type="text" name="txtSalario" placeholder="Digite o valor do salário" size="12" required>
-                        
-                        <label for="UsuarioFunc">Usuário:</label>
-                        <input type="text" name="txtUserFunc" placeholder="Digite seu usuário" size="12" required>
-                    </div>
-                    
-                    <div class="campo-par">
-                        <label for="Senha">Senha:</label>
-                        <input type="password" name="txtSenhaFunc" placeholder="Digite sua senha" size="12" required>
+            <form class="formularioCad" onsubmit="event.preventDefault(); showModal();" method="post">
+                <div class="campo-par">
+                    <label for="Nome">Nome:</label>
+                    <input type="text" id="txtNome" name="txtNome" placeholder="Digite seu nome completo" required>
 
-                        <label class="empty-label"></label> <!-- Label vazia para manter o alinhamento -->
-                    </div>
+                    <label for="Cpf">CPF:</label>
+                    <input type="text" name="txtCpf" placeholder="Digite o CPF" size="11" maxlength="11" required>
+                </div>
+                
+                <div class="campo-par">
+                    <label for="Rg">RG:</label>
+                    <input type="text" name="txtRg" placeholder="Digite o RG" size="12" maxlength="12" required>
+                    
+                    <label for="Cargo">Cargo:</label>
+                    <input type="text" name="txtCargo" placeholder="Digite o Cargo" size="12" required>
+                </div>
+                
+                <div class="campo-par">
+                    <label for="Salario">Salário:</label>
+                    <input type="text" name="txtSalario" placeholder="Digite o valor do salário" size="12" required>
+                    
+                    <label for="UsuarioFunc">Usuário:</label>
+                    <input type="text" name="txtUserFunc" placeholder="Digite seu usuário" size="12" required>
+                </div>
+                
+                <div class="campo-par">
+                    <label for="Senha">Senha:</label>
+                    <input type="password" name="txtSenhaFunc" placeholder="Digite sua senha" size="12" required>
+                </div>
                 
                 <button type="submit" class="evento-mouse" onclick="window.location.assign('JavaJSP/RegistroFunc.jsp')">Enviar</button>
             </form>
         </section>
     </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="location.href='cadFuncionario.html'" onclick="closeModal()">&times;</span>
+            <p>Formulário enviado com sucesso!</p>
+        </div>
+    </div>
+
     <footer>© 2024 – Todos os Direitos Reservados</footer>
+
+    <script>
+        // Função para exibir o modal
+        function showModal() {
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
 </body>
 </html>
