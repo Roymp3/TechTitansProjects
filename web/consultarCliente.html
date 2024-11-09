@@ -23,6 +23,18 @@
             <a href="logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
         </div>
         
+         <script>
+                  window.onload = function() {
+            fetch('JavaJSP/ConsultarCliente.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('Consulta-cliente').innerHTML = data;
+                    console.log(data)// Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+                    };     
+     </script>
+        
     </header>
     <nav id="conteudo">
         <ul>
@@ -33,13 +45,16 @@
         </ul>
     </nav>
     <a href=""><button class="botaoVoltar">Voltar</button></a>
-            <main>
+            <main id="Consulta-cliente">
                 <h2>Consultar cliente</h2>
                 <div class="appointment">
                     <div class="appointment-info">
                         <div class="frmConsulta">
                             <label for="clientName">Nome do cliente:</label>
                             <input type="text" id="clientName" name="nomeCliente" placeholder="nome_cliente" readonly>
+                            
+                            <label for="clientEmail">Email do cliente:</label>
+                            <input type="text" id="emailName" name="nomeCliente" placeholder="nome_cliente" readonly>
 
                             <label for="clientUser">Usuário do Cliente:</label>
                             <input type="text" id="clientUser" name="nomeUsuario" placeholder="usuario_cliente" readonly>
@@ -54,8 +69,6 @@
                         <button class="delete-button">&times;</button>
                         <button class="edit-button"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
                 </div>
-        
-        </div>
         </main>
 
     <footer>

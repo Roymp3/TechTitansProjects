@@ -1,6 +1,8 @@
 
 package javaBeans;
 import java.sql.SQLException;  
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente extends Conectar{
     private int id_cliente;
@@ -116,6 +118,37 @@ public class Cliente extends Conectar{
             this.statusSQL = "Erro ao incluir usuario ! <br> " + ex.getMessage();
         }
     }
+    public List<Cliente> buscarCliente() {
+          List<Cliente> listaCliente = new ArrayList<>();
+          
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT nome_cliente, usuario_cliente, numero_cliente, cpf_cliente, email_cliente  from tbl_clientes";
+            ps = con.prepareStatement(sql); 
+           tab = ps.executeQuery(); 
+
+          
+            while (tab.next()) {
+               Cliente cli = new Cliente();
+               cli.setNome_cliente(tab.getString("nome_cliente"));
+                cli.setUsuario_cliente(tab.getString("usuario_cliente"));
+                 cli.setNumero_cliente(tab.getString("numero_cliente"));
+                  cli.setCpf_cliente(tab.getString("cpf_cliente"));
+                  cli.setEmail_cliente(tab.getString("email_cliente"));
+                
+               listaCliente.add(cli);
+               
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+  
+            } 
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+             ex.printStackTrace();
+            
+        }
+        return listaCliente;
+     }
     
         public boolean buscarClientePorUser() {
         try {
