@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="javaBeans.Cliente"%>
 <%@page import="javaBeans.Funcionarios"%>
 <%
@@ -6,7 +7,7 @@
     String password_cliente = request.getParameter("password_cliente"); // Captura password_cliente do form (nome correto no HTML)
 
   
-    
+          String mensageModal = "";
     session.removeAttribute("ClienteLogado");
 
     
@@ -40,16 +41,16 @@
              response.sendRedirect("../Cadastro.html"); // Carrega a página de sistema em caso de sucesso
 
         }else{
-        String sHTML = "<center>A senha ou usuario não foram encontrados!<br>" +
-                       "<a href='../index.html'> Voltar </a></center>";
-        out.println(sHTML); // Exibe mensagem se os campos estiverem vazios
+        mensageModal = "A senha ou usuario não foram encontrados!";
+                 
+         // Exibe mensagem se os campos estiverem vazios
     }   
     } else {
-        String sHTML = "<center>A senha ou usuario não podem ser vazios!<br>" +
-                       "<a href='../index.html'> Voltar </a></center>";
-        out.println(sHTML); // Exibe mensagem se os campos estiverem vazios
+        mensageModal= "Não deixe campos vazios!";
+                      
+         // Exibe mensagem se os campos estiverem vazios
     }
-    
+     response.sendRedirect("../login.html?mensagem=" + URLEncoder.encode(mensageModal, "UTF-8"));
 %>
 
 

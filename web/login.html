@@ -32,7 +32,7 @@
 
         <section class="login-box">
             <h2>Login</h2>
-            <form class="frmLogin" action="JavaJSP/Login.jsp" method="post">
+            <form class="frmLogin" action="JavaJSP/Login.jsp" method="post" onsubmit="showModal();">
                 <label for="nome" class="labelLogin">Usuário:</label>
                 <input type="text" name="user_cliente" class="inpLogin" placeholder="Insira seu usuario" required>
 
@@ -45,9 +45,40 @@
             </form>
         </section>
     </div>
-    
-            <footer>
-                <p> 2024 – Todos os Direitos Reservados</p>
-            </footer>
+     <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="mensageModal"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>2024 – Todos os Direitos Reservados</p>
+    </footer>
+
+    <script>
+        
+          function getQueryParam(msg) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(msg);
+        }
+        
+        // Função para exibir o modal
+         document.addEventListener("DOMContentLoaded", () => {
+            const mensagem = getQueryParam("mensagem");
+            if (mensagem) {
+                document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+                document.getElementById("modal").style.display = "flex";
+            }
+        });
+
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            window.location.assign('consultarFuncionario.html');
+        }
+        
+    </script>
 </body>
 </html>
