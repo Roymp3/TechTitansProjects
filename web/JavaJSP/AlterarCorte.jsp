@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="javaBeans.Cortes"%>
 <% 
     Cortes corte = new Cortes(); // Instancia o objeto Usuario
@@ -5,6 +6,8 @@
         out.println(corte.statusSQL);
         
           String corteORginal = (String) session.getAttribute("nomeCorte");
+          
+            String mensageModal = "";
        
        String novoNome = request.getParameter("nomeCorteAlterar");
            String novoPreco = request.getParameter("valorCorteAlterar");
@@ -13,8 +16,8 @@
        
 if (novoNome == null || novoPreco == null ) {
 
-        String sHTML = "<center>Preencha os campos vazios!<br> <a href = '../index.html'> Voltar </a> </center>";
-        out.println(sHTML);
+       mensageModal = "Preencha os campos vazios!";
+        
 
     } else {
         Double precoNovo = Double.parseDouble(novoPreco);
@@ -26,11 +29,13 @@ if (novoNome == null || novoPreco == null ) {
         if (!(corte.statusSQL == null)) {
             out.println(corte.statusSQL);
         } else {
-            String sHTML = "<script>alert('Corte Alterado com Sucesso!'); window.location.href = '../consultarCorte.html';</script>";
-            out.println(sHTML);
+            mensageModal = "Corte Alterado com Sucesso!";
+            
 
         }
     }
+
+    response.sendRedirect("../AlterarCorte.html?mensagem=" + URLEncoder.encode(mensageModal, "UTF-8"));
 
  
 %>

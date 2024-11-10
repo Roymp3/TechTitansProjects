@@ -49,7 +49,7 @@
         <h2>Alterar Cortes</h2>
         <section class="box-cad">
             
-            <form class="frmCadUser" id="Alterar-corte" action="JavaJSP\AlterarCorte.jsp" method="post">
+            <form class="frmCadUser" id="Alterar-corte" action="JavaJSP\AlterarCorte.jsp" onsubmit="showModal();" method="post">
         
             <label for="text" class="labelCadUsuario">Nome:</label>
             <input type="text" id="funcNome" name="nomeCorte" class="inpCadUser" placeholder="Insira o nome do corte">     
@@ -63,8 +63,40 @@
     </div>
         </section>
     </div>
+        <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="mensageModal"></p>
+        </div>
+    </div>
+
     <footer>
-        <p> 2024 – Todos os Direitos Reservados</p>
+        <p>2024 – Todos os Direitos Reservados</p>
     </footer>
+
+    <script>
+        
+          function getQueryParam(msg) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(msg);
+        }
+        
+        // Função para exibir o modal
+         document.addEventListener("DOMContentLoaded", () => {
+            const mensagem = getQueryParam("mensagem");
+            if (mensagem) {
+                document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+                document.getElementById("modal").style.display = "flex";
+            }
+        });
+
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            window.location.assign('consultarCorte.html');
+        }
+        
+    </script>
 </body>
 </html>

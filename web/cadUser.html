@@ -33,7 +33,7 @@
         <section>
             <h2>Cadastro de usuário</h2>
 
-            <form class="formularioCad" id="frmCadastro" action="JavaJSP\Registro.jsp" method="post">
+            <form class="formularioCad" id="frmCadastro" action="JavaJSP\Registro.jsp" onsubmit="showModal();" method="post">
              <div class="campo-par">
                  <label for="nome" class="labelCadUsuario">Nome:</label>
                  <input type="text" name="nomeCliente" class="inpCadUser" placeholder="insira seu nome completo" required>     
@@ -56,13 +56,41 @@
                 <input type="password" name="senhaCliente" class="inpCadUser" placeholder="insira sua senha" required>
              </div>  
             
-            <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/Registro.jsp')">Enviar</button>
+            <button type="submit" class="botaoCadUser">Enviar</button>
         </form>
     </div>
         </section>
     </main>
+    
+      <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="mensageModal"></p>
+        </div>
+    </div>
+      
     <footer>
         <p> 2024 – Todos os Direitos Reservados</p>
     </footer>
+      
+      <script>
+            function getQueryParam(msg) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(msg);
+        }
+        // Função para exibir o modal
+          document.addEventListener("DOMContentLoaded", () => {
+            const mensagem = getQueryParam("mensagem");
+            if (mensagem) {
+                document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+                document.getElementById("modal").style.display = "flex";
+            }
+        });
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
 </body>
 </html>

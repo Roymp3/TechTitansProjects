@@ -31,7 +31,7 @@
             <input type="number" id="salarioFuncionario" name="funcionarioSalario" value="<%=funcc.getSalario_funcionario()%>" readonly>
         </div>
     </div>
-        <button class="delete-button" onclick="window.location.assign('JavaJSP/DeletarFunc.jsp?funcionarioCPF=<%=funcc.getCpf_funcionario()%>')">&times;</button>
+        <button class="delete-button" onsubmit="showModal()" onclick="window.location.assign('JavaJSP/DeletarFunc.jsp?funcionarioCPF=<%=funcc.getCpf_funcionario()%>')">&times;</button>
         <button class="edit-button" onclick="window.location.assign('./AlterarFunc.html?funcionarioCPF=<%=funcc.getCpf_funcionario() %>')" ><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
 </div>
 

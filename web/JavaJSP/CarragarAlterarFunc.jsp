@@ -30,11 +30,11 @@
 
     } else {
 
-        nomeFunc = "não encontrado";
-        rgFunc = "não encontrado";
-        cpfFunc = "não encontrado";
-         userFunc = "não encontrado";
-          senhaFunc = "não encontrado";     
+        nomeFunc = "";
+        rgFunc = "";
+        cpfFunc = "";
+         userFunc = "";
+          senhaFunc = "";     
     }
 
   

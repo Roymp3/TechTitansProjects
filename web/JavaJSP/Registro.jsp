@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="javaBeans.Cliente"%>
 <% Cliente user = new Cliente(); // Instancia o objeto Usuario
  if ( !(user.statusSQL == null) ) out.println(user.statusSQL);
@@ -8,49 +9,48 @@
    String usuarioCliente = request.getParameter("userCliente");
    String senhaCliente = request.getParameter("senhaCliente");
     String emailCliente = request.getParameter("emailCliente");
+    
+    String mensageModal ="";
 
  
  // preenche os atributos do objeto usuario
- user.setNome_cliente(nomeCliente);
- user.setCpf_cliente(cpfCliente);
- user.setNumero_cliente(numeroCliente);
- user.setUsuario_cliente(usuarioCliente);
- user.setSenha_cliente(senhaCliente);
- user.setEmail_cliente(emailCliente);
+
  
  if(nomeCliente ==null || cpfCliente == null || numeroCliente ==null || usuarioCliente == null || senhaCliente == null || emailCliente == null){
-     String sHTML = "<center>Preencha os campos vazios!<br> <a href = '../index.html'> Voltar </a> </center>";
-         out.println(sHTML);
+     mensageModal = "Preencha os campos vazios!";
+        
     
     
     }else {
+         user.setNome_cliente(nomeCliente);
+         user.setCpf_cliente(cpfCliente);
+         user.setNumero_cliente(numeroCliente);
+         user.setUsuario_cliente(usuarioCliente);
+         user.setSenha_cliente(senhaCliente);
+         user.setEmail_cliente(emailCliente);
 
             if (user.VerificarCPF() || user.VerificarEmail() || user.VerificarNumero()) {
-                String sHTML = "<center>Estes Dados ja foram cadastrados Anteriomente!<br> <a href = '../index.html'> Voltar </a> </center>";
-                out.println(sHTML);
+               mensageModal = "Estes Dados ja foram cadastrados Anteriomente!";
+             
             } else if (user.VerificarUser()) {
-                String sHTML = "<center>Estes Usuario ja Existe! Tente outro<br> <a href = '../index.html'> Voltar </a> </center>";
-                out.println(sHTML);
+                mensageModal= "Estes Usuario ja Existe! Tente outro";
+              
             } else {
                 user.incluir();
                 if (!(user.statusSQL == null)) {
                     out.println(user.statusSQL);
 
                 } else {
-                    String sHTML = "<center>Usuário criado com Sucesso!<br> <a href = '../index.html'> Voltar </a> </center>";
-                    out.println(sHTML);
+                    mensageModal = "Usuário criado com Sucesso!";
+                 
                 }
             }
 
         }
- 
- 
- 
 
- 
- session.setAttribute("nomeCliente", user.getNome_cliente());
-  session.setAttribute("telefoneCliente", user.getNumero_cliente());
-   session.setAttribute("emailCliente", user.getEmail_cliente());
+   
+    response.sendRedirect("../cadUser.html?mensagem=" + URLEncoder.encode(mensageModal, "UTF-8"));
+
    
 
 

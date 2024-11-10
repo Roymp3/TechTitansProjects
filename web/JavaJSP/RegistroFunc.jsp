@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="javaBeans.Funcionarios"%>
 <% Funcionarios func = new Funcionarios();
  if ( !(func.statusSQL == null) ) out.println(func.statusSQL);
@@ -9,31 +10,33 @@
    String salFuncstr = request.getParameter("txtSalario");
    String userFunc = request.getParameter("txtUserFunc");
    String senhaFunc = request.getParameter("txtSenhaFunc") ;
+   
+    String mensageModal = "";
            
-func.setNome_funcionario(nomeFunc);
-func.setCargo_funcionario(cargoFunc);
-func.setCpf_funcionario(cpfFunc);
-func.setRg_funcionario(rgFunc);
-func.setUsuario_funcionario(userFunc);
-func.setSenha_funcionario(senhaFunc);
 
 if (nomeFunc == null || cargoFunc == null || cpfFunc == null || rgFunc == null || salFuncstr == null || userFunc == null || senhaFunc == null) {
 
-        String sHTML = "<center>Preencha os campos vazios!<br> <a href = '../index.html'> Voltar </a> </center>";
-        out.println(sHTML);
+        mensageModal = "Preencha os campos vazios!";
+       
 
     }else {
+     func.setNome_funcionario(nomeFunc);
+        func.setCargo_funcionario(cargoFunc);
+        func.setCpf_funcionario(cpfFunc);
+        func.setRg_funcionario(rgFunc);
+        func.setUsuario_funcionario(userFunc);
+        func.setSenha_funcionario(senhaFunc);
           Double salFunc = Double.parseDouble(salFuncstr);
           func.setSalario_funcionario(salFunc);
 
             if (func.VerificarRG() || func.VerificarCPF()) {
 
-                String sHTML = "<center>Estes Dados ja foram cadastrado anteriomente.<br> <a href = '../index.html'> Voltar </a> </center>";
-                out.println(sHTML);
+                mensageModal = "Estes Dados ja foram cadastrado anteriomente!";
+              
 
             } else if (func.VerificarUser()) {
-                String sHTML = "<center>Este Usuario ja existe, tente outro.<br> <a href = '../index.html'> Voltar </a> </center>";
-                out.println(sHTML);
+                mensageModal = "Este Usuario ja existe, tente outro!";
+                
 
             } else {
                 func.incluir();
@@ -41,13 +44,15 @@ if (nomeFunc == null || cargoFunc == null || cpfFunc == null || rgFunc == null |
                 if (!(func.statusSQL == null)) {
                     out.println(func.statusSQL);
                 } else {
-                    String sHTML = "<center>Funcionario criado com Sucesso!<br> <a href = '../index.html'> Voltar </a> </center>";
-                    out.println(sHTML);
+                    mensageModal = "Funcionario criado com Sucesso";
+                   
 
                 }
             }
 
         }
+        
+            response.sendRedirect("../cadFuncionario.html?mensagem=" + URLEncoder.encode(mensageModal, "UTF-8"));
 
 
       

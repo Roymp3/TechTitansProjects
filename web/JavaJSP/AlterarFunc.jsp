@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="javaBeans.Funcionarios"%>
 <% 
     Funcionarios func = new Funcionarios(); // Instancia o objeto Usuario
@@ -5,6 +6,8 @@
         out.println(func.statusSQL);
         
           String cpfORginal = (String) session.getAttribute("cpfOriginal");
+          
+          String mensageModal = "";
        
        String novoNome = request.getParameter("txtNomeAlterar");
            String novoCpf = request.getParameter("txtCpfAlterar");
@@ -18,8 +21,8 @@
        
 if (novoNome == null || novoCargo == null || novoCpf == null || novoRg == null || novoSalario == null || novoUsuario == null || novoSenha == null) {
 
-        String sHTML = "<center>Preencha os campos vazios!<br> <a href = '../index.html'> Voltar </a> </center>";
-        out.println(sHTML);
+     mensageModal = "Preencha os campos vazios!";
+    
 
     } else {
         Double salFunc = Double.parseDouble(novoSalario);
@@ -36,11 +39,14 @@ if (novoNome == null || novoCargo == null || novoCpf == null || novoRg == null |
         if (!(func.statusSQL == null)) {
             out.println(func.statusSQL);
         } else {
-            String sHTML = "<script>alert('Funcionario Alterado com Sucesso!'); window.location.href = '../consultarFuncionario.html';</script>";
-            out.println(sHTML);
+            mensageModal = "Funcionario Alterado com Sucesso!";
+          
 
         }
     }
+    
+    response.sendRedirect("../AlterarFunc.html?mensagem=" + URLEncoder.encode(mensageModal, "UTF-8"));
+
 
  
 %>

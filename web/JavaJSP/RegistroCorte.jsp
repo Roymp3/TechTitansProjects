@@ -1,9 +1,12 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="javaBeans.Cortes"%>
 <% Cortes corte = new Cortes(); // Instancia o objeto Usuario
  if ( !(corte.statusSQL == null) ) out.println(corte.statusSQL);
  
  String nomeCorte = request.getParameter("nomeCorte");
  String valorCortestr = request.getParameter("valorCorte");
+ 
+ String mensageModal = "";
 
 
  if (nomeCorte != null && !nomeCorte.isEmpty() && valorCortestr != null && !valorCortestr.isEmpty()) {
@@ -13,8 +16,8 @@
          corte.setPreco_corte(valorCorte);
 
          if (corte.VerificarCorte()) {
-             String sHTML = "<center>Este corte ja se encontra cadastrado!!<br> <a href = '../CadCorte.html'> Voltar </a> </center>";
-             out.println(sHTML);
+             mensageModal = "Este corte ja se encontra cadastrado";
+            
 
          } else {
              corte.incluir();
@@ -22,16 +25,17 @@
              if (!(corte.statusSQL == null)) {
                  out.println(corte.statusSQL);
              } else {
-                 String sHTML = "<center>Corte cadastrado com Sucesso!<br> <a href = '../CadCorte.html'> Voltar </a> </center>";
-                 out.println(sHTML);
+                 mensageModal = "Corte cadastrado com Sucesso";
+                 
              }
          }
 
      } else {
-         String sHTML = "<center> Não pode ter campos vazios!<br> <a href = '../CadCorte.html'> Voltar </a> </center>";
-         out.println(sHTML);
+        mensageModal = " Não pode ter campos vazios!";
+       
      }
      
+    response.sendRedirect("../CadCorte.html?mensagem=" + URLEncoder.encode(mensageModal, "UTF-8"));
 
 
 

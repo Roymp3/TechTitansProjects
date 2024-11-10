@@ -34,14 +34,14 @@
         <section class="box-cad">
             <h2>Cadastro de Cortes</h2>
 
-            <form class="frmCadUser" id="frmCadastro" action="JavaJSP\RegistroCorte.jsp" method="post" onsubmit="event.preventDefault(); showModal();">
+            <form class="frmCadUser" id="frmCadastro" action="JavaJSP\RegistroCorte.jsp" method="post" onsubmit="showModal();">
                 <label for="text" class="labelCadUsuario">Nome:</label>
                 <input type="text" id="funcNome" name="nomeCorte" class="inpCadUser" placeholder="Insira o nome do corte">     
 
                 <label for="text" class="labelCadUsuario">Valor</label>
                 <input type="text" name="valorCorte" class="inpCadUser" placeholder="Insira o valor do corte" required>
 
-                <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/RegistroFunc.jsp')">Enviar</button>
+                <button type="submit" class="botaoCadUser">Enviar</button>
             </form>
         </section>
     </div>
@@ -50,7 +50,7 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <p>Formulário enviado com sucesso!</p>
+            <p id="mensageModal"></p>
         </div>
     </div>
 
@@ -59,15 +59,26 @@
     </footer>
 
     <script>
-        // Função para exibir o modal
-        function showModal() {
-            document.getElementById("modal").style.display = "flex";
+        
+          function getQueryParam(msg) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(msg);
         }
+        
+        // Função para exibir o modal
+         document.addEventListener("DOMContentLoaded", () => {
+            const mensagem = getQueryParam("mensagem");
+            if (mensagem) {
+                document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+                document.getElementById("modal").style.display = "flex";
+            }
+        });
 
         // Função para fechar o modal
         function closeModal() {
             document.getElementById("modal").style.display = "none";
         }
+        
     </script>
 </body>
 </html>
