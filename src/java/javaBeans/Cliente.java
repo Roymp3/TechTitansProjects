@@ -182,6 +182,61 @@ public class Cliente extends Conectar{
         return false;
     }
         
+         public boolean buscarClientePorCpf() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT nome_cliente, email_cliente, numero_cliente, usuario_cliente, password_cliente,cpf_cliente  FROM tbl_clientes WHERE cpf_cliente= ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, cpf_cliente); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+               nome_cliente = tab.getString("nome_cliente");
+               email_cliente = tab.getString("email_cliente");
+                numero_cliente  = tab.getString("numero_cliente");
+                usuario_cliente = tab.getString("usuario_cliente");
+                senha_cliente = tab.getString("password_cliente");
+                cpf_cliente = tab.getString("cpf_cliente");
+             
+      
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Cliente não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Cliente! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    } 
+         
+            public void AlterarCliente(String cpf) {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "UPDATE tbl_clientes set nome_cliente = ?, email_cliente = ?, numero_cliente = ?, usuario_cliente = ?, password_cliente = ?, cpf_cliente = ? where cpf_cliente = ?;";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, nome_cliente);
+            ps.setString(2, email_cliente);
+            ps.setString(3, numero_cliente );
+            ps.setString(4, usuario_cliente );
+            ps.setString(5, senha_cliente );
+            ps.setString(6, cpf_cliente );
+             ps.setString(7, cpf );
+            ps.executeUpdate(); 
+            this.statusSQL = null;  // Limpa status em caso de sucesso
+       
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao Alterar Cliente! <br> " + ex.getMessage();
+            ex.printStackTrace();
+        } 
+      
+    }
+        
             
      public boolean VerificarEmail() {
         try {
@@ -276,6 +331,23 @@ public class Cliente extends Conectar{
 
         } catch (SQLException ex) {
             this.statusSQL = "Erro ao buscar Cliente! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+      
+            public boolean DeletarCliente() {
+        try {
+            
+            sql = "DELETE FROM tbl_clientes WHERE cpf_cliente=?;";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, cpf_cliente); 
+            ps.executeUpdate(); 
+            this.statusSQL = null;  // Limpa status em caso de sucesso
+            return true;
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao deletar Cliente! <br> " + ex.getMessage();
             
         } 
         

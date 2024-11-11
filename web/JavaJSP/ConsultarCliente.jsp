@@ -32,11 +32,12 @@
             <input type="text" id="clientCPF" name="CpfCliente" value="<%= cliente.getCpf_cliente()%>" readonly>
         </div>
     </div>
-    <button class="delete-button">&times;</button>
-    <button class="edit-button"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
+    <button class="delete-button" onclick="window.location.assign('JavaJSP/DeletarCliente.jsp?CpfCliente=<%=cliente.getCpf_cliente()%>')" >&times;</button>
+    <button class="edit-button"  onclick="window.location.assign('./AlterarCliente.html?CpfCliente=<%=cliente.getCpf_cliente()%>')"><i class="fas fa-pencil-alt"></i></button> <!-- Botão de editar -->
 </div>
 
 <%
+ 
     }
       
 

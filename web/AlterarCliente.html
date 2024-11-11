@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de cadastro</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-cut"></i>
+            Na Régua
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="./perfil.html"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+    <nav id="conteudo">
+        <ul>
+            <li><a href="./login.html">Login</a></li>
+            <li> <a href="#">Home</a></li>
+            <li style='display:none;'> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
+            <li> <a href="./Pagamento.html">Agendamento</a></li>
+        </ul>
+    </nav>
+    <a href="index.html"><button class="botaoVoltar">Voltar</button></a>
+    <main class="forms">
+        <section>
+            <h2>Alterar usuário</h2>
+
+            <form class="formularioCad" id="frmCadastro" action="JavaJSP/AlterarCliente.jsp" onsubmit="showModal();" method="post">
+             <div class="campo-par">
+                 <label for="nome" class="labelCadUsuario">Nome:</label>
+                 <input type="text" name="nomeCliente" class="inpCadUser" placeholder="insira seu nome completo" required>     
+
+                <label for="text" class="labelCadUsuario">CPF:</label>
+                <input type="text" name="cpfCliente" class="inpCadUser" maxlength="11" placeholder="insira seu CPF" required>
+             </div>
+             <div class="campo-par">
+                     <label for="numero" class="labelCadUsuario">Numero:</label>
+                     <input type="text" name="numeroCliente" class="inpCadUser" maxlength="9" placeholder="insira seu número" required>
+                
+                     <label for="email" class="labelCadUsuario">Email:</label>
+                     <input type="email" name="emailCliente" class="inpCadUser"  placeholder="insira seu E-mail" required>
+             </div>    
+             <div class="campo-par">
+                 <label for="usuario" class="labelCadUsuario">Usuario:</label>
+                 <input type="text" name="userCliente" class="inpCadUser" placeholder="insira seu usuario" required>
+            
+                <label for="senhaUsuario" class="labelCadUsuario">Senha:</label>
+                <input type="password" name="senhaCliente" class="inpCadUser" placeholder="insira sua senha" required>
+             </div>  
+            
+            <button type="submit" class="botaoCadUser">Enviar</button>
+        </form>
+    </div>
+        </section>
+    </main>
+    
+      <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="mensageModal"></p>
+        </div>
+    </div>
+      
+    <footer>
+        <p> 2024 – Todos os Direitos Reservados</p>
+    </footer>
+      
+      <script>
+          
+          window.onload = function() {
+             const cpfcli = new URLSearchParams(window.location.search).get("CpfCliente");
+            fetch(`JavaJSP/CarregarAlterarCliente.jsp?CpfCliente=${cpfcli}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('frmCadastro').innerHTML = data;
+                    console.log(data)// Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+                    };  
+          
+             
+            function getQueryParam(msg) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(msg);
+        }
+        // Função para exibir o modal
+          document.addEventListener("DOMContentLoaded", () => {
+            const mensagem = getQueryParam("mensagem");
+            if (mensagem) {
+                document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+                document.getElementById("modal").style.display = "flex";
+            }
+        });
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            window.location.assign('consultarCliente.html');
+        }
+    </script>
+</body>
+</html>

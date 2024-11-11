@@ -32,14 +32,15 @@
             session.setAttribute("clientelog", cliente);
             
             
-          response.sendRedirect("../index.html"); // Carrega a página de sistema em caso de sucesso
-           out.println("Usuário: " + user.getUsuario_cliente());
+          
+            response.sendRedirect("../index.html"); // Carrega a página de sistema em caso de sucesso
+            return;
         } else if(func.getLogin()) {
             String nomeClasse = "adm";
             session.setAttribute("nomeClasse", nomeClasse);
             session.setAttribute("funcionarioLogado", func.getUsuario_funcionario());
              response.sendRedirect("../Cadastro.html"); // Carrega a página de sistema em caso de sucesso
-
+             return;
         }else{
         mensageModal = "A senha ou usuario não foram encontrados!";
                  
