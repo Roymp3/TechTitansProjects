@@ -332,6 +332,38 @@ public class Funcionarios extends Conectar{
         } 
       
     }
+        
+        public boolean buscarFuncPorUser() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT nome_funcionario, cargo_funcionario, rg_funcionario FROM tbl_funcionarios WHERE usuario_funcionario = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, usuario_funcionario); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+               
+               nome_funcionario = tab.getString("nome_funcionario");
+               cargo_funcionario= tab.getString("cargo_funcionario");
+                rg_funcionario  = tab.getString("rg_funcionario");
+                
+           
+                
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Cliente não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
     
    
    

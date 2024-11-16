@@ -23,7 +23,7 @@
                 <a href="#"><i class="fab fa-whatsapp"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fas fa-user"></i></a>
-                <a href="Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+                <a href="JavaJSP/Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
             </div>
             <script>
                   window.onload = function() {
@@ -34,14 +34,33 @@
                     console.log(data)// Atualiza o conteúdo da div
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-                    };     
+        
+                fetch('JavaJSP/conteudo.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('conteudo').innerHTML = data;
+                    console.log(data)// Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+                      fetch('JavaJSP/Logout.jsp')
+                .then(response => response.text())
+                .then(data =>{
+                    document.getElementById('logout').innerHTML = data
+            })
+             .catch(error => console.error('erro',error));
+        
+        
+                    };  
+                    
+                    
+                    
             </script>
 
         </header>
         <nav id="conteudo">
             <ul>
                 <li> <a href="#">Home</a></li>
-                <li style='display:none;'> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
+                <li> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
                 <li> <a href="./Pagamento.html">Agendamento</a></li>
             </ul>
         </nav>

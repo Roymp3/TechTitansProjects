@@ -3,12 +3,15 @@
 <%@page import="javaBeans.Funcionarios"%>
 <%
 
-     String usuario_cliente = request.getParameter("user_cliente"); // Captura usuário do form
+    String usuario_cliente = request.getParameter("user_cliente"); // Captura usuário do form
     String password_cliente = request.getParameter("password_cliente"); // Captura password_cliente do form (nome correto no HTML)
 
   
-          String mensageModal = "";
-    session.removeAttribute("ClienteLogado");
+    String mensageModal = "";
+//    session.removeAttribute("ClienteLogado");
+    
+    
+    String log = "deslogado";
 
     
     Cliente user = new Cliente(); // Instancia Usuario
@@ -27,18 +30,21 @@
         
         // Verifica o login
         if (user.getLogin()) { 
-            session.setAttribute("ClienteLogado", user.getUsuario_cliente());
+           session.setAttribute("ClienteLogado", usuario_cliente);
             String cliente = "cliente";
             session.setAttribute("clientelog", cliente);
             
-            
+            log = "logado";
+             session.setAttribute("logadoo", log);
           
             response.sendRedirect("../index.html"); // Carrega a página de sistema em caso de sucesso
             return;
         } else if(func.getLogin()) {
             String nomeClasse = "adm";
             session.setAttribute("nomeClasse", nomeClasse);
-            session.setAttribute("funcionarioLogado", func.getUsuario_funcionario());
+             log = "logado";
+             session.setAttribute("logadoo", log);
+            session.setAttribute("funcionarioLogado",usuario_cliente);
              response.sendRedirect("../Cadastro.html"); // Carrega a página de sistema em caso de sucesso
              return;
         }else{
