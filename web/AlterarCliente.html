@@ -103,14 +103,8 @@
                     document.getElementById('conteudo-header').innerHTML = data; // Atualiza o conteúdo da div
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-        
-        fetch('JavaJSP/Logout.jsp')
-                .then(response => response.text())
-                .then(data =>{
-                    document.getElementById('logout').innerHTML = data
-            })
-             .catch(error => console.error('erro',error));
-                    };  
+
+                };  
           
              
             function getQueryParam(msg) {

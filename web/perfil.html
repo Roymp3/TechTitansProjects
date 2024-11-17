@@ -35,25 +35,22 @@
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
         
+            fetch('JavaJSP/CarregarAgendaPerfil.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('agenda-perfil').innerHTML = data;
+                    console.log(data)// Atualiza o conteúdo da div
+                })
+                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+        
                 fetch('JavaJSP/conteudo.jsp')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('conteudo').innerHTML = data;
                     console.log(data)// Atualiza o conteúdo da div
                 })
-                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-                      fetch('JavaJSP/Logout.jsp')
-                .then(response => response.text())
-                .then(data =>{
-                    document.getElementById('logout').innerHTML = data
-            })
-             .catch(error => console.error('erro',error));
-        
-        
-                    };  
-                    
-                    
-                    
+               };  
+      
             </script>
 
         </header>
@@ -89,10 +86,10 @@
             </aside>
 
             <main>
-                <h2>Contas Agendadas</h2>
+                <h2>Cortes Agendados</h2>
                 <div class="appointment">
                     <img src="img/imagem 1 - teste.jpg" alt="Foto do Barbeiro">
-                    <div class="appointment-info">
+                    <div class="appointment-info" id="agenda-perfil">
                         <p>Data e Hora: </p>
                         <p>Corte Escolhido:</p>
                         <p>Barbeiro Selecionado:</p>
