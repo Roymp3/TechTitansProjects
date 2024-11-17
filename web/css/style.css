@@ -625,4 +625,102 @@ p{
         .close-btn:hover {
             color: #ddd;
         }
+        .inpEscData {
+          background-color: #f7f1e3;
+        }
+        .botaoEscData {
+          margin: 0px 750px;
+          background-color: #240f03;
+          color: #fff;
+          padding: 15px 30px;
+          border: none;
+          border-radius: 5px;
+          font-size: 1.2em;
+          cursor: pointer;
+          box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.2);
+          transition: transform 0.3s ease;
+        }
+        .escDATA {
+          height: 20vh;
+          padding: 30px;
+          background-color: #384c55;
+          margin: 20px auto;
+          max-width: 900px;
+          border-radius: 10px;
+          margin-left: 30px;
+        }
+        .container-esc {
+          display: flex;
+          justify-content: center;
+          height: 50vh;
+          padding: 30px;
+          background-color: #457489;
+          margin: 20px auto;
+          max-width: 900px;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          transition: transform 0.3s ease;
+        }
+
+        .card-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+          margin: 0px 200px;
+        }
         
+        .card-container {
+          perspective: 1000px; /* Dá profundidade ao efeito 3D */
+          margin: 10px;
+        }
+        
+        .card {
+          width: 300px;
+          height: 200px;
+          position: relative;
+          transform-style: preserve-3d;
+          transition: transform 0.6s;
+          cursor: pointer;
+        }
+        
+        .card:hover {
+          transform: rotateX(180deg); /* Faz o flip vertical */
+        }
+        
+        .card-front, .card-back {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          backface-visibility: hidden; /* Esconde o lado de trás quando não está visível */
+        }
+        
+        .card-front {
+          background-color: #ffffff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        .card-back {
+          background-color: #f7f1e3;
+          color: rgb(0, 0, 0);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: rotateX(180deg); /* Prepara o verso */
+          border-radius: 10px;
+        }
+        
+        .card-front img {
+          width: 100%;
+          max-width: 300px;
+          border-radius: 10px;
+        }
+        
+        .card-front img:hover{
+          transform: scale(1.08);
+          transition: transform 0.3s ease;
+        }
+        
+        .catalogo {
+        justify-content: row;
+        }
