@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos</title>
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <link rel="stylesheet" href="./css/Agenda.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-cut"></i>
+            Na Régua
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="./perfil.html"><i class="fas fa-user"></i></a>
+             <a href="JavaJSP/Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+
+        </div>
+    </header>
+    <nav id="conteudo">
+        <ul>
+            <li><a href="./login.html">Login</a></li>
+            <li> <a href="#">Home</a></li>
+            <li style='display:none;'> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
+            <li> <a href="./Pagamento.html">Agendamento</a></li>
+        </ul>
+    </nav>
+    <a href="./Cadastro.html"><button class="botaoVoltar">Voltar</button></a>
+    <div class="content-container">
+        <div class="cards-container">
+            <div class="box-cad">
+                <h2>Agendamento 1</h2>
+                <form class="frmCadUser" action="./Pagamento.html" method="post">
+                    <label for="data1" class="labelCadUsuario">Data:</label>
+                    <input type="text" id="data1" name="data" class="inpCadUser" placeholder="Datas disponíveis" required>
+                    <label for="hora1" class="labelCadUsuario">Horário:</label>
+                    <input type="text" id="hora1" name="hora" class="inpCadUser" placeholder="Horários disponíveis" required>
+                    <button type="submit" class="botaoCadUser">Agendar</button>
+                </form>
+            </div>
+            <div class="box-cad">
+                <h2>Agendamento 2</h2>
+                <form class="frmCadUser" action="./pagamentos.html" method="post">
+                    <label for="data2" class="labelCadUsuario">Data:</label>
+                    <input type="text" id="data2" name="data" class="inpCadUser" placeholder="Datas disponíveis" required>
+                    <label for="hora2" class="labelCadUsuario">Horário:</label>
+                    <input type="text" id="hora2" name="hora" class="inpCadUser"  placeholder="Horários disponíveis">
+                    <button type="submit" class="botaoCadUser">Agendar</button>
+                </form>
+            </div>
+            <div class="box-cad">
+                <h2>Agendamento 3</h2>
+                <form class="frmCadUser" action="./pagamentos.html" method="post">
+                    <label for="data3" class="labelCadUsuario">Data:</label>
+                    <input type="text" id="data3" name="data" class="inpCadUser" placeholder="Datas disponíveis" required>
+                    <label for="hora3" class="labelCadUsuario">Horário:</label>
+                    <input type="text" id="hora3" name="hora" class="inpCadUser" placeholder="Horários disponíveis" required>
+                    <button type="submit" class="botaoCadUser">Agendar</button>
+                </form>
+            </div>
+        </div>
+        <div class="img-mapa-container">
+            <!-- <img src="./images/mapa.png" alt="Localização" class="map-image"> -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.22060892945!2d-46.67672551838579!3d-23.560519006880128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57806e5988d9%3A0xa38687ec90914aa3!2sR.%20Oscar%20Freire%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1731117719603!5m2!1spt-BR!2sbr" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <footer>
+        <p> 2024 – Todos os Direitos Reservados</p>
+    </footer>
+</body>
+</html>

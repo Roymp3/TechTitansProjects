@@ -1,0 +1,209 @@
+/* Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-blend-mode: screen;
+  }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #384c55;
+    color: #f7f1e3;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone e o texto */
+    /* font-size: 1.5em;
+    font-weight: bold;
+    color: #f7f1e3; */
+  }
+  
+  .logo i{
+    color: #f7f1e3;
+  }
+  
+  .social-icons a {
+    color: #f7f1e3;
+    margin-left: 15px;
+    font-size: 1.2em;
+  }
+
+nav ul {
+    list-style: none;
+    background-color: #384c55;
+    text-align: end;
+    padding: 10px;
+  }
+  
+  nav ul li{
+    display: inline;
+    margin: 0 10px;
+  }
+  
+  nav ul li a{
+    color: #f7f1e3;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  nav ul li a:hover{
+    color: #384c55;
+    text-shadow: 0 0 5px #f7f1e3;
+    background-color: #f7f1e3;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+/* Botão Voltar */
+.botaoVoltar {
+    display: block;
+    margin: 10px;
+    justify-content: flex-start;
+    background-color: #895A45;
+    color: #f7f1e3;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+/* Container Principal */
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px auto;
+    max-width: 1200px;
+    gap: 10px; /* Reduz o espaço entre os elementos */
+}
+
+/* Cards */
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    width: 70%; /* Mantém os cards juntos */
+}
+
+.box-cad {
+    background-color: #457489;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 5px; /* Reduz a margem entre os cards */
+    width: 32%; /* Reduz a largura para garantir alinhamento */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.box-cad:hover {
+    transform: scale(1.05);
+}
+
+.box-cad h2 {
+    font-size: 1.5em;
+    color: #240f03;
+    margin-bottom: 15px;
+}
+
+.frmCadUser {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelCadUsuario {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+.inpCadUser {
+    padding: 8px;
+    border: none;
+    margin-bottom: 15px;
+    background-color: #457489;
+    text-align: center;
+}
+
+.inpCadUser::placeholder, .inpCadUser:focus{
+    color: #524f4f;
+    text-align: center;
+    outline: none;
+}
+
+/* Botão */
+.botaoCadUser {
+    padding: 10px;
+    background-color: #240f03;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Mapa */
+.map-container {
+    width: 28%; /* Ajusta a largura para garantir alinhamento */
+    text-align: center;
+}
+
+.map-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .cards-container {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .box-cad {
+        width: 90%;
+    }
+
+    .map-container {
+        width: 100%;
+    }
+}
+
+footer {
+    text-align: center;
+    background-color: #384c55;
+    padding: 15px;
+    color: #f7f1e3;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+  }
