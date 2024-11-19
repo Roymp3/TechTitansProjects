@@ -197,6 +197,21 @@ nav ul {
     }
 }
 
+select{
+  padding: 10px;
+  border: none;
+  margin-bottom: 15px;
+  background-color: #457489;
+  text-align: center;
+  color: #524f4f;
+}
+
+select:focus{
+  outline: none;
+}
+
+
+
 footer {
     text-align: center;
     background-color: #384c55;
