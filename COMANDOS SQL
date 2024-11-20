@@ -14,3 +14,21 @@ WHERE tbl_datas.id_status IS NULL
 obs: esse comando já tras a data atual eo funcionarios atribuido a data, ou seja, tras horarios
 disponivel parar agendar.
 -------------------------------------------------------------------------------------------------
+2.  Esse comando mostra as datas que existe na tabela de datas, traz apenas a data como ##/##/####
+e nao tras repetido
+
+select DATe(data_datas) as datas
+from tbl_datas
+GROUP BY datas
+
+-------------------------------------------------------------------------------------------------
+3.  mostra todos os horario que existe referente a uma data, ou seja, tras todas as horas que tem
+a mesma data.
+
+select time(data_datas) as horario
+from tbl_datas
+
+WHERE date(data_datas) = '2024-11-19'
+ORDER BY horario
+
+-------------------------------------------------------------------------------------------------
