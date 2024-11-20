@@ -2,6 +2,8 @@
 package javaBeans;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 public class Datas extends Conectar{
     private int id_data;
     private Timestamp data_datas;
@@ -104,6 +106,39 @@ public class Datas extends Conectar{
         }
         return false;
     }
+       
+       public boolean VerificarDatas() {
+    try {
+       
+        String[] horarios = {
+            "09:00:00", "10:00:00", "11:00:00", 
+            "14:00:00", "15:00:00", "16:00:00", 
+            "17:00:00", "18:00:00", "19:00:00", 
+            "20:00:00"
+        };
+
+        for (String horario : horarios) {
+            sql = "select data_datas, id_funcionario from tbl_datas where data_datas = ? and id_funcionario = ?;";
+            ps = con.prepareStatement(sql);
+            ps.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now().toLocalDate().atTime(LocalTime.parse(horario))));
+            ps.setInt(2, id_funcionario);
+            tab = ps.executeQuery();
+            
+            if (tab.next()) {
+                this.statusSQL = "Horário " + horario + " já foi cadastrado!";
+                return true;  // If any time already exists, return true
+            }
+        }
+
+        this.statusSQL = "Todos os horários estão disponíveis.";
+        return false;
+
+    } catch (SQLException ex) {
+        this.statusSQL = "Erro ao verificar datas! <br> " + ex.getMessage();
+        return false;
+    }
+}
+
        
     
     

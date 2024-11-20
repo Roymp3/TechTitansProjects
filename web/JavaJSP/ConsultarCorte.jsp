@@ -13,10 +13,6 @@
        
      for(Cortes cortee: listaCorte) {
        
-    
-    
-      
-       
        
     %>
     <div class="appointment">

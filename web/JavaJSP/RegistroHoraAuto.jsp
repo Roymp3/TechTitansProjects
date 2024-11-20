@@ -16,8 +16,13 @@
  dt.setId_funcionario(idFuncData);
  
  }
+ if (dt.VerificarDatas()) {
+         mensageModal = "Os horarios diarios ja foram gerados! Tente novamente amanhã";
+     } else {
+         dt.InserirDatasAuto();
+
+     }
  
- dt.InserirDatasAuto();
     
  
 if (!(dt.statusSQL == null))
