@@ -9,8 +9,10 @@
 
 <h2>Consultar cliente</h2>
 <%
-    for(Cliente cliente :listaCliente){
+      try{
+      for(Cliente cliente :listaCliente){
 
+    
 %>
 
 <div class="appointment">
@@ -39,6 +41,10 @@
 <%
  
     }
+  }catch(Exception err){
+       out.print("ocorreu um erro inesperado,contate o suporte" + err.getMessage() );
+
+}
       
 
 %>

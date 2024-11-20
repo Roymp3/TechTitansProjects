@@ -9,7 +9,13 @@
 
 <h2>Consultar corte</h2>
 <%
-       for(Cortes cortee: listaCorte) {
+       try{
+       
+     for(Cortes cortee: listaCorte) {
+       
+    
+    
+      
        
        
     %>
@@ -29,4 +35,8 @@
     </div>
  <%
        }
+     }catch(Exception err){
+       out.print("ocorreu um erro inesperado,contate o suporte" + err.getMessage() );
+
+    }
   %>

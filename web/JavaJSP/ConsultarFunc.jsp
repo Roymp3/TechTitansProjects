@@ -8,8 +8,12 @@
 %>
 
 <h2>Consultar Funcionário</h2>
-<%
-    for(Funcionarios funcc : listaFunc){
+<%  
+    try{
+    
+     for(Funcionarios funcc : listaFunc){
+    
+   
 
 %>
 <div class="appointment">
@@ -37,7 +41,10 @@
 
 <%
     }
-      
+}catch(Exception err){
+   out.print("ocorreu um erro inesperado,contate o suporte" + err.getMessage() );
+
+}
 
 %>
 
