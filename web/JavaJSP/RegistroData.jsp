@@ -2,63 +2,67 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="javaBeans.Datas"%>
 <%@page import="javaBeans.Funcionarios"%>
-<%@page  import="java.sql.Timestamp" %>
- <%@page import="java.util.Date"%>
+<%@page import="java.sql.Timestamp" %>
+<%@page import="java.util.Date"%>
 
 <% 
-    
-    Datas dt = new Datas(); // Instancia o objeto Usuario
+    Datas dt = new Datas(); 
     Funcionarios func = new Funcionarios();
- if ( !(dt.statusSQL == null) ) out.println(dt.statusSQL);
- 
- String dataMarcada =   request.getParameter("dataHora");
- SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
- java.util.Date datautil = formato.parse(dataMarcada);
- 
- String mensageModal= "";
- 
- Date dataAtual = new Date();
- 
- if (datautil.before(dataAtual)) {
-         mensageModal = "Data inválida! A data marcada não pode ser anterior à data de hoje.";
-         
-     } else {
+    String mensageModal = ""; 
 
-         Timestamp DataConv = new Timestamp(datautil.getTime());
-         dt.setData_datas(DataConv);
 
-         String FuncLogado = (String) session.getAttribute("funcionarioLogado");
-         func.setUsuario_funcionario(FuncLogado);
-         int idFuncData = 0;
-         if (func.buscarIdPorUser()) {
+    if (dt.statusSQL != null) {
+        out.println(dt.statusSQL);
+    }
 
-             idFuncData = func.getId_funcionario();
-             dt.setId_funcionario(idFuncData);
 
-         }
-         if (dt.VerificarData()) {
+    String dataMarcada = request.getParameter("dataHora");
 
-             mensageModal = "Este horario ja foi cadastrado anteriomente! tente outro!";
-             
+    if (dataMarcada == null || dataMarcada.trim().isEmpty()) {
+        mensageModal = "Data inválida! Por favor, insira uma data válida.";
+    } else {
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            java.util.Date datautil = formato.parse(dataMarcada);
+            Date dataAtual = new Date();
 
-         } else {
+            if (datautil.before(dataAtual)) {
+                mensageModal = "Data inválida! A data marcada não pode ser anterior à data de hoje.";
+            } else {
+                
+                Timestamp DataConv = new Timestamp(datautil.getTime());
+                dt.setData_datas(DataConv);
 
-             dt.incluir();
-             if (!(dt.statusSQL == null)) {
-                 out.println(dt.statusSQL);
-             } else {
-                 mensageModal = "Horario salvo  com Sucesso!";
-               
-             }
+                
+                String FuncLogado = (String) session.getAttribute("funcionarioLogado");
+                func.setUsuario_funcionario(FuncLogado);
 
-         }
+                int idFuncData = 0;
+        
+                if (func.buscarIdPorUser()) {
+                    idFuncData = func.getId_funcionario();
+                    dt.setId_funcionario(idFuncData);
+                }
 
-     }
- 
+              
+                
+                if (dt.VerificarData()) {
+                    mensageModal = "Este horário já foi cadastrado anteriormente! Tente outro.";
+                } else {
+                    
+                    dt.incluir();
+                    if (dt.statusSQL != null) {
+                        out.println(dt.statusSQL);
+                    } else {
+                        mensageModal = "Horário salvo com sucesso!";
+                    }
+                }
+            }
+        } catch (java.text.ParseException e) {
+            mensageModal = "Erro ao processar a data: " + e.getMessage();
+        }
+    }
+
+   
     response.sendRedirect("../cadHorario.html?mensagem=" + URLEncoder.encode(mensageModal, "UTF-8"));
-
-
-
-
-
 %>

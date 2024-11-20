@@ -28,7 +28,7 @@
 <input type="text" id="funcNome" name="nomeCorteAlterar" class="inpCadUser" value="<%= nomeCorte %>" required>     
 
 <label for="text" class="labelCadUsuario">Valor</label>
-<input type="text" name="valorCorteAlterar" class="inpCadUser" value="<%= precoCorte %>" required>
+<input type="text" name="valorCorteAlterar" class="inpCadUser" value="<%= precoCorte %>" pattern="^\d+([.,]?\d+)?$" oninvalid="this.setCustomValidity('Por favor, insira um valor valido de salario.')" oninput="this.setCustomValidity('')" required>
 
 
 <button type="submit" class="botaoCadUser" onclick="window.location.assign('JavaJSP/AlterarCorte.jsp')">Alterar</button>

@@ -58,10 +58,10 @@
 
             <form class="frmCadUser" id="frmCadastro" action="JavaJSP\RegistroCorte.jsp" method="post" onsubmit="showModal();">
                 <label for="text" class="labelCadUsuario">Nome:</label>
-                <input type="text" id="funcNome" name="nomeCorte" class="inpCadUser" placeholder="Insira o nome do corte">     
+                <input type="text" id="funcNome" name="nomeCorte" class="inpCadUser" placeholder="Insira o nome do corte" required>     
 
                 <label for="text" class="labelCadUsuario">Valor</label>
-                <input type="text" name="valorCorte" class="inpCadUser" placeholder="Insira o valor do corte" required>
+                <input type="text" name="valorCorte" class="inpCadUser" placeholder="Insira o valor do corte"  pattern="^\d+([.,]?\d+)?$" oninvalid="this.setCustomValidity('Por favor, insira um valor valido para o corte.')" oninput="this.setCustomValidity('')" required>
 
                 <button type="submit" class="botaoCadUser">Enviar</button>
             </form>

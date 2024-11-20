@@ -39,11 +39,11 @@
                  <input type="text" name="nomeCliente" class="inpCadUser" placeholder="insira seu nome completo" required>     
 
                 <label for="text" class="labelCadUsuario">CPF:</label>
-                <input type="text" name="cpfCliente" class="inpCadUser" maxlength="11" placeholder="insira seu CPF" required>
+                <input type="text" name="cpfCliente" class="inpCadUser" maxlength="11" pattern="\d{11}" oninvalid="this.setCustomValidity('Por favor, insira um CPF válido com 11 números sem pontos ou traços.')" oninput="this.setCustomValidity('')"   placeholder="insira seu CPF(11 digitos)" required>
              </div>
              <div class="campo-par">
                      <label for="numero" class="labelCadUsuario">Numero:</label>
-                     <input type="text" name="numeroCliente" class="inpCadUser" maxlength="9" placeholder="insira seu número" required>
+                     <input type="text" name="numeroCliente" class="inpCadUser" maxlength="9" pattern="\d{9}" oninvalid="this.setCustomValidity('Por favor, insira um Numero de telefone válido.')" oninput="this.setCustomValidity('')"  placeholder="insira seu número" required>
                 
                      <label for="email" class="labelCadUsuario">Email:</label>
                      <input type="email" name="emailCliente" class="inpCadUser"  placeholder="insira seu E-mail" required>

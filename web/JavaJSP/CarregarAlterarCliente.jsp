@@ -46,11 +46,11 @@
     <input type="text" name="nomeClienteAlterar" class="inpCadUser" value="<%= nomeCLi %>" required>     
 
     <label for="text" class="labelCadUsuario">CPF:</label>
-    <input type="text" name="cpfClienteAlterar" class="inpCadUser" maxlength="11" value="<%= cpfCli %>"  required>
+    <input type="text" name="cpfClienteAlterar" class="inpCadUser" maxlength="11"  pattern="\d{11}" oninvalid="this.setCustomValidity('Por favor, insira um CPF válido com 11 números sem pontos ou traços.')" oninput="this.setCustomValidity('')"  value="<%= cpfCli %>"  required>
 </div>
 <div class="campo-par">
     <label for="numero" class="labelCadUsuario">Numero:</label>
-    <input type="text" name="numeroClienteAlterar" class="inpCadUser" maxlength="9" value="<%= numCli %>"  required>
+    <input type="text" name="numeroClienteAlterar" class="inpCadUser" maxlength="9"  pattern="\d{9}" oninvalid="this.setCustomValidity('Por favor, insira um Numero válido.')" oninput="this.setCustomValidity('')"  value="<%= numCli %>"  required>
 
     <label for="email" class="labelCadUsuario">Email:</label>
     <input type="email" name="emailClienteAlterar" class="inpCadUser"  value="<%= emailCli %>"  required>

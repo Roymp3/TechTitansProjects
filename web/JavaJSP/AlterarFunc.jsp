@@ -25,7 +25,10 @@ if (novoNome == null || novoCargo == null || novoCpf == null || novoRg == null |
     
 
     } else {
-        Double salFunc = Double.parseDouble(novoSalario);
+    
+        String novoSalFinal = novoSalario.replaceAll(",",".");
+    
+        Double salFunc = Double.parseDouble(novoSalFinal);
         func.setSalario_funcionario(salFunc);
            func.setNome_funcionario(novoNome);
            func.setCpf_funcionario(novoCpf);

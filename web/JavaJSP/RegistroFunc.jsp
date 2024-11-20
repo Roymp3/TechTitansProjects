@@ -20,13 +20,16 @@ if (nomeFunc == null || cargoFunc == null || cpfFunc == null || rgFunc == null |
        
 
     }else {
+    
+    String salFinal = salFuncstr.replaceAll(",",".");
+   
      func.setNome_funcionario(nomeFunc);
         func.setCargo_funcionario(cargoFunc);
         func.setCpf_funcionario(cpfFunc);
         func.setRg_funcionario(rgFunc);
         func.setUsuario_funcionario(userFunc);
         func.setSenha_funcionario(senhaFunc);
-          Double salFunc = Double.parseDouble(salFuncstr);
+          Double salFunc = Double.parseDouble(salFinal);
           func.setSalario_funcionario(salFunc);
 
             if (func.VerificarRG() || func.VerificarCPF()) {

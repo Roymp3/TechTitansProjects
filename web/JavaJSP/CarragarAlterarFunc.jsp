@@ -45,7 +45,7 @@
     <input type="text" id="txtNome" name="txtNomeAlterar" value="<%=nomeFunc %>" required>
 
     <label for="Cpf">CPF:</label>
-    <input type="text" name="txtCpfAlterar" value="<%=cpfFunc %>" size="11" maxlength="11" required>
+    <input type="text" name="txtCpfAlterar" value="<%=cpfFunc %>" size="11" maxlength="11"  pattern="\d{11}" oninvalid="this.setCustomValidity('Por favor, insira um CPF válido com 11 números sem pontos ou traços.')" oninput="this.setCustomValidity('')"  required>
 </div>
 
 <div class="campo-par">
@@ -58,7 +58,7 @@
 
 <div class="campo-par">
     <label for="Salario">Salário:</label>
-    <input type="text" name="txtSalarioAlterar" value="<%= salarioFunc %>" size="12" required>
+    <input type="text" name="txtSalarioAlterar" value="<%= salarioFunc %>" size="12"  pattern="^\d+([.,]?\d+)?$" oninvalid="this.setCustomValidity('Por favor, insira um valor de salario válido.')" oninput="this.setCustomValidity('')"  required>
 
     <label for="UsuarioFunc">Usuário:</label>
     <input type="text" name="txtUserFuncAlterar" value="<%= userFunc %>" size="12" required>
