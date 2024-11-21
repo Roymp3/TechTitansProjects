@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 public class Datas extends Conectar{
     private int id_data;
     private Timestamp data_datas;
@@ -137,7 +139,35 @@ public class Datas extends Conectar{
         this.statusSQL = "Erro ao verificar datas! <br> " + ex.getMessage();
         return false;
     }
-}
+}           
+         public List<Datas> DatasDisponiveis() {
+          List<Datas> listaDatas = new ArrayList<>();
+          
+        try {
+            sql = "SELECT data_datas, tbl_status.nome_status\n"
+                    + "FROM tbl_datas \n"
+                    + "LEFT JOIN tbl_status \n"
+                    + "ON tbl_datas.id_status = tbl_status.id_status where nome_status is null;";
+            ps = con.prepareStatement(sql); 
+           tab = ps.executeQuery(); 
+
+          
+            while (tab.next()) {
+               Datas dt = new Datas();
+               dt.setData_datas(tab.getTimestamp("data_datas"));
+               listaDatas.add(dt);
+               
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+  
+            } 
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+            
+        } 
+        return listaDatas;
+     }
+ 
 
        
     

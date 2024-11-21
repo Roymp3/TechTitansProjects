@@ -23,6 +23,15 @@
                     document.getElementById('conteudo-header').innerHTML = data; // Atualiza o conteúdo da div
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+        
+         const dataEscolhida = new URLSearchParams(window.location.search).get("dataEscolhida");
+    console.log("Data Escolhida na URL:", dataEscolhida); 
+        fetch(`JavaJSP/CarregarPagamento.jsp?dataEscolhida=${dataEscolhida}`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('card_select').innerHTML = data;
+                         })
+                         .catch(error => console.error('Erro ao carregar o conteúdo:', error));
         };
     </script>
     
@@ -49,7 +58,7 @@
             <li> <a href="#">Agendamento</a></li>
         </ul>
     </nav>
-    <a href="index.html"><button class="botaoVoltar">Voltar</button></a>
+    <a href="Agendamentos.html"><button class="botaoVoltar">Voltar</button></a>
     <main>
         <div class="geral">
             <div id="card_select">
@@ -84,9 +93,24 @@
                 <label for="observacao">Observação:</label><br>
                 <textarea name="observacao" id="observacao" rows="10" cols="35"></textarea>
                 <div id="contador">0 / 700 caracteres</div>
-
-                <script>
-                    // Função para atualizar o contador de caracteres
+                
+                <button type="submit" class="botoesCad">Agendar corte</button>
+            </div>
+            <div class="card_select_right">
+                <div id="img-mapa-container">
+                    <!-- <img  id="img-mapa" src="./img/img-maps.png" alt="Teste"> -->
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.22060892945!2d-46.67672551838579!3d-23.560519006880128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57806e5988d9%3A0xa38687ec90914aa3!2sR.%20Oscar%20Freire%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1731117719603!5m2!1spt-BR!2sbr" width="500" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="gradient-overlay"></div>
+                </div>
+                <p class="info_barb">Rua Oscar Freire, Vila Evlyn 207 - São Paulo (SP)</p>
+                <p class="info_barb">Aberto das 13 ás 18</p>
+                <p class="info_barb">Abertura das 14 ás 17 aos Sábados e Domingos</p>
+            </div>
+        </div>
+    </main>
+         <script>
+             
+               
                     function atualizarContador() {
                         // Seleciona o campo de texto e o elemento do contador
                         const textarea = document.getElementById("observacao");
@@ -108,21 +132,6 @@
                         textarea.addEventListener("input", atualizarContador);
                     });
                     </script>
-
-                <button type="submit" class="botoesCad">Agendar corte</button>
-            </div>
-            <div class="card_select_right">
-                <div id="img-mapa-container">
-                    <!-- <img  id="img-mapa" src="./img/img-maps.png" alt="Teste"> -->
-                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.22060892945!2d-46.67672551838579!3d-23.560519006880128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57806e5988d9%3A0xa38687ec90914aa3!2sR.%20Oscar%20Freire%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1731117719603!5m2!1spt-BR!2sbr" width="500" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <div class="gradient-overlay"></div>
-                </div>
-                <p class="info_barb">Rua Oscar Freire, Vila Evlyn 207 - São Paulo (SP)</p>
-                <p class="info_barb">Aberto das 13 ás 18</p>
-                <p class="info_barb">Abertura das 14 ás 17 aos Sábados e Domingos</p>
-            </div>
-        </div>
-    </main>
     <footer>
         <p>© 2024 – Todos os Direitos Reservados</p>
     </footer>

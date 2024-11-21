@@ -74,7 +74,7 @@ try {
             ps.executeUpdate();
             
             sql = "create table if not exists tbl_status ( id_status int AUTO_INCREMENT PRIMARY KEY,"
-                    + "nome_status varchar(30));";
+                    + "nome_status varchar(30) default null);";
          
             ps = con.prepareStatement(sql);
             ps.executeUpdate(); 
