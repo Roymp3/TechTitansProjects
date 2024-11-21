@@ -1,23 +1,48 @@
+<%@page import="java.util.List"%>
+<%@page import="java.net.URLDecoder"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.sql.Timestamp" %>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="javaBeans.Datas"%>
+<%@page import="javaBeans.Funcionarios"%>
+
 <%
+    Funcionarios func = new Funcionarios();
     Datas dt = new Datas();
     if (!(dt.statusSQL == null)) {
         out.println(dt.statusSQL);
     }
     
-    String datal = request.getParameter("dataEscolhida");
-  SimpleDateFormat formatoExibir = new SimpleDateFormat("dd/MM/yyyy");
- Date data = new SimpleDateFormat("yyyy-MM-dd").parse(datal);
-  String dataExibir = formatoExibir.format(data);
+    String datal = URLDecoder.decode(request.getParameter("dataEscolhida"), "UTF-8");
+     String hora = URLDecoder.decode(request.getParameter("hora1"), "UTF-8");
 
+
+  SimpleDateFormat formatoExibir = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat horaExibir = new SimpleDateFormat("HH:mm");
+    SimpleDateFormat consulta = new SimpleDateFormat("yyyy-MM-dd");
+
+ Date data = new SimpleDateFormat("yyyy-MM-dd").parse(datal);
+ Date horaConv = new SimpleDateFormat("HH:mm").parse(hora);
+ 
+ String dataCompleta = consulta.format(data) + " " + horaExibir.format(horaConv);
+ String dataFinal = dataCompleta + ":00";
+ 
+ Timestamp dataConsulta = Timestamp.valueOf(dataFinal);  
+ 
+ dt.setData_datas(dataConsulta);
+ 
+ 
+  String dataExibir = formatoExibir.format(data);
+  String mostraHora = horaExibir.format(horaConv);
+  
+List<Datas> listdt = dt.BuscatIdFuncData();
+  
+       
 
   
 %>
-<h2 class="dataEscolha">Data do Corte:  <%= dataExibir %><strong></strong></h2>
+<h2 class="dataEscolha">Data do Corte:  <%= dataExibir %>  <%= mostraHora %> <strong></strong></h2>
 <label for="cortes" class="alinharLabel">Selecionar corte:</label>
 <select id="cortes" name="opcoesCortes">
     <option value="" disabled selected></option>
@@ -30,19 +55,28 @@
 <label for="pagamento" class="alinharLabel">Forma de pagamento:</label>
 <select id="pagamento" name="opcoesPagamento">
     <option value="" disabled selected></option>
-    <option value="credito">Cartão de crédito</option>
+    <option value="credito">Cartão</option>
     <option value="pix">Pix</option>
-    <option value="boleto">Boleto</option>
     <option value="dinheiro">Dinheiro</option>
 </select><br>
 
 <label for="barbeiro" class="alinharLabel">Barbeiro disponível:</label>
 <select id="barbeiro" name="barbeiroDisponivel">
-    <option value="" disabled selected></option>
-    <option value="jhonny_gama">Jhonny da Gama</option>
-    <option value="roy_jones">Roy Jones</option>
-    <option value="bruno_rosa">Bruno Rosa</option>
-    <option value="diego_cardoso">Diego Cardoso</option>
+    <%
+        
+        String nome ="n encontrei";
+        for(Datas barbeiro: listdt){
+           int idFunc =  barbeiro.getId_funcionario();
+            func.setId_funcionario(idFunc);
+            if(func.BuscarNomeID()){
+                 nome = func.getNome_funcionario();
+            }
+%>
+    <option value="<%= barbeiro.getId_funcionario()%>"><%= nome %></option>
+    <%
+        }
+
+%>
 </select><br>
 
 <label for="observacao">Observação:</label><br>

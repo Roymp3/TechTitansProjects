@@ -168,7 +168,48 @@ public class Datas extends Conectar{
         return listaDatas;
      }
  
+            public List<Datas> BuscatIdFuncData() {
+          List<Datas> listIdsFuncData = new ArrayList<>();
+          
+        try {
+            sql = "SELECT \n"
+                    + "    data_datas, \n"
+                    + "     tbl_datas.id_funcionario,\n"
+                    + "    tbl_status.nome_status\n"
+                    + "FROM \n"
+                    + "    tbl_datas\n"
+                    + "LEFT JOIN \n"
+                    + "    tbl_status \n"
+                    + "ON \n"
+                    + "    tbl_datas.id_status = tbl_status.id_status\n"
+                    + "LEFT JOIN \n"
+                    + "    tbl_funcionarios \n"
+                    + "ON \n"
+                    + "    tbl_datas.id_funcionario = tbl_funcionarios.id_funcionario\n"
+                    + "WHERE \n"
+                    + "    tbl_status.nome_status IS NULL and data_datas = ?;";
+            ps = con.prepareStatement(sql); 
+            ps.setTimestamp(1, data_datas);
+           tab = ps.executeQuery(); 
 
+          
+            while (tab.next()) {
+               Datas dt = new Datas();
+               dt.setId_funcionario(tab.getInt("id_funcionario"));
+               listIdsFuncData.add(dt);
+               
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+  
+            } 
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+            
+        } 
+        return listIdsFuncData;
+     }
+            
+        
        
     
     

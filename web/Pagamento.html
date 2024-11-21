@@ -24,15 +24,24 @@
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
         
-         const dataEscolhida = new URLSearchParams(window.location.search).get("dataEscolhida");
-    console.log("Data Escolhida na URL:", dataEscolhida); 
-        fetch(`JavaJSP/CarregarPagamento.jsp?dataEscolhida=${dataEscolhida}`)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('card_select').innerHTML = data;
-                         })
-                         .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-        };
+           const dataEscolhida = new URLSearchParams(window.location.search).get("dataEscolhida");
+         const horaEscolhida = new URLSearchParams(window.location.search).get("hora1");
+
+         if (dataEscolhida && horaEscolhida) {
+             console.log("Data Escolhida na URL:", dataEscolhida);
+             console.log("Hora Escolhida na URL:", horaEscolhida);
+
+                fetch(`JavaJSP/CarregarPagamento.jsp?dataEscolhida=${dataEscolhida}&hora1=${horaEscolhida}`)
+                           .then(response => response.text())
+                           .then(data => {
+                               document.getElementById('card_select').innerHTML = data;
+                           })
+                           .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+               } else {
+                   console.error("Parâmetros inválidos: dataEscolhida ou hora1 estão faltando.");
+               }
+               
+    }
     </script>
     
 </head>

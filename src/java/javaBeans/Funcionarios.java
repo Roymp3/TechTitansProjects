@@ -364,8 +364,23 @@ public class Funcionarios extends Conectar{
         
         return false;
     }
+        
+
+public boolean BuscarNomeID() {
+    try {
+        sql = "SELECT nome_funcionario FROM tbl_funcionarios WHERE id_funcionario = ?;";
+        ps = con.prepareStatement(sql);
+        ps.setInt(1, id_funcionario);
+        tab = ps.executeQuery();
+
+        if (tab.next()) {
+            nome_funcionario = tab.getString("nome_funcionario");
+            return true;
+        }
+    } catch (SQLException ex) {
+        this.statusSQL = "Erro ao buscar nome do funcionário! <br> " + ex.getMessage();
+    }
+    return false;
+}
     
-   
-   
-  
 }
