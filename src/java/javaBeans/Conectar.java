@@ -73,12 +73,22 @@ try {
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
             
-            sql = "create table if not exists tbl_status ( id_status int AUTO_INCREMENT PRIMARY KEY,"
-                    + "nome_status varchar(30) default null);";
-         
+            sql = "CREATE TABLE IF NOT EXISTS tbl_status ("
+                    + "id_status INT AUTO_INCREMENT PRIMARY KEY, "
+                    + "nome_status VARCHAR(30) DEFAULT NULL)";
             ps = con.prepareStatement(sql);
-            ps.executeUpdate(); 
-            
+            ps.executeUpdate();
+            ps.close();
+
+            sql = "INSERT INTO tbl_status (nome_status) "
+                    + "SELECT * FROM (SELECT 'Agendado' AS nome_status UNION ALL SELECT 'Finalizado') AS temp "
+                    + "WHERE NOT EXISTS (SELECT 1 FROM tbl_status WHERE nome_status = 'Agendado')";
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            ps.close();
+
+
+
             
            sql = "create table if not exists tbl_datas ( id_data int AUTO_INCREMENT PRIMARY KEY,"
                     + "data_datas datetime,"
@@ -86,6 +96,8 @@ try {
                     + "id_funcionario int,"
                     + "id_status int,"
                     + "id_corte int,"
+                   + " tipo_pagamento varchar(700)," 
+                   + " observacao VARCHAR(700),"
                     + "FOREIGN KEY (id_corte) REFERENCES tbl_cortes(id_corte),"
                     + "FOREIGN KEY(id_cliente) REFERENCES tbl_clientes(id_cliente),"
                    +  "FOREIGN KEY(id_funcionario) REFERENCES tbl_funcionarios(id_funcionario),"

@@ -1,16 +1,18 @@
+<%@page import="java.util.Date"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.sql.Timestamp" %>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="javaBeans.Datas"%>
-<%@page import="java.util.List" %>
+<%@page import="java.util.List"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
     Datas dt = new Datas();
     List<Datas> listaData = dt.DatasDisponiveis();
 
+    // Ordenar a lista de datas
     Collections.sort(listaData, new java.util.Comparator<Datas>() {
         public int compare(Datas data1, Datas data2) {
             return data1.getData_datas().compareTo(data2.getData_datas());
@@ -20,18 +22,24 @@
     Set<String> datasExibidas = new HashSet<>();
 
     try {
+        Date dataAtual = new Date();
         SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat formatoDataExibir = new SimpleDateFormat("dd/MM/yyyy");
 
+        String dataAtualFormatada = formatoData.format(dataAtual);
+
         for (Datas data : listaData) {
             Timestamp dataDisp = data.getData_datas();
-            String dataAgenda = formatoData.format(dataDisp);
+            String dataAgenda = formatoData.format(dataDisp); 
+
+            if (dataAgenda.compareTo(dataAtualFormatada) < 0) {
+                continue; 
+            }
+
             String exibirData = formatoDataExibir.format(dataDisp);
 
             if (!datasExibidas.contains(dataAgenda)) {
                 datasExibidas.add(dataAgenda);
-
-                // Criar um novo conjunto para horários dentro desta data
                 Set<String> HorarioExibido = new HashSet<>();
 %>
                 <div class="box-cad">
@@ -41,7 +49,7 @@
 
                         <input type="hidden" name="dataEscolhida" value="<%= dataAgenda %>">
 
-                        <label for="hora1" class="labelCadUsuario">Horário disponíveis:</label>
+                        <label for="hora1" class="labelCadUsuario">Horários disponíveis:</label>
                         <select name="hora1" id="hora1" required>
                             <%
                             for (Datas dataa : listaData) {

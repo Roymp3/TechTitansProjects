@@ -6,8 +6,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="javaBeans.Datas"%>
 <%@page import="javaBeans.Funcionarios"%>
+<%@page import="javaBeans.Cortes"%>
+
 
 <%
+    
+    Cortes ct = new Cortes();
     Funcionarios func = new Funcionarios();
     Datas dt = new Datas();
     if (!(dt.statusSQL == null)) {
@@ -31,30 +35,33 @@
  Timestamp dataConsulta = Timestamp.valueOf(dataFinal);  
  
  dt.setData_datas(dataConsulta);
+ session.setAttribute("dataCliente", dataConsulta);
  
  
   String dataExibir = formatoExibir.format(data);
   String mostraHora = horaExibir.format(horaConv);
-  
-List<Datas> listdt = dt.BuscatIdFuncData();
-  
-       
 
+List<Datas> listdt = dt.BuscatIdFuncData();
+List<Cortes> listcorte = ct.buscarCortes();
   
+
 %>
 <h2 class="dataEscolha">Data do Corte:  <%= dataExibir %>  <%= mostraHora %> <strong></strong></h2>
 <label for="cortes" class="alinharLabel">Selecionar corte:</label>
 <select id="cortes" name="opcoesCortes">
-    <option value="" disabled selected></option>
-    <option value="americano">Americano</option>
-    <option value="jaca">Corte do Jaca</option>
-    <option value="buzzcut">Buzz cut</option>
-    <option value="social">Social</option>
+    <%
+        for(Cortes cortee: listcorte){
+    
+    %>
+    <option value="<%= cortee.getNome_corte()%>"><%= cortee.getNome_corte() %></option>  
+    <%
+        }
+    
+    %>
 </select><br>
 
 <label for="pagamento" class="alinharLabel">Forma de pagamento:</label>
 <select id="pagamento" name="opcoesPagamento">
-    <option value="" disabled selected></option>
     <option value="credito">Cartão</option>
     <option value="pix">Pix</option>
     <option value="dinheiro">Dinheiro</option>

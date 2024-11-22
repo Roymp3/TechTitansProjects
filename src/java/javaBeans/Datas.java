@@ -13,6 +13,8 @@ public class Datas extends Conectar{
     private int id_funcionario;
     private int id_status;
     private int id_corte;
+    private String tipo_pagamento;
+    private String observacao;
 
     public int getId_data() {
         return id_data;
@@ -60,6 +62,25 @@ public class Datas extends Conectar{
     public void setId_corte(int id_corte) {
         this.id_corte = id_corte;
     }
+    
+    public String getTipo_pagamento() {
+        return tipo_pagamento;
+    }
+
+    public void setTipo_pagamento(String tipo_pagamento) {
+        this.tipo_pagamento = tipo_pagamento;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+    
+    
+    
     
     public void incluir() {
         try {
@@ -208,9 +229,28 @@ public class Datas extends Conectar{
         } 
         return listIdsFuncData;
      }
-            
-        
+
+           public boolean BuscarIDdata() {
+        try {
+            sql = "select data_datas, id_funcionario from tbl_datas where data_datas = ? and id_funcionario = ?;";
+            ps = con.prepareStatement(sql); // prepara SQL
+            ps.setTimestamp(1, data_datas);
+            ps.setInt(2, id_funcionario);// Configura Parametros
+            tab = ps.executeQuery();
+
+            if (tab.next()) {
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+                return true;
+            } else {
+                this.statusSQL = "Data não encontrada!";
+
+            }
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar data! <br> " + ex.getMessage();
+        }
+        return false;
+    }
        
-    
+  
     
 }

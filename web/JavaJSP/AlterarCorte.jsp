@@ -20,7 +20,7 @@ if (novoNome == null || novoPreco == null ) {
         
 
     } else {
-            String precoNovoFinal = novoPreco.replaceAll(".",".");
+            String precoNovoFinal = novoPreco.replaceAll(",",".");
     
         Double precoNovo = Double.parseDouble(precoNovoFinal);
          corte.setPreco_corte(precoNovo);
