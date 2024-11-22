@@ -382,5 +382,32 @@ public boolean BuscarNomeID() {
     }
     return false;
 }
+
+    public boolean buscarIdPorNome() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT id_funcionario FROM tbl_funcionarios WHERE nome_funcionario= ?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nome_funcionario);
+            tab = ps.executeQuery();
+
+            if (tab.next()) {
+
+                id_funcionario = tab.getInt("id_funcionario");
+
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+                return true;
+            } else {
+                this.statusSQL = "Funcionario não encontrado!";
+
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Funcionario! <br> " + ex.getMessage();
+
+        }
+
+        return false;
+    }
     
 }

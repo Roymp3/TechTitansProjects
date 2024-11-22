@@ -353,6 +353,35 @@ public class Cliente extends Conectar{
         
         return false;
     }
-   
+             
+        public boolean buscarIDPorUser() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT id_cliente FROM tbl_clientes WHERE usuario_cliente = ?";
+            ps = con.prepareStatement(sql); 
+            ps.setString(1, usuario_cliente); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+               
+               id_cliente = tab.getInt("id_cliente");
+ 
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Cliente não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+            
+                
 }
 

@@ -20,6 +20,7 @@
     });
 
     Set<String> datasExibidas = new HashSet<>();
+    boolean encontrouHorario = false; // Variável para verificar se encontramos horários
 
     try {
         Date dataAtual = new Date();
@@ -30,10 +31,10 @@
 
         for (Datas data : listaData) {
             Timestamp dataDisp = data.getData_datas();
-            String dataAgenda = formatoData.format(dataDisp); 
+            String dataAgenda = formatoData.format(dataDisp);
 
             if (dataAgenda.compareTo(dataAtualFormatada) < 0) {
-                continue; 
+                continue;
             }
 
             String exibirData = formatoDataExibir.format(dataDisp);
@@ -41,38 +42,64 @@
             if (!datasExibidas.contains(dataAgenda)) {
                 datasExibidas.add(dataAgenda);
                 Set<String> HorarioExibido = new HashSet<>();
+
+                // Verifica se há horários disponíveis para a data
+                boolean temHorarioParaData = false;
+
+                for (Datas dataa : listaData) {
+                    Timestamp dataDispInterna = dataa.getData_datas();
+                    String dataAgendaInterna = formatoData.format(dataDispInterna);
+                    String horarioAgenda = new SimpleDateFormat("HH:mm").format(dataDispInterna);
+
+                    if (dataAgendaInterna.equals(dataAgenda)) {
+                        if (!HorarioExibido.contains(horarioAgenda)) {
+                            HorarioExibido.add(horarioAgenda);
+                            temHorarioParaData = true; 
+                        }
+                    }
+                }
+
+                if (temHorarioParaData) {
+                    encontrouHorario = true; 
 %>
-                <div class="box-cad">
-                    <form class="frmCadUser" action="./Pagamento.html" method="get">
-                        <label for="data1" class="labelCadUsuario">Data:</label>
-                        <input type="text" id="dataDisp" class="inpCadUser" value="<%= exibirData %>" readonly>
+                    <div class="box-cad">
+                        <form class="frmCadUser" action="./Pagamento.html" method="get">
+                            <label for="data1" class="labelCadUsuario">Data:</label>
+                            <input type="text" id="dataDisp" class="inpCadUser" value="<%= exibirData %>" readonly>
 
-                        <input type="hidden" name="dataEscolhida" value="<%= dataAgenda %>">
+                            <input type="hidden" name="dataEscolhida" value="<%= dataAgenda %>">
 
-                        <label for="hora1" class="labelCadUsuario">Horários disponíveis:</label>
-                        <select name="hora1" id="hora1" required>
-                            <%
-                            for (Datas dataa : listaData) {
-                                Timestamp dataDispInterna = dataa.getData_datas();
-                                String dataAgendaInterna = formatoData.format(dataDispInterna);
-                                String horarioAgenda = new SimpleDateFormat("HH:mm").format(dataDispInterna);
+                            <label for="hora1" class="labelCadUsuario">Horários disponíveis:</label>
+                            <select name="hora1" id="hora1" required>
+                                <%
+                                for (Datas dataa : listaData) {
+                                    Timestamp dataDispInterna = dataa.getData_datas();
+                                    String dataAgendaInterna = formatoData.format(dataDispInterna);
+                                    String horarioAgenda = new SimpleDateFormat("HH:mm").format(dataDispInterna);
 
-                                if (dataAgendaInterna.equals(dataAgenda)) {
-                                    if (!HorarioExibido.contains(horarioAgenda)) {
-                                        HorarioExibido.add(horarioAgenda);
-                            %>
-                                        <option value="<%= horarioAgenda %>"><%= horarioAgenda %></option>
-                            <%
+                                    if (dataAgendaInterna.equals(dataAgenda)) {
+                                        if (!HorarioExibido.contains(horarioAgenda)) {
+                                            HorarioExibido.add(horarioAgenda);
+                                %>
+                                            <option value="<%= horarioAgenda %>"><%= horarioAgenda %></option>
+                                <%
+                                        }
                                     }
                                 }
-                            }
-                            %>
-                        </select>
-                        <button type="submit" class="botaoCadUser">Agendar</button>
-                    </form>
-                </div>
+                                %>
+                            </select>
+                            <button type="submit" class="botaoCadUser">Agendar</button>
+                        </form>
+                    </div>
 <%
+                }
             }
+        }
+
+        if (!encontrouHorario) {
+%>
+            <div class="alerta">Não temos horários disponíveis no momento.</div>
+<%
         }
     } catch (Exception err) {
         out.print("Ocorreu um erro inesperado, contate o suporte: " + err.getMessage());

@@ -77,7 +77,7 @@
                 </form>
             </div>
             <div class="box-cad">
-                <form class="frmCadUser" action="./Pagamento.html" method="post">
+                <form class="frmCadUser" action="./Pagamento.html" method="post"  >
                     <label for="data2" class="labelCadUsuario">Data:</label>
                     <input type="text" id="dataDisp2" class="inpCadUser" placeholder="Datas disponíveis">
                     
@@ -105,8 +105,33 @@
             </div>
         </div>
     </div>
+           <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="mensageModal"></p>
+        </div>
+    </div>
+           
     <footer>
-        <p> 2024 – Todos os Direitos Reservados</p>
+        <p>© 2024 – Todos os Direitos Reservados</p>
     </footer>
+           <script>
+             
+         function getQueryParam(msg) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(msg);
+      }
+        document.addEventListener("DOMContentLoaded", () => {
+          const mensagem = getQueryParam("mensagem");
+          if (mensagem) {
+              document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+              document.getElementById("modal").style.display = "flex";
+          }
+      });
+      function closeModal() {
+          document.getElementById("modal").style.display = "none";
+      }
+           </script>
 </body>
 </html>

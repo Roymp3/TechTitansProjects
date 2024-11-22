@@ -71,7 +71,7 @@
     <main>
         <div class="geral">
             <div id="card_select">
-                <h2 class="dataEscolha">Data escolhida - 30/08/2024</h2>
+                <h2 class="dataEscolha">Data escolhida:</h2>
                 <label for="cortes" class="alinharLabel">Selecionar corte:</label>
                 <select id="cortes" name="opcoesCortes">
                     <option value="" disabled selected></option>
@@ -117,32 +117,62 @@
             </div>
         </div>
     </main>
-         <script>
-             
-               
-                    function atualizarContador() {
-                        // Seleciona o campo de texto e o elemento do contador
-                        const textarea = document.getElementById("observacao");
-                        const contador = document.getElementById("contador");
+       
                     
-                        // Calcula o número de caracteres digitados e atualiza o contador
-                        const caracteresDigitados = textarea.value.length;
-                        contador.textContent = `${caracteresDigitados} / 700 caracteres`;
-                    }
-                    
-                    // Evento para iniciar o contador no carregamento da página
-                    window.addEventListener("DOMContentLoaded", (event) => {
-                        const textarea = document.getElementById("observacao");
-                    
-                        // Configura o contador inicial
-                        atualizarContador();
-                    
-                        // Adiciona o evento 'input' ao campo de texto
-                        textarea.addEventListener("input", atualizarContador);
-                    });
-                    </script>
+           <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="mensageModal"></p>
+        </div>
+    </div>
+           
     <footer>
         <p>© 2024 – Todos os Direitos Reservados</p>
     </footer>
+           <script>
+             
+               
+                  function atualizarContador() {
+                      // Seleciona o campo de texto e o elemento do contador
+                      const textarea = document.getElementById("observacao");
+                      const contador = document.getElementById("contador");
+                    
+                      // Calcula o número de caracteres digitados e atualiza o contador
+                      const caracteresDigitados = textarea.value.length;
+                      contador.textContent = `${caracteresDigitados} / 700 caracteres`;
+                  }
+                    
+                  // Evento para iniciar o contador no carregamento da página
+                  window.addEventListener("DOMContentLoaded", (event) => {
+                      const textarea = document.getElementById("observacao");
+                    
+                      // Configura o contador inicial
+                      atualizarContador();
+                    
+                      // Adiciona o evento 'input' ao campo de texto
+                      textarea.addEventListener("input", atualizarContador); 
+                        
+                  });
+                    
+                      function getQueryParam(msg) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(msg);
+      }
+      // Função para exibir o modal
+        document.addEventListener("DOMContentLoaded", () => {
+          const mensagem = getQueryParam("mensagem");
+          if (mensagem) {
+              document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+              document.getElementById("modal").style.display = "flex";
+          }
+      });
+      // Função para fechar o modal
+      function closeModal() {
+          document.getElementById("modal").style.display = "none";
+        window.location.assign('Agendamentos.html');
+
+      }
+           </script>
 </body>
 </html>

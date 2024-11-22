@@ -250,7 +250,32 @@ public class Datas extends Conectar{
         }
         return false;
     }
+     
+             public void AgendarCorte(Timestamp data, int id) {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "update tbl_datas set id_cliente =?, id_status = ?, id_corte = ?, tipo_pagamento = ?, observacao= ? where data_datas = ? and id_funcionario = ?;";
+            ps = con.prepareStatement(sql); 
+            ps.setInt(1, id_cliente);
+            ps.setInt(2, id_status);
+            ps.setInt(3, id_corte );
+            ps.setString(4, tipo_pagamento );
+            ps.setString(5, observacao );
+            ps.setTimestamp(6, data );
+             ps.setInt(7, id );
+             int linhasAfetadas = ps.executeUpdate();
+        if (linhasAfetadas > 0) {
+            this.statusSQL = null; // Atualização bem-sucedida
+        } else {
+            this.statusSQL = "Nenhum registro foi atualizado. Verifique os critérios.";
+        }  // Limpa status em caso de sucesso
        
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao Alterar Cliente! <br> " + ex.getMessage();
+            ex.printStackTrace();
+        } 
+      
+    }
   
     
 }
