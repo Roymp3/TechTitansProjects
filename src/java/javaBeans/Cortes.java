@@ -192,5 +192,33 @@ public class Cortes extends Conectar {
         } 
       
     }
+          
+            public boolean buscarNomePorId() {
+        try {
+            // Consulta SQL para buscar o cliente pelo nome
+            sql = "SELECT nome_corte FROM tbl_cortes WHERE id_corte= ?";
+            ps = con.prepareStatement(sql); 
+            ps.setInt(1, id_corte); 
+           tab = ps.executeQuery(); 
+
+          
+            if (tab.next()) {
+               
+               nome_corte = tab.getString("nome_corte");
+      
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+             return true;
+            } else {
+                this.statusSQL = "Corte não encontrado!";
+              
+            }
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar Corte! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
      
 }

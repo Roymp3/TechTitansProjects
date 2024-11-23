@@ -27,5 +27,5 @@
      <li <%= displayLogin %>><a href="./login.html">Login</a></li>
        <li> <a href="./index.html">Home</a></li>
        <li <%= displayStyle %>> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
-        <li <%= displayAdm %>> <a href="./Agendamentos.html">Agendamento</a></li>
+        <li <%= displayAdm %>> <a href="JavaJSP/VerificarLogadoAgenda.jsp">Agendamento</a></li>
  </ul>

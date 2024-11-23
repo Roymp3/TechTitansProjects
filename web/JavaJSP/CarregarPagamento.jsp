@@ -34,10 +34,7 @@
     
     dt.setData_datas(dataConsulta);
     session.setAttribute("dataCliente", dataConsulta);
-    
-    Timestamp dataa = (Timestamp) session.getAttribute("dataCliente");
-    out.print(dataa);
-    
+        
     String dataExibir = formatoExibir.format(data);
     String mostraHora = horaExibir.format(horaConv);
 
@@ -53,7 +50,7 @@
         <%
             for(Cortes cortee: listcorte){
         %>
-        <option value="<%= cortee.getNome_corte() %>"><%= cortee.getNome_corte() %></option>  
+        <option value="<%= cortee.getNome_corte() %>"><%= cortee.getNome_corte() %> - R$ <%=cortee.getPreco_corte() %></option>  
         <%
             }
         %>
