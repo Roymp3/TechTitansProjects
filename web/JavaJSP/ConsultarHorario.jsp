@@ -1,0 +1,66 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.List"%>
+<%@page import="javaBeans.Datas"%>
+<%@page import="javaBeans.Funcionarios"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%
+    // Instanciar os objetos necessários
+    Datas dt = new Datas();
+    List<Datas> listaData = dt.DatasDisponiveisFunc();
+    Funcionarios func = new Funcionarios();
+%>
+
+<h2>Consultar Horários</h2>
+
+<%
+    // Usar um Set para evitar duplicação de funcionários
+    java.util.Set<Integer> idsExibidos = new java.util.HashSet<>();
+
+    for (Datas data : listaData) {
+        int funcId = data.getId_funcionario();
+
+        if (!idsExibidos.contains(funcId)) {
+            idsExibidos.add(funcId);
+
+            // Buscar o nome do funcionário
+            func.setId_funcionario(funcId);
+            func.BuscarNomeID();
+%>
+
+<div class="appointment">
+    <div class="appointment-info">
+        <!-- Formulário para enviar os dados -->
+        <form method="get" action="JavaJSP/DeletarHorario.jsp">
+            <!-- Nome do Funcionário -->
+            <label>Nome do Funcionário:</label>
+            <input type="text" name="nomeFunc" value="<%= func.getNome_funcionario() %>" readonly>
+
+            <!-- Select para Data e Hora -->
+            <label>Data e Hora:</label>
+            <select name="hora1" id="hora_<%= funcId %>">
+                <%
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                    for (Datas dataFuncionario : listaData) {
+                        if (dataFuncionario.getId_funcionario() == funcId) {
+                            String dataFormatada = sdf.format(dataFuncionario.getData_datas());
+                %>
+                <option value="<%= dataFuncionario.getData_datas() %>"><%= dataFormatada %></option>
+                <%
+                        }
+                    }
+                %>
+            </select>
+
+            <!-- Botão de Deletar -->
+            <button type="submit" class="delete-button">
+                <i class="fas fa-times"></i> 
+            </button>
+        </form>
+    </div>
+</div>
+
+<%
+        }
+    }
+%>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Cliente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="./css/consulta.css">
+     <!-- <link rel="stylesheet" href="./css/perfil.css"> -->
+
+     <script>
+         window.onload = function() {
+            fetch('JavaJSP/conteudo.jsp')
+                     .then(response => response.text())
+                     .then(data => {
+                             document.getElementById('conteudo').innerHTML = data; // Atualiza o conteúdo da div
+                         })
+                         .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+
+
+                 fetch('JavaJSP/conteudoHeader.jsp')
+                         .then(response => response.text())
+                         .then(data => {
+                             document.getElementById('conteudo-header').innerHTML = data; // Atualiza o conteúdo da div
+                         })
+                         .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+                 
+                 fetch('JavaJSP/ConsultarHorario.jsp')
+                         .then(response => response.text())
+                         .then(data => {
+                             document.getElementById('conteudo-horario').innerHTML = data; // Atualiza o conteúdo da div
+                         })
+                         .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+
+             };
+     </script>
+</head>
+<body>
+    <header id="conteudo-header">
+        <div class="logo">
+            <i class="fas fa-cut"></i>
+            Na Régua
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="JavaJSP/VerficarLogado.jsp" ><i class="fas fa-user"></i></a>
+            <a href="JavaJSP/Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+        
+
+        
+    </header>
+    <nav id="conteudo">
+        <ul>
+            <li><a href="./login.html">Login</a></li>
+            <li> <a href="#">Home</a></li>
+            <li style='display:none;'> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
+            <li> <a href="./Agendamentos.html">Agendamento</a></li>
+        </ul>
+    </nav>
+    <a href="Cadastro.html"><button class="botaoVoltar">Voltar</button></a>
+            <main id="conteudo-horario">
+                <h2>Consultar cliente</h2>
+                <div class="appointment">
+                    <div class="appointment-info">
+                        <div class="frmConsulta"  >
+                            <label for="clientName">Nome do Funcionario</label>
+                            <input type="text" id="clientName" name="nomeCliente" placeholder="nome_cliente" readonly>
+                          
+                            
+                            <label for="clientCPF">Data e hora:</label>
+                               <select name="hora1" id="hora1">
+                            <option value="horaDisp">Horários disponíveis</option>
+                    </select>
+                        </div>
+                    </div>
+                        <button class="delete-button">&times;</button>
+                </div>
+        </main>
+
+     <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="mensageModal"></p>
+        </div>
+    </div>
+
+    <footer>© 2024 – Todos os Direitos Reservados</footer>
+
+    <script>
+            function getQueryParam(msg) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(msg);
+        }
+        // Função para exibir o modal
+          document.addEventListener("DOMContentLoaded", () => {
+            const mensagem = getQueryParam("mensagem");
+            if (mensagem) {
+                document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+                document.getElementById("modal").style.display = "flex";
+            }
+        });
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
+</body>
+</html>

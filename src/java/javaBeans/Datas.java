@@ -342,7 +342,52 @@ public class Datas extends Conectar{
         }
         return listaCortesAgenda;
      }
-    
+                  
+                           public List<Datas> DatasDisponiveisFunc() {
+          List<Datas> listaDatas = new ArrayList<>();
+          
+        try {
+            sql = "SELECT data_datas,id_funcionario, tbl_status.nome_status\n"
+                    + "FROM tbl_datas \n"
+                    + "LEFT JOIN tbl_status \n"
+                    + "ON tbl_datas.id_status = tbl_status.id_status where nome_status is null;";
+            ps = con.prepareStatement(sql); 
+           tab = ps.executeQuery(); 
+
+          
+            while (tab.next()) {
+               Datas dt = new Datas();
+               dt.setData_datas(tab.getTimestamp("data_datas"));
+               dt.setId_funcionario(tab.getInt("id_funcionario"));
+               listaDatas.add(dt);
+               
+                this.statusSQL = null;  // Limpa status em caso de sucesso
   
+            } 
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+            
+        } 
+        return listaDatas;
+     }
+    
+         public boolean DeletarHorario() {
+        try {
+            
+            sql = "delete from tbl_datas where id_funcionario = ? and data_datas = ?;";
+            ps = con.prepareStatement(sql); 
+            ps.setInt(1, id_funcionario); 
+             ps.setTimestamp(2, data_datas); 
+            ps.executeUpdate(); 
+            this.statusSQL = null;  // Limpa status em caso de sucesso
+            return true;
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao deletar Horario! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
     
 }
