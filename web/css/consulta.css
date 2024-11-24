@@ -113,13 +113,15 @@ footer {
   bottom: 0;
   left: 0;
   position: fixed;
+  height: 60px;
+  line-height: 60px;
 }
 
 main {
   margin: 20px;
   background-color: #f7f1e3;
   position: relative;
-  padding-bottom: 13px;
+  padding-bottom: 60px;
   margin-bottom: 40px;
 }
 

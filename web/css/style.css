@@ -130,11 +130,14 @@ footer {
   text-align: center;
   background-color: #384c55;
   padding: 15px;
+  padding-bottom: 60px;
   color: #f7f1e3;
   width: 100%;
   bottom: 0;
   left: 0;
   position: fixed;
+  height: 60px;
+  line-height: 60px;
 }
 main{
   background-color: #f7f1e3;

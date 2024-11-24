@@ -93,6 +93,7 @@ a {
   margin: 20px auto;
   max-width: 1200px;
   gap: 20px; /* Espaçamento entre os elementos */
+  padding-bottom: 60px;
 }
 
 /* Cards */
@@ -215,8 +216,10 @@ footer {
   background-color: #384c55;
   padding: 15px;
   color: #f7f1e3;
+  height: 60px;
+  line-height: 60px;
   width: 100%;
   bottom: 0;
   left: 0;
-  position: relative;
+  position: fixed;
 }
