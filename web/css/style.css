@@ -326,7 +326,7 @@ nav ul li a:hover{
   gap: 5px; /* Espaçamento entre as linhas */
 }
 
-.campo-par {
+/* .campo-par {
   display: flex;
 }
 
@@ -334,7 +334,48 @@ nav ul li a:hover{
 .campo-par input {
   flex: 1;
   margin-top: 0;
+} */
+
+.campo-par {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os elementos */
+  align-items: center; /* Alinha labels e inputs verticalmente */
 }
+
+.campo-par label {
+  flex: 0 0 150px; /* Largura fixa para as labels */
+}
+
+.campo-par input {
+  flex: 1; /* Todos os inputs ocupam o mesmo espaço restante */
+  max-width: 200px; /* Define uma largura máxima para os inputs */
+  width: 100%; /* Garante que os inputs sejam responsivos */
+}
+
+.campo-par:last-child input {
+  flex: 1; /* Faz o input de senha seguir as mesmas regras de largura */
+}
+
+.check-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  color: #f7f1e3;
+  cursor: pointer;
+  justify-content: end;
+  display: flex;
+  align-items: end;
+}
+
+.check-button:hover, .check-button:focus{
+  background-color: transparent; /* Garante que o hover e o foco também sejam transparentes */
+  box-shadow: none; /* Remove sombras ao passar o mouse */
+  outline: none; /* Remove qualquer borda de foco extra */
+}
+
 
 
 .empty-label {

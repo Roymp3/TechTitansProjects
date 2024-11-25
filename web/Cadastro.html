@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <link rel="stylesheet" href="css/Agenda.css">
     <title>Tela de cadastro</title>
       <script>
         window.onload = function() {
@@ -70,10 +71,24 @@
                 <a href="./consultarCliente.html"><button class="botoesCad">Clientes</button></a>
             </div>
         </div>
-        <div class="lista_cliente_agendado">
-            <h2 class="agendaCliente">Clientes agendados na semana:</h2>
-
-
+        
+        <div class="content-container">
+            <h2>Clientes agendados na semana:</h2>
+            <div class="cards-container" id="conteudo-agenda">
+                <div class="box-cad">
+                    <form class="frmCadUser" action="./Pagamento.html" method="post">
+                        <label for="clienteAgenda" class="labelCadUsuario">Cliente:</label>
+                        <input type="text" id="clienteAgenda" class="inpCadUser" placeholder="clienteAgendado">
+                        
+                        
+                        <label for="hora1" class="labelCadUsuario">Horário:</label>
+                        <select name="hora1" id="hora1">
+                            <option value="horaDisp">Horários disponíveis</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <p>© 2024 – Todos os Direitos Reservados</p>

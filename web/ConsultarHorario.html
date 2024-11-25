@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultar Cliente</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="./css/style.css" type="text/css">
-    <link rel="stylesheet" href="./css/consulta.css">
+    <!-- <link rel="stylesheet" href="./css/style.css" type="text/css"> -->
+    <!-- <link rel="stylesheet" href="./css/consulta.css"> -->
+    <link rel="stylesheet" href="./css/Agenda.css">
      <!-- <link rel="stylesheet" href="./css/perfil.css"> -->
 
      <script>
@@ -62,24 +63,24 @@
         </ul>
     </nav>
     <a href="Cadastro.html"><button class="botaoVoltar">Voltar</button></a>
-            <main id="conteudo-horario">
+            <div class="content-container">
                 <h2>Consultar cliente</h2>
-                <div class="appointment">
-                    <div class="appointment-info">
-                        <div class="frmConsulta"  >
-                            <label for="clientName">Nome do Funcionario</label>
-                            <input type="text" id="clientName" name="nomeCliente" placeholder="nome_cliente" readonly>
-                          
+                <div class="cards-container" id="conteudo-agenda">
+                    <div class="box-cad">
+                        <div class="frmCadUser">
+                            <label for="clientName" class="labelCadUsuario">Nome do Funcionario</label>
+                            <input class="inpCadUser" type="text" id="clientName" name="nomeCliente" placeholder="nome_cliente" readonly>
+                            <button class="check-button">&times;</button>
                             
-                            <label for="clientCPF">Data e hora:</label>
-                               <select name="hora1" id="hora1">
-                            <option value="horaDisp">Horários disponíveis</option>
-                    </select>
+                            
+                            <label for="clientCPF" class="labelCadUsuario">Data e hora:</label>
+                            <select name="hora1" id="hora1">
+                                <option value="horaDisp">Horários disponíveis</option>
+                            </select>
                         </div>
                     </div>
-                        <button class="delete-button">&times;</button>
                 </div>
-        </main>
+            </div>
 
      <!-- Modal -->
     <div id="modal" class="modal">
