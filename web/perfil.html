@@ -9,23 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="./css/perfil.css">
     
-</head>
-<body>
- 
-    <div class="container">
-        <header>
-            <div class="logo">
-                <i class="fas fa-cut"></i>
-                Na Régua
-            </div>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-                <a href="JavaJSP/Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
-            </div>
-            <script>
+    <script>
                   window.onload = function() {
             fetch('JavaJSP/CarregarPerfil.jsp')
                 .then(response => response.text())
@@ -52,6 +36,23 @@
                };  
       
             </script>
+    
+</head>
+<body>
+ 
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-cut"></i>
+                Na Régua
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="JavaJSP/Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
 
         </header>
         <nav id="conteudo">
@@ -90,7 +91,7 @@
                 <div class="appointment">
                     <img src="img/imagem 1 - teste.jpg" alt="Foto do Barbeiro">
                     <div class="appointment-info" >
-                        <p>Data e Hora:  <input type="tel" id="phone" name="cell" placeholder="Seu telefone"> </p>
+                        <p>Data e Hora:  </p>
                         <p>Corte Escolhido:</p>
                         <p>Barbeiro Selecionado:</p>
                         <p>Forma de Pagamento:</p>
@@ -102,12 +103,38 @@
         </div>
   
     </div>
-    
-                <a href="./Cadastro.html"><button class="botperf">Sair</button></a>
-    <footer>
-        <p>&copy; 2024 – Todos os Direitos Reservados</p>
-    </footer>
+             <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p id="mensageModal"></p>
+        </div>
     </div>
+           
+    <footer>
+        <p>© 2024 – Todos os Direitos Reservados</p>
+    </footer>
+           <script>
+             
+                    
+                        function getQueryParam(msg) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(msg);
+        }
+        // Função para exibir o modal
+          document.addEventListener("DOMContentLoaded", () => {
+            const mensagem = getQueryParam("mensagem");
+            if (mensagem) {
+                document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+                document.getElementById("modal").style.display = "flex";
+            }
+        });
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+
+        }
+           </script>
 </body>
 
 </html>

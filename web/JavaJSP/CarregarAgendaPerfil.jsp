@@ -16,7 +16,10 @@
     Cortes ct = new Cortes();
     Status sta = new Status();
     
+    String estiloIcone = "style = 'display: inline;'";
+    
     SimpleDateFormat formatoDataExibir = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat formatoConsulta = new SimpleDateFormat("yyyy-MM-dd");
     String UsuarioLogado = (String) session.getAttribute("ClienteLogado");
     String FuncLogado = (String) session.getAttribute("funcionarioLogado");
 
@@ -44,52 +47,65 @@
 %>
 
 <h2>Cortes Agendados</h2>
-<%
-    for (Datas dataa : listaAgendacli) {
-        // Formatação da data e hora
-        Timestamp dataCli = dataa.getData_datas();
-        String exibirdataCli = formatoDataExibir.format(dataCli);
-        String horarioCli = new SimpleDateFormat("HH:mm").format(dataCli);
-        
-        // Recuperação dos dados relacionados ao agendamento
-        int idfunc = dataa.getId_funcionario();
-        func.setId_funcionario(idfunc);
-        
-        int idcoorte = dataa.getId_corte();
-        ct.setId_corte(idcoorte);
-        
-        int idstatus = dataa.getId_status();
-        sta.setId_status(idstatus);
-        
-        int idcliente = dataa.getId_cliente();
-        cli.setId_cliente(idcliente);
-
-        // Busca dos nomes associados aos IDs
-        func.BuscarNomeID();
-        ct.buscarNomePorId();
-        sta.BuscarNomeID();
-        cli.buscarNomePorID();
-
-        String nome = "";
-        if (titulo.equals("Barbeiro Selecionado:")) {
-            nome = func.getNome_funcionario();
-        } else if (titulo.equals("Cliente:")) {
-            nome = cli.getNome_cliente();
-        }
+<% 
+    if (listaAgendacli.isEmpty()) { 
 %>
+    <p>Você não tem cortes agendados no momento.</p>
+<% 
+    } else {
+        for (Datas dataa : listaAgendacli) {
+            Timestamp dataCli = dataa.getData_datas();
+            String exibirdataCli = formatoDataExibir.format(dataCli);
+            String dataConculta = formatoConsulta.format(dataCli);
+            String horarioCli = new SimpleDateFormat("HH:mm").format(dataCli);
 
-<div class="appointment">
-    <img src="img/imagem 1 - teste.jpg" alt="Foto do Barbeiro">
-    <div class="appointment-info" id="agenda-perfil">
-        <p>Data e Hora: <strong><%= exibirdataCli %> <%= horarioCli %></strong> </p>
-        <p><%= titulo %> <strong><%= nome %> </strong> </p>
-        <p>Corte Escolhido: <strong><%= ct.getNome_corte() %> </strong> </p>
-        <p>Forma de Pagamento: <strong><%= dataa.getTipo_pagamento() %> </strong> </p>
-        <p>Status: <strong><%= sta.getNome_status() %> </strong> </p>
+            int idfunc = dataa.getId_funcionario();
+            func.setId_funcionario(idfunc);
+
+            int idcoorte = dataa.getId_corte();
+            ct.setId_corte(idcoorte);
+
+            int idstatus = dataa.getId_status();
+            sta.setId_status(idstatus);
+
+            int idcliente = dataa.getId_cliente();
+            cli.setId_cliente(idcliente);
+
+            func.BuscarNomeID();
+            ct.buscarNomePorId();
+            sta.BuscarNomeID();
+            cli.buscarNomePorID();
+
+            String nome = "";
+            if (titulo.equals("Barbeiro Selecionado:")) {
+                nome = func.getNome_funcionario();
+                estiloIcone = "style = 'display: none';";
+            } else if (titulo.equals("Cliente:")) {
+                nome = cli.getNome_cliente();
+            }
+    %>
+
+    <div class="appointment">
+        <img src="img/imagem 1 - teste.jpg" alt="Foto do Barbeiro">
+        <div class="appointment-info" id="agenda-perfil">
+            <p>Data e Hora: <strong><%= exibirdataCli %> <%= horarioCli %></strong></p>
+            <p><%= titulo %> <strong><%= nome %></strong></p>
+            <p>Corte Escolhido: <strong><%= ct.getNome_corte() %></strong></p>
+            <p>Forma de Pagamento: <strong><%= dataa.getTipo_pagamento() %></strong></p>
+            <p>Status: <strong><%= sta.getNome_status() %></strong></p>
+        </div>
+        <form method="post" action="JavaJSP/FinalizarCorte.jsp" onsubmit="showModal();">
+            <!-- Dados ocultos para envio -->
+            <input type="hidden" name="dataAgenda" value="<%= dataConculta + " " + horarioCli %>">
+            <input type="hidden" name="nomeFunc" value="<%= nome %>">
+            <input type="hidden" name="tipoCorte" value="<%= ct.getNome_corte() %>">
+            <input type="hidden" name="formaPagamento" value="<%= dataa.getTipo_pagamento() %>">
+            <input type="hidden" name="status" value="<%= sta.getNome_status() %>">
+            <button type="submit" class="check-button" title="Marcar como finalizado" <%= estiloIcone %> >&#10004;</button>
+        </form>
     </div>
-    <button class="delete-button">&times;</button>
-</div>
 
 <% 
+        }
     }
 %>

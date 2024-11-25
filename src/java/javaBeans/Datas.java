@@ -281,7 +281,7 @@ public class Datas extends Conectar{
           List<Datas> listaCortesAgenda = new ArrayList<>();
           
         try {
-            sql = "select  data_datas, id_cliente, id_funcionario, id_status,id_corte, tipo_pagamento from tbl_datas where id_cliente = ?;";
+            sql = "select  data_datas, id_cliente, id_funcionario, id_status,id_corte, tipo_pagamento from tbl_datas where id_cliente = ? and id_status = 1;";
             ps = con.prepareStatement(sql); 
             ps.setInt(1, id_cliente);
            tab = ps.executeQuery(); 
@@ -384,6 +384,24 @@ public class Datas extends Conectar{
             return true;
         } catch (SQLException ex) {
             this.statusSQL = "Erro ao deletar Horario! <br> " + ex.getMessage();
+            
+        } 
+        
+        return false;
+    }
+         
+           public boolean FinalizarCorteAgendado() {
+        try {
+            
+            sql = "update tbl_datas set id_status = 2 where data_datas = ? and id_funcionario = ?;";
+            ps = con.prepareStatement(sql); 
+            ps.setTimestamp(1, data_datas); 
+             ps.setInt(2, id_funcionario); 
+            ps.executeUpdate(); 
+            this.statusSQL = null;  // Limpa status em caso de sucesso
+            return true;
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao alterar status do Agendamento! <br> " + ex.getMessage();
             
         } 
         

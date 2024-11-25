@@ -601,7 +601,7 @@ p{
         .modal {
             display: none; /* Oculta o modal por padrão */
             position: fixed;
-            z-index: 1;
+            z-index: 1000; /* Aumente o z-index se necessário */
             left: 0;
             top: 0;
             width: 100%;
