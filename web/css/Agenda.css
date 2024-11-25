@@ -309,7 +309,7 @@ select {
   margin-bottom: 15px;
   background-color: #457489;
   text-align: center;
-  color: #524f4f;
+  color: black;
 }
 
 select:focus {
@@ -328,4 +328,35 @@ footer {
   bottom: 0;
   left: 0;
   position: fixed;
+}
+
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed;
+    z-index: 1000; /* Aumente o z-index se necessário */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semitransparente */
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background-color: #384c55; /* Cor de fundo do modal */
+    color: #f7f1e3; /* Cor do texto */
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+.close-btn {
+    color: #f7f1e3;
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+.close-btn:hover {
+    color: #ddd;
 }

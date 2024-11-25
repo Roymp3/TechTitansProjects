@@ -15,8 +15,7 @@
     Funcionarios func = new Funcionarios();
     Cortes ct = new Cortes();
     Status sta = new Status();
-    
-    String estiloIcone = "style = 'display: inline;'";
+  
     
     SimpleDateFormat formatoDataExibir = new SimpleDateFormat("dd/MM/yyyy");
     SimpleDateFormat formatoConsulta = new SimpleDateFormat("yyyy-MM-dd");
@@ -35,18 +34,19 @@
             int idcli = cli.getId_cliente();
             dt.setId_cliente(idcli);
         }
-        listaAgendacli = dt.buscarAgendadosCliente();
+        listaAgendacli = dt.buscarFinalizadosCliente();
     } else if (func.buscarFuncPorUser()) {
         titulo = "Cliente:";
         if (func.buscarIdPorUser()) {
             int idfunc = func.getId_funcionario();
             dt.setId_funcionario(idfunc);
         }
-        listaAgendacli = dt.buscarAgendadosFunc();
+        listaAgendacli = dt.buscarFinalizadosFunc();
     }
 %>
-<button onclick="window.location.assign('./perfilFinalizados.html')" class="botaoVoltar" > Ver meus cortes finalizados</button>
-<h2>Cortes Agendados</h2>
+
+<h2>Cortes Finalizados</h2>
+  <div class="agenda-container">
 <% 
     if (listaAgendacli.isEmpty()) { 
 %>
@@ -79,7 +79,6 @@
             String nome = "";
             if (titulo.equals("Barbeiro Selecionado:")) {
                 nome = func.getNome_funcionario();
-                estiloIcone = "style = 'display: none';";
             } else if (titulo.equals("Cliente:")) {
                 nome = cli.getNome_cliente();
             }
@@ -94,18 +93,11 @@
             <p>Forma de Pagamento: <strong><%= dataa.getTipo_pagamento() %></strong></p>
             <p>Status: <strong><%= sta.getNome_status() %></strong></p>
         </div>
-        <form method="post" action="JavaJSP/FinalizarCorte.jsp" onsubmit="showModal();">
-            <!-- Dados ocultos para envio -->
-            <input type="hidden" name="dataAgenda" value="<%= dataConculta + " " + horarioCli %>">
-            <input type="hidden" name="nomeFunc" value="<%= nome %>">
-            <input type="hidden" name="tipoCorte" value="<%= ct.getNome_corte() %>">
-            <input type="hidden" name="formaPagamento" value="<%= dataa.getTipo_pagamento() %>">
-            <input type="hidden" name="status" value="<%= sta.getNome_status() %>">
-            <button type="submit" class="check-button" title="Marcar como finalizado" <%= estiloIcone %> >&#10004;</button>
-        </form>
     </div>
+  
 
 <% 
         }
     }
 %>
+ </div>  

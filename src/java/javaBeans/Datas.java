@@ -310,11 +310,77 @@ public class Datas extends Conectar{
         return listaCortesAgenda;
      }
              
+               public List<Datas> buscarFinalizadosCliente() {
+          List<Datas> listaCortesAgenda = new ArrayList<>();
+          
+        try {
+            sql = "select  data_datas, id_cliente, id_funcionario, id_status,id_corte, tipo_pagamento from tbl_datas where id_cliente = ? and id_status = 2;";
+            ps = con.prepareStatement(sql); 
+            ps.setInt(1, id_cliente);
+           tab = ps.executeQuery(); 
+
+          
+            while (tab.next()) {
+               Datas dt = new Datas();
+               dt.setData_datas(tab.getTimestamp("data_datas"));
+                dt.setId_cliente(tab.getInt("id_cliente"));
+                 dt.setId_funcionario(tab.getInt("id_funcionario"));
+                  dt.setId_status(tab.getInt("id_status"));
+                  dt.setId_corte(tab.getInt("id_corte"));
+                  dt.setTipo_pagamento(tab.getString("tipo_pagamento"));
+                
+               listaCortesAgenda.add(dt);
+               
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+  
+            } 
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+             ex.printStackTrace();
+            
+        }
+        return listaCortesAgenda;
+     }
+             
                   public List<Datas> buscarAgendadosFunc() {
           List<Datas> listaCortesAgenda = new ArrayList<>();
           
         try {
             sql = "select  data_datas, id_cliente, id_funcionario, id_status,id_corte, tipo_pagamento from tbl_datas where id_funcionario = ? and id_status = 1;";
+            ps = con.prepareStatement(sql); 
+            ps.setInt(1, id_funcionario);
+           tab = ps.executeQuery(); 
+
+          
+            while (tab.next()) {
+               Datas dt = new Datas();
+               dt.setData_datas(tab.getTimestamp("data_datas"));
+                dt.setId_cliente(tab.getInt("id_cliente"));
+                 dt.setId_funcionario(tab.getInt("id_funcionario"));
+                  dt.setId_status(tab.getInt("id_status"));
+                  dt.setId_corte(tab.getInt("id_corte"));
+                  dt.setTipo_pagamento(tab.getString("tipo_pagamento"));
+                
+               listaCortesAgenda.add(dt);
+               
+                this.statusSQL = null;  // Limpa status em caso de sucesso
+  
+            } 
+
+        } catch (SQLException ex) {
+            this.statusSQL = "Erro ao buscar cliente! <br> " + ex.getMessage();
+             ex.printStackTrace();
+            
+        }
+        return listaCortesAgenda;
+     }
+                  
+                                 public List<Datas> buscarFinalizadosFunc() {
+          List<Datas> listaCortesAgenda = new ArrayList<>();
+          
+        try {
+            sql = "select  data_datas, id_cliente, id_funcionario, id_status,id_corte, tipo_pagamento from tbl_datas where id_funcionario = ? and id_status = 2;";
             ps = con.prepareStatement(sql); 
             ps.setInt(1, id_funcionario);
            tab = ps.executeQuery(); 

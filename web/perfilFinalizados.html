@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Na Régua</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="./css/perfil.css">
+    <link rel="stylesheet" href="css/perfil.css">
     
     <script>
         window.onload = function() {
@@ -20,7 +20,7 @@
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
         
-            fetch('JavaJSP/CarregarAgendaPerfil.jsp')
+            fetch('JavaJSP/CarregarFinalizadosPerfil.jsp')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('agenda-perfil').innerHTML = data;
@@ -36,7 +36,6 @@
                 })
         };
       
-  
     </script>
 </head>
 
@@ -90,8 +89,8 @@
 
             <main id="agenda-perfil">
                 <h2>Cortes Agendados</h2>
-            
-                <div id="agenda-container">
+
+                <div class="agenda-container">
                     <!-- A agenda será carregada dinamicamente aqui -->
                     <div class="appointment">
                         <img src="img/imagem 1 - teste.jpg" alt="Foto do Barbeiro">
@@ -102,7 +101,6 @@
                             <p>Forma de Pagamento:</p>
                             <p>Status:</p>
                         </div>
-                        <button class="check-button">&#10004;</button>
                     </div>
                 </div>
             </main>
