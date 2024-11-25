@@ -27,7 +27,7 @@ Este projeto é um sistema de agendamento de barbearia que permite aos clientes 
 - [Jhonny da Gama](https://github.com/JhonnyGama)
 - [Diego Cardoso](https://github.com/Dev-DiegoCrds7)
 - [Thiago Amaral](https://github.com/Thiaguera7)
-- [Erik Alexandre](https://github.com/Roymp3)
+- [Erik Alexandre](https://github.com/erikal21)
 - [Bruno Rosa](https://github.com/Roymp3)
 
 
