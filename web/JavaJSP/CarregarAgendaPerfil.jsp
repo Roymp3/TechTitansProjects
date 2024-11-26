@@ -45,8 +45,10 @@
         listaAgendacli = dt.buscarAgendadosFunc();
     }
 %>
-<button onclick="window.location.assign('./perfilFinalizados.html')" class="botaoVoltar" > Ver meus cortes finalizados</button>
+<button onclick="window.location.assign('./perfilFinalizados.html')" class="cortesFinalizados" > Ver meus cortes finalizados</button>
 <h2>Cortes Agendados</h2>
+  <div class="agenda-container">
+
 <% 
     if (listaAgendacli.isEmpty()) { 
 %>
@@ -104,8 +106,9 @@
             <button type="submit" class="check-button" title="Marcar como finalizado" <%= estiloIcone %> >&#10004;</button>
         </form>
     </div>
-
+            
 <% 
         }
     }
 %>
+  </div>

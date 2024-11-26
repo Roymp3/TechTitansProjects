@@ -24,12 +24,13 @@
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
  
-                fetch('JavaJSP/ConsultarDatas.jsp')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('conteudo-agenda').innerHTML = data; // Atualiza o conteúdo da div
-                })
-                .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+                 fetch('JavaJSP/ConsultarDatas.jsp')
+                 .then(response => response.text())
+                 .then(data => {
+                     console.log(data); // Mostra o conteúdo retornado no console
+                     document.getElementById('conteudo-agenda').innerHTML = data;
+                 })
+                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
  
  
         };

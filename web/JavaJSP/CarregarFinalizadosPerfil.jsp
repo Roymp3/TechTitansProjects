@@ -18,7 +18,6 @@
   
     
     SimpleDateFormat formatoDataExibir = new SimpleDateFormat("dd/MM/yyyy");
-    SimpleDateFormat formatoConsulta = new SimpleDateFormat("yyyy-MM-dd");
     String UsuarioLogado = (String) session.getAttribute("ClienteLogado");
     String FuncLogado = (String) session.getAttribute("funcionarioLogado");
 
@@ -50,13 +49,12 @@
 <% 
     if (listaAgendacli.isEmpty()) { 
 %>
-    <p>Você não tem cortes agendados no momento.</p>
+    <p>Você não tem cortes Finalizados no momento.</p>
 <% 
     } else {
         for (Datas dataa : listaAgendacli) {
             Timestamp dataCli = dataa.getData_datas();
             String exibirdataCli = formatoDataExibir.format(dataCli);
-            String dataConculta = formatoConsulta.format(dataCli);
             String horarioCli = new SimpleDateFormat("HH:mm").format(dataCli);
 
             int idfunc = dataa.getId_funcionario();
