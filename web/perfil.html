@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Na Régua</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="./css/perfil.css">
+    <link rel="stylesheet" href="css/perfil.css">
     
     <script>
         window.onload = function() {
@@ -89,11 +89,13 @@
             </aside>
 
             <main id="agenda-perfil">
-                <button onclick="window.location.assign('./perfilFinalizados.html')" class="botaoVoltar" > Ver meus cortes finalizados</button>
+    
+                <button onclick="window.location.assign('./perfilFinalizados.html')" class="cortesFinalizados" > Ver meus cortes finalizados</button>
+
                 <h2>Cortes Agendados</h2>
             
-                <div id="agenda-container">
-                    <!-- A agenda será carregada dinamicamente aqui -->
+                <div class="agenda-container">
+
                     <div class="appointment">
                         <img src="img/imagem 1 - teste.jpg" alt="Foto do Barbeiro">
                         <div class="appointment-info">
@@ -104,8 +106,14 @@
                             <p>Status:</p>
                         </div>
                         <button class="check-button">&#10004;</button>
-                    </div>
+                    </div>    
+                             
                 </div>
+
+                
+
+
+                
             </main>
         </div>
     </div>
