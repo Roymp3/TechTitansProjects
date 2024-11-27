@@ -14,7 +14,7 @@ Este projeto é um sistema de agendamento de barbearia que permite aos clientes 
 
 ### Para Clientes
 - **Agendamento de Horários**: Permite que os clientes escolham horários disponíveis.
-- **Notificações**: Lembretes de agendamento para os clientes.
+
 
 ### Para Administradores
 - **CRUD Completo de Funcionários**: Cadastro, leitura, atualização e exclusão de informações dos funcionários da barbearia.
