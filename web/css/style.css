@@ -709,13 +709,14 @@ p{
         .card-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-          gap: 350px;
-          padding: 200px;
+          gap: 250px;
+          padding: 130px;
         }
         
         .card-container {
           perspective: 1000px;
           margin: 10px;
+          margin-bottom: 60px;
         }
         
         .card {
