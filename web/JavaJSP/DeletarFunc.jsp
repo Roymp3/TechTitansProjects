@@ -2,9 +2,11 @@
 <%@page import="javaBeans.Funcionarios"%>
 <% 
     Funcionarios func = new Funcionarios(); // Instancia o objeto Usuario
- if ( !(func.statusSQL == null) ) 
-        out.println(func.statusSQL);
-       String mensageModal = "";
+           String mensageModal = "";
+
+ if ( !(func.statusSQL == null) ) {
+        out.println(func.statusSQL);        
+    }
        String funcDelete = request.getParameter("funcionarioCPF");
        func.setCpf_funcionario(funcDelete);
 
