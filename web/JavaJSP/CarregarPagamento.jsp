@@ -82,7 +82,6 @@
 
     <label for="observacao">Observação:</label><br>
     <textarea name="observacao" id="observacao" rows="10" cols="35"></textarea>
-    <div id="contador">0 / 700 caracteres</div>
 
     <button type="submit" class="botoesCad">Agendar corte</button>
 </form>

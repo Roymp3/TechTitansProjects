@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Tela de seleção</title>
@@ -16,56 +15,52 @@
                     document.getElementById('conteudo-pag').innerHTML = data; // Atualiza o conteúdo da div
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-        
-                
-                  fetch('JavaJSP/conteudoHeader.jsp')
+
+            fetch('JavaJSP/conteudoHeader.jsp')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('conteudo-header').innerHTML = data; // Atualiza o conteúdo da div
                 })
                 .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-        
-           const dataEscolhida = new URLSearchParams(window.location.search).get("dataEscolhida");
-         const horaEscolhida = new URLSearchParams(window.location.search).get("hora1");
 
-         if (dataEscolhida && horaEscolhida) {
-             console.log("Data Escolhida na URL:", dataEscolhida);
-             console.log("Hora Escolhida na URL:", horaEscolhida);
+            const dataEscolhida = new URLSearchParams(window.location.search).get("dataEscolhida");
+            const horaEscolhida = new URLSearchParams(window.location.search).get("hora1");
+
+            if (dataEscolhida && horaEscolhida) {
+                console.log("Data Escolhida na URL:", dataEscolhida);
+                console.log("Hora Escolhida na URL:", horaEscolhida);
 
                 fetch(`JavaJSP/CarregarPagamento.jsp?dataEscolhida=${dataEscolhida}&hora1=${horaEscolhida}`)
-                           .then(response => response.text())
-                           .then(data => {
-                               document.getElementById('card_select').innerHTML = data;
-                           })
-                           .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-               } else {
-                   console.error("Parâmetros inválidos: dataEscolhida ou hora1 estão faltando.");
-               }
-               
-    }
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('card_select').innerHTML = data;
+                    })
+                    .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+            } else {
+                console.error("Parâmetros inválidos: dataEscolhida ou hora1 estão faltando.");
+            }
+        }
     </script>
-    
 </head>
 <body>
     <header id="conteudo-header">
         <div class="logo">
-            <i class="fas fa-cut"></i>
-            Na Régua
+            <i class="fas fa-cut"></i> Na Régua
         </div>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-whatsapp"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
-           <a href="JavaJSP/VerficarLogado.jsp" ><i class="fas fa-user"></i></a>
-           <a href="JavaJSP/Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="JavaJSP/VerficarLogado.jsp"><i class="fas fa-user"></i></a>
+            <a href="JavaJSP/Logout.jsp" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </header>
     <nav id="conteudo-pag">
         <ul>
             <li><a href="./login.html">Login</a></li>
             <li><a href="./index.html">Home</a></li>
-            <li style="display:none;"> <a href="./Cadastro.html">Cadastro/Consulta</a></li>
-            <li> <a href="#">Agendamento</a></li>
+            <li style="display:none;"><a href="./Cadastro.html">Cadastro/Consulta</a></li>
+            <li><a href="#">Agendamento</a></li>
         </ul>
     </nav>
     <a href="Agendamentos.html"><button class="botaoVoltar">Voltar</button></a>
@@ -108,72 +103,55 @@
             </div>
             <div class="card_select_right">
                 <div id="img-mapa-container">
-                    <!-- <img  id="img-mapa" src="./img/img-maps.png" alt="Teste"> -->
-                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.22060892945!2d-46.67672551838579!3d-23.560519006880128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57806e5988d9%3A0xa38687ec90914aa3!2sR.%20Oscar%20Freire%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1731117719603!5m2!1spt-BR!2sbr" width="500" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.22060892945!2d-46.67672551838579!3d-23.560519006880128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57806e5988d9%3A0xa38687ec90914aa3!2sR.%20Oscar%20Freire%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1731117719603!5m2!1spt-BR!2sbr" width="500" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <div class="gradient-overlay"></div>
                 </div>
                 <p class="info_barb">Rua Oscar Freire, Vila Evlyn 207 - São Paulo (SP)</p>
-                <p class="info_barb">Aberto das 13 ás 18</p>
-                <p class="info_barb">Abertura das 14 ás 17 aos Sábados e Domingos</p>
+                <p class="info_barb">Aberto das 13h às 18h</p>
+                <p class="info_barb">Abertura das 14h às 17h aos sábados e domingos</p>
             </div>
         </div>
     </main>
-       
-                    
-           <!-- Modal -->
+    <!-- Modal -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <p id="mensageModal"></p>
         </div>
     </div>
-           
     <footer>
         <p>© 2024 – Todos os Direitos Reservados</p>
     </footer>
-           <script>
-             
-               
-                  function atualizarContador() {
-                      // Seleciona o campo de texto e o elemento do contador
-                      const textarea = document.getElementById("observacao");
-                      const contador = document.getElementById("contador");
-                    
-                      // Calcula o número de caracteres digitados e atualiza o contador
-                      const caracteresDigitados = textarea.value.length;
-                      contador.textContent = `${caracteresDigitados} / 700 caracteres`;
-                  }
-                    
-                  // Evento para iniciar o contador no carregamento da página
-                  window.addEventListener("DOMContentLoaded", (event) => {
-                      const textarea = document.getElementById("observacao");
-                    
-                      // Configura o contador inicial
-                      atualizarContador();
-                    
-                      // Adiciona o evento 'input' ao campo de texto
-                      textarea.addEventListener("input", atualizarContador); 
-                        
-                  });
-                    
-                      function getQueryParam(msg) {
-          const urlParams = new URLSearchParams(window.location.search);
-          return urlParams.get(msg);
-      }
-      // Função para exibir o modal
-        document.addEventListener("DOMContentLoaded", () => {
-          const mensagem = getQueryParam("mensagem");
-          if (mensagem) {
-              document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
-              document.getElementById("modal").style.display = "flex";
-          }
-      });
-      // Função para fechar o modal
-      function closeModal() {
-          document.getElementById("modal").style.display = "none";
-        window.location.assign('Agendamentos.html');
+    <script>
+        function atualizarContador() {
+            const textarea = document.getElementById("observacao");
+            const contador = document.getElementById("contador");
 
-      }
-           </script>
+            if (textarea && contador) {
+                const caracteresDigitados = textarea.value.length;
+                contador.textContent = `${caracteresDigitados} / 700 caracteres`;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const textarea = document.getElementById("observacao");
+
+            if (textarea) {
+                atualizarContador();
+                textarea.addEventListener("input", atualizarContador);
+            }
+
+            const mensagem = new URLSearchParams(window.location.search).get("mensagem");
+            if (mensagem) {
+                document.getElementById("mensageModal").innerText = decodeURIComponent(mensagem);
+                document.getElementById("modal").style.display = "flex";
+            }
+        });
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            window.location.assign('Agendamentos.html');
+        }
+    </script>
 </body>
 </html>
